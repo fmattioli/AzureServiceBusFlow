@@ -1,0 +1,6 @@
+@AsbFlow.Configurations.WebTests_HostAddress = http://localhost:5240
+
+GET {{AsbFlow.Configurations.WebTests_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
