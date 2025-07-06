@@ -4,7 +4,6 @@ using AzureServiceBusFlow.Hosts;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
 using Newtonsoft.Json;
 
 namespace AzureServiceBusFlow.Builders
@@ -58,22 +57,25 @@ namespace AzureServiceBusFlow.Builders
                         if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
                         {
                             logger.LogWarning("MessageType property not found on message at {Time}", DateTime.UtcNow);
-                            throw new InvalidOperationException("MessageType property missing");
+                            return;
                         }
 
                         var messageTypeName = messageTypeNameObj as string;
-                        if (string.IsNullOrEmpty(messageTypeName))
+                        if (string.IsNullOrWhiteSpace(messageTypeName))
                         {
                             logger.LogWarning("MessageType property is null or empty at {Time}", DateTime.UtcNow);
-                            throw new InvalidOperationException("MessageType property invalid");
+                            return;
                         }
 
-                        // Get real type message
+                        // Tenta encontrar tipo de mensagem registrado
                         var messageType = _handlers.Keys.FirstOrDefault(t => t.Name == messageTypeName);
                         if (messageType == null)
                         {
-                            logger.LogWarning("No registered message type matching {MessageType} at {Time}", messageTypeName, DateTime.UtcNow);
-                            throw new InvalidOperationException($"No handler registered for message type {messageTypeName}");
+                            logger.LogInformation(
+                                "Received message of type {MessageType}, but no handler is registered to process it. Message will be ignored. Time: {Time}",
+                                messageTypeName, DateTime.UtcNow
+                            );
+                            return;
                         }
 
                         var json = rawMessage.Body.ToString();
@@ -81,7 +83,7 @@ namespace AzureServiceBusFlow.Builders
                         if (obj == null)
                         {
                             logger.LogWarning("Failed to deserialize message of type {MessageType} at {Time}", messageTypeName, DateTime.UtcNow);
-                            throw new InvalidOperationException($"Failed to deserialize message of type {messageTypeName}");
+                            return;
                         }
 
                         using var scope = rootProvider.CreateScope();
@@ -96,8 +98,11 @@ namespace AzureServiceBusFlow.Builders
 
                         if (handlerWithRawInterface == null)
                         {
-                            logger.LogWarning("Handler for message type {MessageType} does not implement IMessageHandler<> at {Time}", messageTypeName, DateTime.UtcNow);
-                            throw new InvalidOperationException($"Handler for message type {messageTypeName} is invalid");
+                            logger.LogWarning(
+                                "Handler for message type {MessageType} does not implement IMessageHandler<> as expected. Time: {Time}",
+                                messageTypeName, DateTime.UtcNow
+                            );
+                            return;
                         }
 
                         logger.LogInformation("Message routed to handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
@@ -107,11 +112,9 @@ namespace AzureServiceBusFlow.Builders
                     catch (Exception ex)
                     {
                         logger.LogError(ex, "Error processing message in handler");
-                        throw new InvalidOperationException("No handler was able to deserialize and process the message.", ex);
+                        throw new InvalidOperationException("Error while trying procces message.", ex);
                     }
                 }
-
-
 
                 if (!string.IsNullOrWhiteSpace(_queueName))
                 {
