@@ -1,7 +1,6 @@
 ﻿using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Producers.Abstractions;
 using AzureServiceBusFlow.Producers.Implementations;
-
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
