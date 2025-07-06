@@ -119,20 +119,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Setup .NET Core @ Latest
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Restore dependencies
         run: dotnet restore src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
-        
+
       - name: Build solution and generate NuGet package
-        run: | 
+        run: |
           dotnet build --no-restore --configuration Release src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
-          dotnet pack src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj --no-build --configuration Release --output AzureServiceBusFlow/out
-      
+          dotnet pack src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj \
+            --no-build \
+            --configuration Release \
+            --output out
+
       - name: Push generated package to NuGet
-        run: dotnet nuget push ./AzureServiceBusFlow.Configurations/out/*.nupkg --api-key ${{ secrets.CODERAW_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./out/AzureServiceBusFlow.${{ env.VERSION }}.nupkg \
+          --api-key ${{ secrets.CODERAW_NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json
+
