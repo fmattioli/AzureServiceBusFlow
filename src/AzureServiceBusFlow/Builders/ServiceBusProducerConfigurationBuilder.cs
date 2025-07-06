@@ -2,6 +2,7 @@
 using AzureServiceBusFlow.Producers.Abstractions;
 using AzureServiceBusFlow.Producers.Implementations;
 
+using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -22,7 +23,43 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
-        public ServiceBusProducerConfigurationBuilder<TMessage> WithCommandProducer()
+        public ServiceBusProducerConfigurationBuilder<TMessage> EnsureQueueExists(string queueName)
+        {
+            var managementClient = new ManagementClient(_connectionString);
+
+            if (!managementClient.QueueExistsAsync(queueName).GetAwaiter().GetResult())
+            {
+                managementClient.CreateQueueAsync(queueName).GetAwaiter().GetResult();
+            }
+
+            managementClient.CloseAsync().GetAwaiter().GetResult();
+
+            return this;
+        }
+
+        public ServiceBusProducerConfigurationBuilder<TMessage> EnsureTopicExists(string topicName)
+        {
+            var managementClient = new ManagementClient(_connectionString);
+            if (!managementClient.TopicExistsAsync(topicName).GetAwaiter().GetResult())
+            {
+                managementClient.CreateTopicAsync(topicName).GetAwaiter().GetResult();
+            }
+            managementClient.CloseAsync().GetAwaiter().GetResult();
+            return this;
+        }
+
+        public ServiceBusProducerConfigurationBuilder<TMessage> EnsureSubscriptionExists(string topicName, string subscriptionName)
+        {
+            var managementClient = new ManagementClient(_connectionString);
+            if (!managementClient.SubscriptionExistsAsync(topicName, subscriptionName).GetAwaiter().GetResult())
+            {
+                managementClient.CreateSubscriptionAsync(topicName, subscriptionName).GetAwaiter().GetResult();
+            }
+            managementClient.CloseAsync().GetAwaiter().GetResult();
+            return this;
+        }
+
+        public ServiceBusProducerConfigurationBuilder<TMessage> AddCommandProducer()
         {
             _services.AddSingleton<ICommandProducer, CommandProducer>();
             return this;

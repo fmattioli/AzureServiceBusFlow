@@ -14,7 +14,7 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 builder.Services.AddAzureServiceBus(cfg => cfg
     .UseConnectionString("")
     .AddProducer<IServiceBusMessage>(p => p
-        .WithCommandProducer()
+        .AddCommandProducer()
         .ToQueue("queue-one")
         .ToTopic("meu-topico"))
     .AddConsumer(c => c
