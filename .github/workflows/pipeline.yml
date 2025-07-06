@@ -30,9 +30,9 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Restore dependencies
-        run: dotnet restore src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
+        run: dotnet restore src/AzureServiceBusFlow/AzureServiceBusFlow.csproj
       - name: Build
-        run: dotnet build --configuration Release src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
+        run: dotnet build --configuration Release src/AzureServiceBusFlow/AzureServiceBusFlow.csproj
 
   bump:
     name: Update project version
@@ -68,7 +68,7 @@ jobs:
         id: bump-minor
         uses: vers-one/dotnet-project-version-updater@v1.5
         with:
-          file: src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
+          file: src/AzureServiceBusFlow/AzureServiceBusFlow.csproj
           version: "*.^.0"
 
       - name: Bump build version - Revision
@@ -76,7 +76,7 @@ jobs:
         id: bump-revision
         uses: vers-one/dotnet-project-version-updater@v1.5
         with:
-          file: src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
+          file: src/AzureServiceBusFlow/AzureServiceBusFlow.csproj
           version: "*.*.^"
 
       - name: Commit and push changes - MINOR
@@ -119,27 +119,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Setup .NET Core @ Latest
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Restore dependencies
-        run: dotnet restore src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
-
+        run: dotnet restore src/AzureServiceBusFlow/AzureServiceBusFlow.csproj
+        
       - name: Build solution and generate NuGet package
-        run: |
-          dotnet build --no-restore --configuration Release src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
-          dotnet pack src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj \
-            --no-build \
-            --configuration Release \
-            --output out
-
+        run: | 
+          dotnet build --no-restore --configuration Release src/AzureServiceBusFlow/AzureServiceBusFlow.csproj
+          dotnet pack src/AzureServiceBusFlow/AzureServiceBusFlow.csproj --no-build --configuration Release --output AzureServiceBusFlow/out
+      
       - name: Push generated package to NuGet
-        run: dotnet nuget push ./out/AzureServiceBusFlow.${{ env.VERSION }}.nupkg \
-          --api-key ${{ secrets.CODERAW_NUGET_API_KEY }} \
-          --source https://api.nuget.org/v3/index.json
-
+        run: dotnet nuget push ./AzureServiceBusFlow/out/*.nupkg --api-key ${{ secrets.CODERAW_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

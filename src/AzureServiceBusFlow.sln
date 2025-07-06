@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusFlow.Configurations", "AzureServiceBusFlow.Configurations\AzureServiceBusFlow.Configurations.csproj", "{FE52E82F-71A8-43B6-BCE4-0D6086C09748}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusFlow", "AzureServiceBusFlow\AzureServiceBusFlow.csproj", "{FE52E82F-71A8-43B6-BCE4-0D6086C09748}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusFlow.Configurations.WebTests", "AzureServiceBusFlow.Configurations.WebTests\AzureServiceBusFlow.Configurations.WebTests.csproj", "{19B6543B-C546-4EDD-AC66-3A46AF0E1C00}"
 EndProject

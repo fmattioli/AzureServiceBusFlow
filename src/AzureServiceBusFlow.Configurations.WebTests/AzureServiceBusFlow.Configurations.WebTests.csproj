@@ -12,11 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AzureServiceBusFlow.Configurations\AzureServiceBusFlow.Configurations.csproj" />
+    <Folder Include="Config\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Config\" />
+    <ProjectReference Include="..\AzureServiceBusFlow\AzureServiceBusFlow.csproj" />
   </ItemGroup>
 
 </Project>
