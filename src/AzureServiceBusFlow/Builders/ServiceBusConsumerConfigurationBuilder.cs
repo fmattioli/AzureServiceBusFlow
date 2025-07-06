@@ -71,7 +71,7 @@ namespace AzureServiceBusFlow.Builders
                         var messageType = _handlers.Keys.FirstOrDefault(t => t.Name == messageTypeName);
                         if (messageType == null)
                         {
-                            logger.LogInformation(
+                            logger.LogWarning(
                                 "Received message of type {MessageType}, but no handler is registered to process it. Message will be ignored. Time: {Time}",
                                 messageTypeName, DateTime.UtcNow
                             );
@@ -106,8 +106,12 @@ namespace AzureServiceBusFlow.Builders
                         }
 
                         logger.LogInformation("Message routed to handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
+
                         var method = handlerWithRawInterface.GetMethod("HandleAsync");
+
                         await (Task)method!.Invoke(handler, [obj!, rawMessage])!;
+
+                        logger.LogInformation("Message consumed with sucessfully by handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
                     }
                     catch (Exception ex)
                     {
