@@ -8,11 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
-    <PackageReference Include="Coderaw.Settings" Version="1.39.0" />
+    <PackageReference Include="Mattioli.Configurations" Version="1.43.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AzureServiceBusFlow.Configurations\AzureServiceBusFlow.Configurations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Config\" />
   </ItemGroup>
 
 </Project>

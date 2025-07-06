@@ -1,6 +1,6 @@
 ﻿using AzureServiceBusFlow.Configurations.Abstractions;
 
-namespace AzureServiceBusFlow.Configurations.WebTests.Config
+namespace AzureServiceBusFlow.Configurations.Producers.Abstractions
 {
     public interface ICommandProducer
     {

@@ -1,9 +1,12 @@
 ﻿using Azure.Messaging.ServiceBus;
+
 using AzureServiceBusFlow.Configurations.Abstractions;
+
 using Microsoft.Extensions.Logging;
+
 using Newtonsoft.Json;
 
-namespace AzureServiceBusFlow.Configurations.Producers
+namespace AzureServiceBusFlow.Configurations.Producers.Implementations
 {
     public class ServiceBusProducer<TMessage> : IServiceBusProducer<TMessage> where TMessage : class, IServiceBusMessage
     {

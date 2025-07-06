@@ -1,6 +1,8 @@
 ﻿using AzureServiceBusFlow.Configurations.Abstractions;
+using AzureServiceBusFlow.Configurations.Producers.Abstractions;
+using Microsoft.Extensions.Logging;
 
-namespace AzureServiceBusFlow.Configurations.WebTests.Config
+namespace AzureServiceBusFlow.Configurations.Producers.Implementations
 {
     public class CommandProducer(
         IServiceBusProducer<IServiceBusMessage> producer,

@@ -1,5 +1,7 @@
 ﻿using AzureServiceBusFlow.Configurations.Abstractions;
-using AzureServiceBusFlow.Configurations.Producers;
+using AzureServiceBusFlow.Configurations.Producers.Abstractions;
+using AzureServiceBusFlow.Configurations.Producers.Implementations;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -17,6 +19,12 @@ namespace AzureServiceBusFlow.Configurations.Builders
         public ServiceBusProducerConfigurationBuilder<TMessage> WithTopic(string topic)
         {
             _topicName = topic;
+            return this;
+        }
+
+        public ServiceBusProducerConfigurationBuilder<TMessage> WithCommandProducer()
+        {
+            _services.AddSingleton<ICommandProducer, CommandProducer>();
             return this;
         }
 

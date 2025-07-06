@@ -1,5 +1,6 @@
-﻿using AzureServiceBusFlow.Configurations.WebTests.Command;
-using AzureServiceBusFlow.Configurations.WebTests.Config;
+﻿using AzureServiceBusFlow.Configurations.Producers.Abstractions;
+using AzureServiceBusFlow.Configurations.WebTests.Command;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace AzureServiceBusFlow.Configurations.WebTests.Controllers
