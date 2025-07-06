@@ -1,5 +1,6 @@
-﻿using AzureServiceBusFlow.Configurations.Abstractions;
+﻿using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Configurations.WebTests.Command;
+
 using System.Runtime.Serialization;
 
 namespace AzureServiceBusFlow.Configurations.WebTests.CommandHandler

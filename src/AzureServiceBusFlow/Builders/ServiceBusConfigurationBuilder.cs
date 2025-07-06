@@ -1,8 +1,9 @@
-﻿using AzureServiceBusFlow.Configurations.Abstractions;
+﻿using AzureServiceBusFlow.Abstractions;
+
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AzureServiceBusFlow.Configurations.Builders
+namespace AzureServiceBusFlow.Builders
 {
     public class ServiceBusConfigurationBuilder(IServiceCollection services)
     {

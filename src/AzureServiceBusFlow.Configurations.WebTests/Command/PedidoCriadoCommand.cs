@@ -1,4 +1,4 @@
-﻿using AzureServiceBusFlow.Configurations.Abstractions;
+﻿using AzureServiceBusFlow.Abstractions;
 
 namespace AzureServiceBusFlow.Configurations.WebTests.Command
 {

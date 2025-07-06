@@ -1,9 +1,10 @@
-﻿using AzureServiceBusFlow.Configurations.Builders;
-using AzureServiceBusFlow.Configurations.Producers.Abstractions;
-using AzureServiceBusFlow.Configurations.Producers.Implementations;
+﻿using AzureServiceBusFlow.Builders;
+using AzureServiceBusFlow.Producers.Abstractions;
+using AzureServiceBusFlow.Producers.Implementations;
+
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AzureServiceBusFlow.Configurations.Extensions
+namespace AzureServiceBusFlow.Extensions
 {
     public static class AzureServiceBusExtensions
     {

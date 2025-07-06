@@ -1,9 +1,9 @@
-using AzureServiceBusFlow.Configurations.Abstractions;
-using AzureServiceBusFlow.Configurations.Extensions;
-using AzureServiceBusFlow.Configurations.Producers.Abstractions;
-using AzureServiceBusFlow.Configurations.Producers.Implementations;
+using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Configurations.WebTests.Command;
+using AzureServiceBusFlow.Extensions;
+
 using Mattioli.Configurations.Transformers;
+
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);

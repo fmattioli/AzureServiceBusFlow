@@ -1,9 +1,11 @@
 ﻿using Azure.Messaging.ServiceBus;
+
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 using Newtonsoft.Json;
 
-namespace AzureServiceBusFlow.Configurations.Hosts
+namespace AzureServiceBusFlow.Hosts
 {
     public class ServiceBusQueueConsumerHostedService<TMessage>(
         string connectionString,
@@ -37,7 +39,7 @@ namespace AzureServiceBusFlow.Configurations.Hosts
                 var body = args.Message.Body.ToString();
                 var message = JsonConvert.DeserializeObject<TMessage>(body);
 
-                if (message != null)
+                if (message != null!)
                 {
                     await messageHandler(message, serviceProvider);
                     await args.CompleteMessageAsync(args.Message);

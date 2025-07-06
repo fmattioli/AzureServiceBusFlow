@@ -1,10 +1,10 @@
-﻿using AzureServiceBusFlow.Configurations.Abstractions;
-using AzureServiceBusFlow.Configurations.Hosts;
+﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Hosts;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace AzureServiceBusFlow.Configurations.Builders
+namespace AzureServiceBusFlow.Builders
 {
     public class ServiceBusConsumerConfigurationBuilder<TMessage>(string connectionString, IServiceCollection _services)
         where TMessage : class, IServiceBusMessage
@@ -34,7 +34,7 @@ namespace AzureServiceBusFlow.Configurations.Builders
         {
             _handlerTypes.Add(typeof(THandler));
             _services.AddScoped<IMessageHandler<TMessage>, THandler>();
-            _services.AddScoped<THandler>();  // <-- registra o tipo concreto
+            _services.AddScoped<THandler>();
             return this;
         }
 
@@ -44,7 +44,6 @@ namespace AzureServiceBusFlow.Configurations.Builders
             if (string.IsNullOrWhiteSpace(_queueName) && (string.IsNullOrWhiteSpace(_topicName) || string.IsNullOrWhiteSpace(_subscriptionName)))
                 throw new InvalidOperationException("Either queue or both topic/subscription must be configured.");
 
-            // Registrando o HostedService que consome mensagens
             _services.AddSingleton<IHostedService>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusQueueConsumerHostedService<TMessage>>>();

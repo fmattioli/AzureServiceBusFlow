@@ -1,11 +1,11 @@
-﻿using AzureServiceBusFlow.Configurations.Abstractions;
-using AzureServiceBusFlow.Configurations.Producers.Abstractions;
-using AzureServiceBusFlow.Configurations.Producers.Implementations;
+﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Producers.Abstractions;
+using AzureServiceBusFlow.Producers.Implementations;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace AzureServiceBusFlow.Configurations.Builders
+namespace AzureServiceBusFlow.Builders
 {
     public class ServiceBusProducerConfigurationBuilder<TMessage>(string connectionString, IServiceCollection services)
         where TMessage : class, IServiceBusMessage

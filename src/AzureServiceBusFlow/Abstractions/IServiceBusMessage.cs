@@ -1,4 +1,4 @@
-﻿namespace AzureServiceBusFlow.Configurations.Abstractions
+﻿namespace AzureServiceBusFlow.Abstractions
 {
     public interface IServiceBusMessage
     {

@@ -1,8 +1,9 @@
 ﻿using Azure.Messaging.ServiceBus;
+
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace AzureServiceBusFlow.Configurations.Hosts
+namespace AzureServiceBusFlow.Hosts
 {
     public class ServiceBusTopicConsumerHostedService<TMessage>(
         string connectionString,

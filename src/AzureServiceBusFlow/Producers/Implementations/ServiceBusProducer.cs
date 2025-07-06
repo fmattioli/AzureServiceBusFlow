@@ -1,12 +1,9 @@
 ﻿using Azure.Messaging.ServiceBus;
-
-using AzureServiceBusFlow.Configurations.Abstractions;
-
+using AzureServiceBusFlow.Abstractions;
 using Microsoft.Extensions.Logging;
-
 using Newtonsoft.Json;
 
-namespace AzureServiceBusFlow.Configurations.Producers.Implementations
+namespace AzureServiceBusFlow.Producers.Implementations
 {
     public class ServiceBusProducer<TMessage> : IServiceBusProducer<TMessage> where TMessage : class, IServiceBusMessage
     {
@@ -20,7 +17,7 @@ namespace AzureServiceBusFlow.Configurations.Producers.Implementations
             _logger = logger;
         }
 
-        public async Task ProduceAsync(TMessage message)
+        public async Task ProduceAsync(TMessage message, CancellationToken cancellationToken)
         {
             var json = JsonConvert.SerializeObject(message);
             var serviceBusMessage = new ServiceBusMessage(json)
@@ -33,7 +30,7 @@ namespace AzureServiceBusFlow.Configurations.Producers.Implementations
                 }
             };
 
-            await _sender.SendMessageAsync(serviceBusMessage);
+            await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
 
             _logger.LogInformation("Message published with successfully!");
         }
