@@ -64,6 +64,12 @@ namespace AzureServiceBusFlow.Builders
             _services.AddSingleton<ICommandProducer, CommandProducer>();
             return this;
         }
+        
+        public ServiceBusProducerConfigurationBuilder<TMessage> AddEventProducer()
+        {
+            _services.AddSingleton<IEventProducer, EventProducer>();
+            return this;
+        }
 
         public ServiceBusProducerConfigurationBuilder<TMessage> ToTopic(string topicName)
         {
