@@ -132,7 +132,7 @@ jobs:
       - name: Build solution and generate NuGet package
         run: | 
           dotnet build --no-restore --configuration Release src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj
-          dotnet pack src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj --no-build --configuration Release --output AzureServiceBusFlow.Configurations/out
+          dotnet pack src/AzureServiceBusFlow.Configurations/AzureServiceBusFlow.Configurations.csproj --no-build --configuration Release --output AzureServiceBusFlow/out
       
       - name: Push generated package to NuGet
         run: dotnet nuget push ./AzureServiceBusFlow.Configurations/out/*.nupkg --api-key ${{ secrets.CODERAW_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
