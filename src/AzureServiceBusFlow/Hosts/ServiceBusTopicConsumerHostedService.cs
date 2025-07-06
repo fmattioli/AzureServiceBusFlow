@@ -5,13 +5,13 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureServiceBusFlow.Hosts
 {
-    public class ServiceBusTopicConsumerHostedService<TMessage>(
-        string connectionString,
-        string topicName,
-        string subscriptionName,
-        Func<TMessage, IServiceProvider, Task> messageHandler,
-        IServiceProvider serviceProvider,
-        ILogger logger) : IHostedService, IAsyncDisposable
+    public class ServiceBusTopicConsumerHostedService(
+    string connectionString,
+    string topicName,
+    string subscriptionName,
+    Func<ServiceBusReceivedMessage, IServiceProvider, Task> messageHandler,
+    IServiceProvider serviceProvider,
+    ILogger logger) : IHostedService, IAsyncDisposable
     {
         private readonly ServiceBusClient _client = new(connectionString);
         private ServiceBusProcessor _processor = null!;
@@ -34,14 +34,7 @@ namespace AzureServiceBusFlow.Hosts
         {
             try
             {
-                var body = args.Message.Body.ToString();
-                var message = System.Text.Json.JsonSerializer.Deserialize<TMessage>(body);
-
-                if (message != null)
-                {
-                    await messageHandler(message, serviceProvider);
-                }
-
+                await messageHandler(args.Message, serviceProvider);
                 await args.CompleteMessageAsync(args.Message);
             }
             catch (Exception ex)
@@ -80,4 +73,5 @@ namespace AzureServiceBusFlow.Hosts
             GC.SuppressFinalize(this);
         }
     }
+
 }

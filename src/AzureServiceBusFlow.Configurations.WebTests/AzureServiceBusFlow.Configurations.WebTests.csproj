@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
-    <PackageReference Include="Mattioli.Configurations" Version="1.43.0" />
+    <Compile Remove="Config\**" />
+    <Content Remove="Config\**" />
+    <EmbeddedResource Remove="Config\**" />
+    <None Remove="Config\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Config\" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
+    <PackageReference Include="Mattioli.Configurations" Version="1.43.0" />
   </ItemGroup>
 
   <ItemGroup>

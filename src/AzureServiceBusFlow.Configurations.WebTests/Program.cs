@@ -1,9 +1,7 @@
 using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Configurations.WebTests.Command;
 using AzureServiceBusFlow.Extensions;
-
 using Mattioli.Configurations.Transformers;
-
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,11 +17,11 @@ builder.Services.AddAzureServiceBus(cfg => cfg
         .WithCommandProducer()
         .ToQueue("queue-one")
         .ToTopic("meu-topico"))
-    .AddConsumer<PedidoCriadoCommand>(c => c
+    .AddConsumer(c => c
         .FromQueue("queue-one")
         .FromTopic("meu-topico", "minha-subscription")
-        .AddHandler<PedidoCriadoHandler>()
-        .AddHandler<OutroHandlerQualquerCommandHandler>())
+        .AddHandler<PedidoCriadoCommand, PedidoCriadoHandler>()
+        .AddHandler<PedidoRecebidoCommand, PedidoRecebidoCommandHandler>())
     );
 
 var app = builder.Build();

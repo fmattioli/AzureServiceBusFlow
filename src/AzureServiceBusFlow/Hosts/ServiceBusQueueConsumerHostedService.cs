@@ -1,19 +1,16 @@
 ﻿using Azure.Messaging.ServiceBus;
-
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using Newtonsoft.Json;
-
 namespace AzureServiceBusFlow.Hosts
 {
-    public class ServiceBusQueueConsumerHostedService<TMessage>(
-        string connectionString,
-        string queueName,
-        Func<TMessage, IServiceProvider, Task> messageHandler,
-        IServiceProvider serviceProvider,
-        ILogger _logger)
-       : IHostedService, IAsyncDisposable
+    public class ServiceBusQueueConsumerHostedService(
+    string connectionString,
+    string queueName,
+    Func<ServiceBusReceivedMessage, IServiceProvider, Task> messageHandler,
+    IServiceProvider serviceProvider,
+    ILogger logger)
+    : IHostedService, IAsyncDisposable
     {
         private readonly ServiceBusClient _client = new(connectionString);
         private ServiceBusProcessor _processor = null!;
@@ -35,30 +32,20 @@ namespace AzureServiceBusFlow.Hosts
         private async Task ProcessMessageHandler(ProcessMessageEventArgs args)
         {
             try
-            {
-                var body = args.Message.Body.ToString();
-                var message = JsonConvert.DeserializeObject<TMessage>(body);
-
-                if (message != null!)
-                {
-                    await messageHandler(message, serviceProvider);
-                    await args.CompleteMessageAsync(args.Message);
-                }
-                else
-                {
-                    await args.DeadLetterMessageAsync(args.Message, "Deserialization failed");
-                }
+            {                
+                await messageHandler(args.Message, serviceProvider);
+                await args.CompleteMessageAsync(args.Message);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Process message error: {ErrorSource}", ex.StackTrace);
+                logger.LogError(ex, "Process message error: {ErrorSource}", ex.StackTrace);
                 await args.AbandonMessageAsync(args.Message);
             }
         }
 
         private Task ProcessErrorHandler(ProcessErrorEventArgs args)
         {
-            _logger.LogError(args.Exception, "Processor error: {ErrorSource}", args.ErrorSource);
+            logger.LogError(args.Exception, "Processor error: {ErrorSource}", args.ErrorSource);
             return Task.CompletedTask;
         }
 
@@ -83,4 +70,5 @@ namespace AzureServiceBusFlow.Hosts
             GC.SuppressFinalize(this);
         }
     }
+
 }

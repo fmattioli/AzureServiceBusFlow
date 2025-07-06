@@ -1,6 +1,5 @@
 ﻿using AzureServiceBusFlow.Configurations.WebTests.Command;
 using AzureServiceBusFlow.Producers.Abstractions;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace AzureServiceBusFlow.Configurations.WebTests.Controllers
@@ -9,14 +8,33 @@ namespace AzureServiceBusFlow.Configurations.WebTests.Controllers
     [ApiController]
     public class PedidosController(ICommandProducer _producer) : ControllerBase
     {
-        [HttpPost]
-        public async Task<IActionResult> CriarPedido(PedidoCriado request, CancellationToken cancellationToken)
+        [HttpPost("example1")]
+        public async Task<IActionResult> CriarPedido(CancellationToken cancellationToken)
         {
             PedidoCriadoCommand command = new()
             {
-                Category = request,
+                Category = new PedidoCriado
+                {
+                    Cliente = "jose",
+                    Id = Guid.NewGuid(),
+                    Valor = 1111
+                },
                 CommandCreatedDate = DateTime.UtcNow,
-                RoutingKey = request.Id.ToString()
+                RoutingKey = Guid.NewGuid().ToString()
+            };
+
+            await _producer.ProduceCommandAsync(command, cancellationToken);
+            return Ok();
+        }
+        
+        [HttpPost("example2")]
+        public async Task<IActionResult> CriarPedido2(CancellationToken cancellationToken)
+        {
+            PedidoRecebidoCommand command = new()
+            {
+                Name = "Name",
+                CommandCreatedDate = DateTime.UtcNow,
+                RoutingKey = Guid.NewGuid().ToString()
             };
 
             await _producer.ProduceCommandAsync(command, cancellationToken);

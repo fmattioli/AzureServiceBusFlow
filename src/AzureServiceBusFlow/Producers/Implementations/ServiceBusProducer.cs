@@ -25,7 +25,7 @@ namespace AzureServiceBusFlow.Producers.Implementations
                 Subject = message.RoutingKey,
                 ApplicationProperties =
                 {
-                    { "MessageType", typeof(TMessage).Name },
+                    { "MessageType", message.GetType().Name },
                     { "CreatedAt", message.CommandCreatedDate.ToString("O") }
                 }
             };

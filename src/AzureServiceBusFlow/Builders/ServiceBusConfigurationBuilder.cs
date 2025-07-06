@@ -26,11 +26,9 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
-        public ServiceBusConfigurationBuilder AddConsumer<TMessage>(
-            Action<ServiceBusConsumerConfigurationBuilder<TMessage>> configure)
-            where TMessage : class, IServiceBusMessage
+        public ServiceBusConfigurationBuilder AddConsumer(Action<ServiceBusConsumerConfigurationBuilder> configure)
         {
-            var builder = new ServiceBusConsumerConfigurationBuilder<TMessage>(ConnectionString, _services);
+            var builder = new ServiceBusConsumerConfigurationBuilder(ConnectionString, _services);
             configure(builder);
             builder.Build();
             return this;
