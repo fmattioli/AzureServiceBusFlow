@@ -32,7 +32,7 @@ namespace AzureServiceBusFlow.Hosts
         private async Task ProcessMessageHandler(ProcessMessageEventArgs args)
         {
             try
-            {                
+            {
                 await messageHandler(args.Message, serviceProvider);
                 await args.CompleteMessageAsync(args.Message);
             }

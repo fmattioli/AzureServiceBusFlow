@@ -43,6 +43,7 @@ namespace AzureServiceBusFlow.Builders
             {
                 managementClient.CreateTopicAsync(topicName).GetAwaiter().GetResult();
             }
+
             managementClient.CloseAsync().GetAwaiter().GetResult();
             return this;
         }
@@ -54,6 +55,7 @@ namespace AzureServiceBusFlow.Builders
             {
                 managementClient.CreateSubscriptionAsync(topicName, subscriptionName).GetAwaiter().GetResult();
             }
+
             managementClient.CloseAsync().GetAwaiter().GetResult();
             return this;
         }
@@ -63,7 +65,7 @@ namespace AzureServiceBusFlow.Builders
             _services.AddSingleton<ICommandProducer, CommandProducer>();
             return this;
         }
-        
+
         public ServiceBusProducerConfigurationBuilder<TMessage> AddEventProducer()
         {
             _services.AddSingleton<IEventProducer, EventProducer>();

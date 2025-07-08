@@ -1,8 +1,8 @@
-﻿using AzureServiceBusFlow.Configurations.WebTests.Command;
+﻿using AzureServiceBusFlow.Configurations.ApiTestOne.Command;
 using AzureServiceBusFlow.Producers.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AzureServiceBusFlow.Configurations.WebTests.Controllers
+namespace AzureServiceBusFlow.Configurations.ApiTestOne.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,21 +19,21 @@ namespace AzureServiceBusFlow.Configurations.WebTests.Controllers
                     Id = Guid.NewGuid(),
                     Valor = 1111
                 },
-                CommandCreatedDate = DateTime.UtcNow,
+                MessageCreatedDate = DateTime.UtcNow,
                 RoutingKey = Guid.NewGuid().ToString()
             };
 
             await _producer.ProduceCommandAsync(command, cancellationToken);
             return Ok();
         }
-        
+
         [HttpPost("example2")]
         public async Task<IActionResult> CriarPedido2(CancellationToken cancellationToken)
         {
             PedidoRecebidoCommand command = new()
             {
                 Name = "Name",
-                CommandCreatedDate = DateTime.UtcNow,
+                MessageCreatedDate = DateTime.UtcNow,
                 RoutingKey = Guid.NewGuid().ToString()
             };
 

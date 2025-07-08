@@ -12,7 +12,7 @@ namespace AzureServiceBusFlow.Builders
     {
         private readonly string _connectionString = connectionString;
         private readonly IServiceCollection _services = services;
-        private readonly Dictionary<Type, Type> _handlers = [];
+        private readonly Dictionary<Type, List<Type>> _handlers = [];
 
         private string? _queueName;
         private string? _topicName;
@@ -35,22 +35,38 @@ namespace AzureServiceBusFlow.Builders
             where TMessage : class, IServiceBusMessage
             where THandler : class, IMessageHandler<TMessage>
         {
-            _handlers[typeof(TMessage)] = typeof(THandler);
+            var messageType = typeof(TMessage);
+            var handlerType = typeof(THandler);
+
+            if (!_handlers.TryGetValue(messageType, out var handlerList))
+            {
+                handlerList = [];
+                _handlers[messageType] = handlerList;
+            }
+
+            if (!handlerList.Contains(handlerType))
+            {
+                handlerList.Add(handlerType);
+            }
+
             _services.AddScoped<IMessageHandler<TMessage>, THandler>();
             _services.AddScoped<THandler>();
+
             return this;
         }
 
         public void Build()
         {
             if (string.IsNullOrWhiteSpace(_queueName) && string.IsNullOrWhiteSpace(_topicName))
+            {
                 throw new InvalidOperationException("Missing queue or topic configuration!");
+            }
 
             _ = _services.AddSingleton<IHostedService>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusQueueConsumerHostedService>>();
 
-                async Task Handler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider)
+                async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider)
                 {
                     try
                     {
@@ -67,12 +83,11 @@ namespace AzureServiceBusFlow.Builders
                             return;
                         }
 
-                        // Tenta encontrar tipo de mensagem registrado
                         var messageType = _handlers.Keys.FirstOrDefault(t => t.Name == messageTypeName);
                         if (messageType == null)
                         {
                             logger.LogWarning(
-                                "Received message of type {MessageType}, but no handler is registered to process it. Message will be ignored. Time: {Time}",
+                                "Received message of type {MessageType}, but no handler is registered. Time: {Time}",
                                 messageTypeName, DateTime.UtcNow
                             );
                             return;
@@ -86,37 +101,42 @@ namespace AzureServiceBusFlow.Builders
                             return;
                         }
 
-                        using var scope = rootProvider.CreateScope();
-                        var handlerType = _handlers[messageType];
-                        var handler = scope.ServiceProvider.GetRequiredService(handlerType);
+                        var handlerTypes = _handlers[messageType];
 
-                        var handlerWithRawInterface = handlerType.GetInterfaces()
-                            .FirstOrDefault(i =>
-                                i.IsGenericType &&
-                                i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
-                                i.GenericTypeArguments[0] == messageType);
-
-                        if (handlerWithRawInterface == null)
+                        foreach (var handlerType in handlerTypes)
                         {
-                            logger.LogWarning(
-                                "Handler for message type {MessageType} does not implement IMessageHandler<> as expected. Time: {Time}",
-                                messageTypeName, DateTime.UtcNow
-                            );
-                            return;
+                            using var scope = rootProvider.CreateScope();
+
+                            var handler = scope.ServiceProvider.GetRequiredService(handlerType);
+
+                            var handlerInterface = handlerType.GetInterfaces()
+                                .ToList()
+                                .Find(i =>
+                                    i.IsGenericType &&
+                                    i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
+                                    i.GenericTypeArguments[0] == messageType);
+
+                            if (handlerInterface == null)
+                            {
+                                logger.LogWarning(
+                                    "Handler {HandlerName} does not implement IMessageHandler<> as expected. Time: {Time}",
+                                    handlerType.Name, DateTime.UtcNow
+                                );
+                                continue;
+                            }
+
+                            logger.LogInformation("Routing message to handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
+
+                            var method = handlerInterface.GetMethod("HandleAsync");
+                            await (Task)method!.Invoke(handler, [obj!, rawMessage])!;
+
+                            logger.LogInformation("Message processed successfully by handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
                         }
-
-                        logger.LogInformation("Message routed to handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
-
-                        var method = handlerWithRawInterface.GetMethod("HandleAsync");
-
-                        await (Task)method!.Invoke(handler, [obj!, rawMessage])!;
-
-                        logger.LogInformation("Message consumed with sucessfully by handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
                     }
                     catch (Exception ex)
                     {
                         logger.LogError(ex, "Error processing message in handler");
-                        throw new InvalidOperationException("Error while trying procces message.", ex);
+                        throw new InvalidOperationException("Error while trying to process message.", ex);
                     }
                 }
 
@@ -125,7 +145,7 @@ namespace AzureServiceBusFlow.Builders
                     return new ServiceBusQueueConsumerHostedService(
                         _connectionString,
                         _queueName!,
-                        Handler,
+                        MessageConsumingHandler,
                         sp,
                         logger);
                 }
@@ -134,10 +154,11 @@ namespace AzureServiceBusFlow.Builders
                     _connectionString,
                     _topicName!,
                     _subscriptionName!,
-                    Handler,
+                    MessageConsumingHandler,
                     sp,
                     logger);
             });
         }
     }
+
 }

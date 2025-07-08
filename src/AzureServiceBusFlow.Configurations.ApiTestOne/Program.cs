@@ -1,5 +1,5 @@
 using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Configurations.WebTests.Command;
+using AzureServiceBusFlow.Configurations.ApiTestOne.Command;
 using AzureServiceBusFlow.Extensions;
 using Mattioli.Configurations.Transformers;
 using Scalar.AspNetCore;
@@ -14,14 +14,14 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 builder.Services.AddAzureServiceBus(cfg => cfg
     .UseConnectionString("")
     .AddProducer<IServiceBusMessage>(p => p
+        .EnsureTopicExists("topic-one")
+        .EnsureSubscriptionExists("topic-one", "api-subscription-one")
         .AddCommandProducer()
-        .ToQueue("queue-one")
-        .ToTopic("meu-topico"))
+        .ToTopic("topic-one"))
     .AddConsumer(c => c
-        .FromQueue("queue-one")
-        .FromTopic("meu-topico", "minha-subscription")
+        .FromTopic("topic-one", "api-subscription-one")
         .AddHandler<PedidoCriadoCommand, PedidoCriadoHandler>()
-        .AddHandler<PedidoRecebidoCommand, PedidoRecebidoCommandHandler>())
+        .AddHandler<PedidoCriadoCommand, PedidoRecebidoCommandHandler>())
     );
 
 var app = builder.Build();

@@ -1,9 +1,8 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Configurations.WebTests.Command;
-
+using AzureServiceBusFlow.Configurations.ApiTestTwo.Command;
 using System.Runtime.Serialization;
 
-namespace AzureServiceBusFlow.Configurations.WebTests.CommandHandler
+namespace AzureServiceBusFlow.Configurations.ApiTestTwo.CommandHandler
 {
     public class PedidoCriadoCommand(PedidoCriado pedidoCriado) : IServiceBusMessage
     {
@@ -11,7 +10,7 @@ namespace AzureServiceBusFlow.Configurations.WebTests.CommandHandler
         public string RoutingKey { get; set; } = pedidoCriado.Id.ToString();
 
         [IgnoreDataMember]
-        public DateTime CommandCreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime MessageCreatedDate { get; set; } = DateTime.UtcNow;
 
         [DataMember(Order = 1)]
         public PedidoCriado Category { get; set; } = pedidoCriado;

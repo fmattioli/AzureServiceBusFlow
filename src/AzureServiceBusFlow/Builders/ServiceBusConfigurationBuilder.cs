@@ -1,6 +1,4 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-
-using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AzureServiceBusFlow.Builders
@@ -37,7 +35,9 @@ namespace AzureServiceBusFlow.Builders
         public void Build()
         {
             if (string.IsNullOrEmpty(ConnectionString))
+            {
                 throw new InvalidOperationException("Connection string is required.");
+            }
         }
     }
 }

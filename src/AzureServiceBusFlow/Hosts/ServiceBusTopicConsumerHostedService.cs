@@ -1,17 +1,16 @@
 ﻿using Azure.Messaging.ServiceBus;
-
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace AzureServiceBusFlow.Hosts
 {
     public class ServiceBusTopicConsumerHostedService(
-    string connectionString,
-    string topicName,
-    string subscriptionName,
-    Func<ServiceBusReceivedMessage, IServiceProvider, Task> messageHandler,
-    IServiceProvider serviceProvider,
-    ILogger logger) : IHostedService, IAsyncDisposable
+        string connectionString,
+        string topicName,
+        string subscriptionName,
+        Func<ServiceBusReceivedMessage, IServiceProvider, Task> messageHandler,
+        IServiceProvider serviceProvider,
+        ILogger logger) : IHostedService, IAsyncDisposable
     {
         private readonly ServiceBusClient _client = new(connectionString);
         private ServiceBusProcessor _processor = null!;

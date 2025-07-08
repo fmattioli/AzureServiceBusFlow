@@ -1,6 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Producers.Abstractions;
-
 using Microsoft.Extensions.Logging;
 
 namespace AzureServiceBusFlow.Producers.Implementations
