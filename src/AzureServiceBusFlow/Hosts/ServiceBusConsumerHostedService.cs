@@ -4,24 +4,30 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureServiceBusFlow.Hosts
 {
-    public class ServiceBusTopicConsumerHostedService(
-        string connectionString,
-        string topicName,
-        string subscriptionName,
+    public class ServiceBusConsumerHostedService(
         Func<ServiceBusReceivedMessage, IServiceProvider, Task> messageHandler,
         IServiceProvider serviceProvider,
-        ILogger logger) : IHostedService, IAsyncDisposable
+        ILogger logger,
+        string connectionString,
+        string entityName,
+        string subscriptionName = null!) : IHostedService, IAsyncDisposable
     {
         private readonly ServiceBusClient _client = new(connectionString);
         private ServiceBusProcessor _processor = null!;
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _processor = _client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions
-            {
-                MaxConcurrentCalls = 5,
-                AutoCompleteMessages = false,
-            });
+            _processor = subscriptionName is null
+                ? _client.CreateProcessor(entityName, new ServiceBusProcessorOptions
+                {
+                    MaxConcurrentCalls = 5,
+                    AutoCompleteMessages = false,
+                })
+                : _client.CreateProcessor(entityName, subscriptionName, new ServiceBusProcessorOptions
+                {
+                    MaxConcurrentCalls = 5,
+                    AutoCompleteMessages = false,
+                });
 
             _processor.ProcessMessageAsync += ProcessMessageHandler;
             _processor.ProcessErrorAsync += ProcessErrorHandler;
@@ -72,5 +78,4 @@ namespace AzureServiceBusFlow.Hosts
             GC.SuppressFinalize(this);
         }
     }
-
 }

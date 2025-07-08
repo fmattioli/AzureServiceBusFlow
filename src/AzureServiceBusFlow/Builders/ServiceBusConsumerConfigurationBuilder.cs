@@ -64,7 +64,7 @@ namespace AzureServiceBusFlow.Builders
 
             _ = _services.AddSingleton<IHostedService>(sp =>
             {
-                var logger = sp.GetRequiredService<ILogger<ServiceBusQueueConsumerHostedService>>();
+                var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
 
                 async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider)
                 {
@@ -87,7 +87,7 @@ namespace AzureServiceBusFlow.Builders
                         if (messageType == null)
                         {
                             logger.LogWarning(
-                                "Received message of type {MessageType}, but no handler is registered. Time: {Time}",
+                                "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
                                 messageTypeName, DateTime.UtcNow
                             );
                             return;
@@ -125,12 +125,19 @@ namespace AzureServiceBusFlow.Builders
                                 continue;
                             }
 
-                            logger.LogInformation("Routing message to handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
-
+                            var startTime = DateTime.UtcNow;
                             var method = handlerInterface.GetMethod("HandleAsync");
                             await (Task)method!.Invoke(handler, [obj!, rawMessage])!;
 
-                            logger.LogInformation("Message processed successfully by handler {HandlerName} at {Time}", handlerType.Name, DateTime.UtcNow);
+                            var elapsed = DateTime.UtcNow - startTime;
+
+                            logger.LogInformation(
+                                "Message {MessageType} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
+                                messageTypeName,
+                                handlerType.Name,
+                                startTime.ToString("o"),
+                                elapsed.TotalMilliseconds
+                            );
                         }
                     }
                     catch (Exception ex)
@@ -142,23 +149,22 @@ namespace AzureServiceBusFlow.Builders
 
                 if (!string.IsNullOrWhiteSpace(_queueName))
                 {
-                    return new ServiceBusQueueConsumerHostedService(
-                        _connectionString,
-                        _queueName!,
+                    return new ServiceBusConsumerHostedService(
                         MessageConsumingHandler,
                         sp,
-                        logger);
+                        logger,
+                        _connectionString,
+                        _queueName!);
                 }
 
-                return new ServiceBusTopicConsumerHostedService(
-                    _connectionString,
-                    _topicName!,
-                    _subscriptionName!,
+                return new ServiceBusConsumerHostedService(
                     MessageConsumingHandler,
                     sp,
-                    logger);
+                    logger,
+                    _connectionString,
+                    _topicName!,
+                    _subscriptionName!);
             });
         }
     }
-
 }

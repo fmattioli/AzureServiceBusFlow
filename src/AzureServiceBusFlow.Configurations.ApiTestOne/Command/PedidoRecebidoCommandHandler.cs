@@ -3,11 +3,10 @@ using AzureServiceBusFlow.Abstractions;
 
 namespace AzureServiceBusFlow.Configurations.ApiTestOne.Command
 {
-    public class PedidoRecebidoCommandHandler : IMessageHandler<PedidoCriadoCommand>
+    public class PedidoRecebidoCommandHandler : IMessageHandler<ExampleCommand1>
     {
-        public Task HandleAsync(PedidoCriadoCommand message, ServiceBusReceivedMessage rawMessage)
+        public Task HandleAsync(ExampleCommand1 message, ServiceBusReceivedMessage rawMessage)
         {
-            Console.WriteLine($"[PedidoRecebidoCommandHandler - 1] Pedido {1} para {"JAO"} no valor de {50}");
             return Task.CompletedTask;
         }
     }

@@ -3,7 +3,7 @@ using AzureServiceBusFlow.Abstractions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace AzureServiceBusFlow.Producers.Implementations
+namespace AzureServiceBusFlow.Producers
 {
     public class ServiceBusProducer<TMessage> : IServiceBusProducer<TMessage> where TMessage : class, IServiceBusMessage
     {
@@ -32,7 +32,7 @@ namespace AzureServiceBusFlow.Producers.Implementations
 
             await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
 
-            _logger.LogInformation("Message published with successfully!");
+            _logger.LogInformation("Message {MessageType} published with successfully!", message.GetType().Name);
         }
     }
 }

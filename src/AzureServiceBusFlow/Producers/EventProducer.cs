@@ -1,8 +1,7 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Producers.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace AzureServiceBusFlow.Producers.Implementations
+namespace AzureServiceBusFlow.Producers
 {
     public class EventProducer(
         IServiceBusProducer<IServiceBusMessage> producer,

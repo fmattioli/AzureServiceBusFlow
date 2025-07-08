@@ -14,11 +14,10 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
-        public ServiceBusConfigurationBuilder AddProducer<TMessage>(
-            Action<ServiceBusProducerConfigurationBuilder<TMessage>> configure)
-            where TMessage : class, IServiceBusMessage
+        public ServiceBusConfigurationBuilder AddProducer(
+            Action<ServiceBusProducerConfigurationBuilder<IServiceBusMessage>> configure)
         {
-            var builder = new ServiceBusProducerConfigurationBuilder<TMessage>(ConnectionString, _services);
+            var builder = new ServiceBusProducerConfigurationBuilder<IServiceBusMessage>(ConnectionString, _services);
             configure(builder);
             builder.Build();
             return this;

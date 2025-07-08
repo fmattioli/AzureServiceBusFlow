@@ -1,6 +1,6 @@
-﻿using AzureServiceBusFlow.Builders;
-using AzureServiceBusFlow.Producers.Abstractions;
-using AzureServiceBusFlow.Producers.Implementations;
+﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Builders;
+using AzureServiceBusFlow.Producers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AzureServiceBusFlow.Extensions

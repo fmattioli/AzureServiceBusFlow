@@ -1,4 +1,3 @@
-using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Configurations.ApiTestTwo.Command;
 using AzureServiceBusFlow.Extensions;
 using Mattioli.Configurations.Transformers;
@@ -12,16 +11,16 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 
 
 builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("")
-    .AddProducer<IServiceBusMessage>(p => p
+    .UseConnectionString("Endpoint=sb://mattioli.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ymrYkVJB0BLKYzrNO3/f9+voH/UJKfSlK+ASbBE/0RU=")
+    .AddProducer(p => p
         .EnsureTopicExists("topic-one")
-        .EnsureSubscriptionExists("topic-one", "api-subscription-two")
-        .AddCommandProducer()
+        .EnsureSubscriptionExists("topic-one", "api-subscription-one")
+        .WithCommandProducer()
         .ToTopic("topic-one"))
     .AddConsumer(c => c
-        .FromTopic("topic-one", "api-subscription-two")
-        .AddHandler<PedidoCriadoCommand, PedidoCriadoHandler>()
-        .AddHandler<PedidoCriadoCommand, PedidoRecebidoCommandHandler>())
+        .FromTopic("topic-one", "api-subscription-one")
+        .AddHandler<ExampleCommand1, PedidoCriadoHandler>()
+        .AddHandler<ExampleCommand1, PedidoRecebidoCommandHandler>())
     );
 
 var app = builder.Build();

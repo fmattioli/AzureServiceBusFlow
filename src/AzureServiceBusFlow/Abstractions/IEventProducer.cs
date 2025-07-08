@@ -1,6 +1,4 @@
-﻿using AzureServiceBusFlow.Abstractions;
-
-namespace AzureServiceBusFlow.Producers.Abstractions
+﻿namespace AzureServiceBusFlow.Abstractions
 {
     public interface IEventProducer
     {

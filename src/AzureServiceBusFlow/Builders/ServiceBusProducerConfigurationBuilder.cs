@@ -1,6 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Producers.Abstractions;
-using AzureServiceBusFlow.Producers.Implementations;
+using AzureServiceBusFlow.Producers;
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -60,13 +59,13 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
-        public ServiceBusProducerConfigurationBuilder<TMessage> AddCommandProducer()
+        public ServiceBusProducerConfigurationBuilder<TMessage> WithCommandProducer()
         {
             _services.AddSingleton<ICommandProducer, CommandProducer>();
             return this;
         }
 
-        public ServiceBusProducerConfigurationBuilder<TMessage> AddEventProducer()
+        public ServiceBusProducerConfigurationBuilder<TMessage> WithEventProducer()
         {
             _services.AddSingleton<IEventProducer, EventProducer>();
             return this;
