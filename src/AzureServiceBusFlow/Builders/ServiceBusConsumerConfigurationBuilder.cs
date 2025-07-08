@@ -1,6 +1,8 @@
 ﻿using Azure.Messaging.ServiceBus;
 using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Hosts;
+
+using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -28,6 +30,18 @@ namespace AzureServiceBusFlow.Builders
         {
             _topicName = topicName;
             _subscriptionName = subscriptionName;
+            return this;
+        }
+
+        public ServiceBusConsumerConfigurationBuilder EnsureSubscriptionExists(string topicName, string subscriptionName)
+        {
+            var managementClient = new ManagementClient(_connectionString);
+            if (!managementClient.SubscriptionExistsAsync(topicName, subscriptionName).GetAwaiter().GetResult())
+            {
+                managementClient.CreateSubscriptionAsync(topicName, subscriptionName).GetAwaiter().GetResult();
+            }
+
+            managementClient.CloseAsync().GetAwaiter().GetResult();
             return this;
         }
 

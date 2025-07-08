@@ -47,18 +47,6 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
-        public ServiceBusProducerConfigurationBuilder<TMessage> EnsureSubscriptionExists(string topicName, string subscriptionName)
-        {
-            var managementClient = new ManagementClient(_connectionString);
-            if (!managementClient.SubscriptionExistsAsync(topicName, subscriptionName).GetAwaiter().GetResult())
-            {
-                managementClient.CreateSubscriptionAsync(topicName, subscriptionName).GetAwaiter().GetResult();
-            }
-
-            managementClient.CloseAsync().GetAwaiter().GetResult();
-            return this;
-        }
-
         public ServiceBusProducerConfigurationBuilder<TMessage> WithCommandProducer()
         {
             _services.AddSingleton<ICommandProducer, CommandProducer>();

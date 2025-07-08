@@ -11,14 +11,14 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 
 
 builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("Endpoint=sb://mattioli.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ymrYkVJB0BLKYzrNO3/f9+voH/UJKfSlK+ASbBE/0RU=")
+    .UseConnectionString("")
     .AddProducer(p => p
-        .EnsureTopicExists("topic-one")
-        .EnsureSubscriptionExists("topic-one", "api-subscription-one")
-        .WithCommandProducer()
-        .ToTopic("topic-one"))
+        .WithEventProducer()
+        .ToTopic("topic-three")
+        .EnsureTopicExists("topic-three"))
     .AddConsumer(c => c
-        .FromTopic("topic-one", "api-subscription-one")
+        .FromTopic("topic-three", "api-subscription-one")
+        .EnsureSubscriptionExists("topic-three", "api-subscription-one")
         .AddHandler<ExampleCommand1, PedidoCriadoHandler>()
         .AddHandler<ExampleCommand1, PedidoRecebidoCommandHandler>())
     );
