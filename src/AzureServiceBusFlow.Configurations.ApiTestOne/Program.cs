@@ -12,7 +12,7 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 
 
 builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("Endpoint=sb://mattioli.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ymrYkVJB0BLKYzrNO3/f9+voH/UJKfSlK+ASbBE/0RU=")
+    .UseConnectionString("")
     .AddProducer<ExampleCommand1>(p => p
         .EnsureQueueExists("command-queue-one")
         .WithCommandProducer()
