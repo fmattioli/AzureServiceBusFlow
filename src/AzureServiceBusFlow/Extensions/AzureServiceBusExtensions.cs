@@ -1,6 +1,4 @@
-﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Builders;
-using AzureServiceBusFlow.Producers;
+﻿using AzureServiceBusFlow.Builders;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AzureServiceBusFlow.Extensions
@@ -15,12 +13,6 @@ namespace AzureServiceBusFlow.Extensions
 
             builder.Build();
 
-            return services;
-        }
-
-        public static IServiceCollection WithCommandProducer(this IServiceCollection services)
-        {
-            services.AddSingleton<ICommandProducer, CommandProducer>();
             return services;
         }
     }

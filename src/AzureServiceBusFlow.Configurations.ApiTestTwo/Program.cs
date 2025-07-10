@@ -10,18 +10,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<BearerSecuritySchemeTransformer>(); });
 
 
-builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("")
-    .AddProducer(p => p
-        .WithEventProducer()
-        .ToTopic("topic-three")
-        .EnsureTopicExists("topic-three"))
-    .AddConsumer(c => c
-        .FromTopic("topic-three", "api-subscription-one")
-        .EnsureSubscriptionExists("topic-three", "api-subscription-one")
-        .AddHandler<ExampleCommand1, PedidoCriadoHandler>()
-        .AddHandler<ExampleCommand1, PedidoRecebidoCommandHandler>())
-    );
 
 var app = builder.Build();
 

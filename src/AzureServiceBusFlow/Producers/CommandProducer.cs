@@ -1,14 +1,15 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using Microsoft.Extensions.Logging;
 
 namespace AzureServiceBusFlow.Producers
 {
-    public class CommandProducer(
-        IServiceBusProducer<IServiceBusMessage> producer) : ICommandProducer
+    public class CommandProducer<TCommand>(IServiceBusProducer<TCommand> producer) : ICommandProducer<TCommand>
+    where TCommand : class, IServiceBusMessage
     {
-        public async Task ProduceCommandAsync<TCommand>(TCommand command, CancellationToken cancellationToken) where TCommand : IServiceBusMessage
+        private readonly IServiceBusProducer<TCommand> _producer = producer;
+
+        public Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken)
         {
-            await producer.ProduceAsync(command, cancellationToken);
+            return _producer.ProduceAsync(command, cancellationToken);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace AzureServiceBusFlow.Producers
                 ApplicationProperties =
                 {
                     { "MessageType", message.GetType().Name },
-                    { "CreatedAt", message.MessageCreatedDate.ToString("O") }
+                    { "CreatedAt", message.CreatedDate.ToString("O") }
                 }
             };
 

@@ -1,5 +1,6 @@
-using AzureServiceBusFlow.Configurations.ApiTestOne.Command;
 using AzureServiceBusFlow.Extensions;
+using AzureServiceBusFlow.Sample.Queues.Commands;
+using AzureServiceBusFlow.Sample.Queues.Events;
 using Mattioli.Configurations.Transformers;
 using Scalar.AspNetCore;
 
@@ -11,16 +12,38 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 
 
 builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("")
-    .AddProducer(p => p
-        .EnsureQueueExists("queue-one")
+    .UseConnectionString("Endpoint=sb://mattioli.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ymrYkVJB0BLKYzrNO3/f9+voH/UJKfSlK+ASbBE/0RU=")
+    .AddProducer<ExampleCommand1>(p => p
+        .EnsureQueueExists("command-queue-one")
         .WithCommandProducer()
+        .ToQueue("command-queue-one"))
+    .AddProducer<ExampleCommand2>(p => p
+        .EnsureQueueExists("command-queue-two")
         .WithEventProducer()
-        .ToQueue("queue-one"))
+        .ToQueue("command-queue-two"))
+    .AddProducer<ExampleEvent1>(p => p
+        .EnsureQueueExists("event-queue-one")
+        .WithEventProducer()
+        .ToQueue("event-queue-one"))
+    .AddProducer<ExampleEvent2>(p => p
+        .EnsureQueueExists("event-queue-two")
+        .WithEventProducer()
+        .ToQueue("event-queue-two"))
     .AddConsumer(c => c
-        .FromQueue("queue-one")
-        .AddHandler<ExampleCommand1, PedidoCriadoHandler>()
-        .AddHandler<ExampleCommand1, PedidoRecebidoCommandHandler>())
+        .FromQueue("command-queue-one")
+        .AddHandler<ExampleCommand1, CommandExemple1Handler>()
+        .AddHandler<ExampleCommand1, CommandExampleTwoHandlersPerOneMessageHandler>())
+    .AddConsumer(c => c
+        .FromQueue("command-queue-two")
+        .AddHandler<ExampleCommand2, CommandExample2Handler>())
+    .AddConsumer(c => c
+        .FromQueue("event-queue-one")
+        .AddHandler<ExampleEvent1, EventExample1Handler>()
+        .AddHandler<ExampleEvent1, EventExampleTwoHandlersPerOneMessageHandler>())
+    .AddConsumer(c => c
+        .FromQueue("event-queue-two")
+        .AddHandler<ExampleEvent2, EventExample2Handler>()
+        .AddHandler<ExampleEvent2, EventExample2Handler>())
     );
 
 var app = builder.Build();

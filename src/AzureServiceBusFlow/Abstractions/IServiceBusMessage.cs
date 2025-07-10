@@ -3,6 +3,6 @@
     public interface IServiceBusMessage
     {
         string RoutingKey { get; }
-        DateTime MessageCreatedDate { get; }
+        DateTime CreatedDate { get; }
     }
 }

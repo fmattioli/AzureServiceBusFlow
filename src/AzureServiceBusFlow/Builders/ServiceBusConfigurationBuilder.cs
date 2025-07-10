@@ -3,26 +3,48 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AzureServiceBusFlow.Builders
 {
+    /// <summary>
+    /// Builder for configuring Azure Service Bus, allowing connection, producers, and consumers setup.
+    /// </summary>
     public class ServiceBusConfigurationBuilder(IServiceCollection services)
     {
         private readonly IServiceCollection _services = services;
+
+        /// <summary>
+        /// The connection string used to connect to Azure Service Bus.
+        /// </summary>
         public string ConnectionString { get; private set; } = null!;
 
+        /// <summary>
+        /// Sets the connection string that will be used for all Service Bus operations.
+        /// </summary>
+        /// <param name="connectionString">Azure Service Bus connection string.</param>
+        /// <returns>Returns the builder itself for method chaining.</returns>
         public ServiceBusConfigurationBuilder UseConnectionString(string connectionString)
         {
             ConnectionString = connectionString;
             return this;
         }
 
-        public ServiceBusConfigurationBuilder AddProducer(
-            Action<ServiceBusProducerConfigurationBuilder<IServiceBusMessage>> configure)
+        /// <summary>
+        /// Adds a producer for messages of type <typeparamref name="TMessage"/> configured via a callback.
+        /// </summary>
+        /// <typeparam name="TMessage">The type of message to produce, must implement <see cref="IServiceBusMessage"/>.</typeparam>
+        /// <param name="configure">Action to configure the producer, receives a specific builder.</param>
+        /// <returns>Returns the builder itself for method chaining.</returns>
+        public ServiceBusConfigurationBuilder AddProducer<TMessage>(Action<ServiceBusProducerConfigurationBuilder<TMessage>> configure) where TMessage : class, IServiceBusMessage
         {
-            var builder = new ServiceBusProducerConfigurationBuilder<IServiceBusMessage>(ConnectionString, _services);
+            var builder = new ServiceBusProducerConfigurationBuilder<TMessage>(ConnectionString, _services);
             configure(builder);
             builder.Build();
             return this;
         }
 
+        /// <summary>
+        /// Adds a consumer configuration via a callback.
+        /// </summary>
+        /// <param name="configure">Action to configure the consumer, receives a specific builder.</param>
+        /// <returns>Returns the builder itself for method chaining.</returns>
         public ServiceBusConfigurationBuilder AddConsumer(Action<ServiceBusConsumerConfigurationBuilder> configure)
         {
             var builder = new ServiceBusConsumerConfigurationBuilder(ConnectionString, _services);
@@ -31,6 +53,10 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
+        /// <summary>
+        /// Validates the configuration and ensures required properties are set.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when the connection string is not set.</exception>
         public void Build()
         {
             if (string.IsNullOrEmpty(ConnectionString))

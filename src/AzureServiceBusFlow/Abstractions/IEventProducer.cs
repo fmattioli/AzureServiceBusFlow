@@ -1,7 +1,7 @@
 ﻿namespace AzureServiceBusFlow.Abstractions
 {
-    public interface IEventProducer
+    public interface IEventProducer<in TEvent> where TEvent : class, IServiceBusMessage
     {
-        Task ProduceEventAsync<TEvent>(TEvent eventBody, CancellationToken cancellationToken) where TEvent : IServiceBusMessage;
+        Task ProduceEventAsync(TEvent @event, CancellationToken cancellationToken);
     }
 }

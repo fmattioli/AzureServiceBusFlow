@@ -6,7 +6,7 @@ namespace AzureServiceBusFlow.Configurations.ApiTestTwo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PedidosController(ICommandProducer _producer) : ControllerBase
+    public class PedidosController(IEventProducer _producer) : ControllerBase
     {
         [HttpPost("example1")]
         public async Task<IActionResult> Example1(CancellationToken cancellationToken)
@@ -21,7 +21,7 @@ namespace AzureServiceBusFlow.Configurations.ApiTestTwo.Controllers
                 },
             };
 
-            await _producer.ProduceCommandAsync(command, cancellationToken);
+            await _producer.ProduceEventAsync(command, cancellationToken);
             return Ok();
         }
 
@@ -35,7 +35,7 @@ namespace AzureServiceBusFlow.Configurations.ApiTestTwo.Controllers
                 RoutingKey = Guid.NewGuid().ToString()
             };
 
-            await _producer.ProduceCommandAsync(command, cancellationToken);
+            await _producer.ProduceEventAsync(command, cancellationToken);
             return Ok();
         }
 
@@ -49,7 +49,7 @@ namespace AzureServiceBusFlow.Configurations.ApiTestTwo.Controllers
                 RoutingKey = Guid.NewGuid().ToString()
             };
 
-            await _producer.ProduceCommandAsync(command, cancellationToken);
+            await _producer.ProduceEventAsync(command, cancellationToken);
             return Ok();
         }
     }

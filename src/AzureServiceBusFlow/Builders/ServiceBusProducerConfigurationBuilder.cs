@@ -49,13 +49,13 @@ namespace AzureServiceBusFlow.Builders
 
         public ServiceBusProducerConfigurationBuilder<TMessage> WithCommandProducer()
         {
-            _services.AddSingleton<ICommandProducer, CommandProducer>();
+            _services.AddSingleton(typeof(ICommandProducer<>), typeof(CommandProducer<>));
             return this;
         }
 
         public ServiceBusProducerConfigurationBuilder<TMessage> WithEventProducer()
         {
-            _services.AddSingleton<IEventProducer, EventProducer>();
+            _services.AddSingleton(typeof(IEventProducer<>), typeof(EventProducer<>));
             return this;
         }
 

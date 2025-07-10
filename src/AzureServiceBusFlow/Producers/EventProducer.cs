@@ -2,11 +2,13 @@
 
 namespace AzureServiceBusFlow.Producers
 {
-    public class EventProducer(IServiceBusProducer<IServiceBusMessage> producer) : IEventProducer
+    public class EventProducer<TEvent>(IServiceBusProducer<TEvent> producer) : IEventProducer<TEvent> where TEvent : class, IServiceBusMessage
     {
-        public async Task ProduceEventAsync<TEvent>(TEvent eventBody, CancellationToken cancellationToken) where TEvent : IServiceBusMessage
+        private readonly IServiceBusProducer<TEvent> _producer = producer;
+
+        public Task ProduceEventAsync(TEvent @event, CancellationToken cancellationToken)
         {
-            await producer.ProduceAsync(eventBody, cancellationToken);
+            return _producer.ProduceAsync(@event, cancellationToken);
         }
     }
 }
