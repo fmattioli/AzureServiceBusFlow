@@ -21,11 +21,13 @@ namespace AzureServiceBusFlow.Hosts
                 ? _client.CreateProcessor(entityName, new ServiceBusProcessorOptions
                 {
                     MaxConcurrentCalls = 5,
+                    MaxAutoLockRenewalDuration = TimeSpan.FromMinutes(60),
                     AutoCompleteMessages = false,
                 })
                 : _client.CreateProcessor(entityName, subscriptionName, new ServiceBusProcessorOptions
                 {
                     MaxConcurrentCalls = 5,
+                    MaxAutoLockRenewalDuration = TimeSpan.FromMinutes(60),
                     AutoCompleteMessages = false,
                 });
 
