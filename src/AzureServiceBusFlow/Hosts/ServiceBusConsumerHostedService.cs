@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace AzureServiceBusFlow.Hosts;
 
 public class ServiceBusConsumerHostedService(
-    Func<ServiceBusReceivedMessage, IServiceProvider, Task> messageHandler,
+    Func<ServiceBusReceivedMessage, IServiceProvider, CancellationToken, Task> messageHandler,
     IServiceProvider serviceProvider,
     ILogger logger,
     string connectionString,
@@ -41,7 +41,7 @@ public class ServiceBusConsumerHostedService(
     {
         try
         {
-            await messageHandler(args.Message, serviceProvider);
+            await messageHandler(args.Message, serviceProvider, args.CancellationToken);
             await args.CompleteMessageAsync(args.Message);
         }
         catch (Exception ex)

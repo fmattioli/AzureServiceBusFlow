@@ -75,20 +75,24 @@ namespace AzureServiceBusFlow.Builders
                 throw new InvalidOperationException("Missing queue or topic configuration!");
             }
 
-            _ = _services.AddSingleton<IHostedService>(sp =>
+            _services.AddSingleton<IHostedService>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
 
                 if (!string.IsNullOrWhiteSpace(_queueName))
                 {
-                    return new ServiceBusConsumerHostedService((ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider) => MessageConsumingHandler(rawMessage, rootProvider, logger),
+                    return new ServiceBusConsumerHostedService(
+                        (rawMessage, rootProvider, cancellationToken) =>
+                            MessageConsumingHandler(rawMessage, rootProvider, logger, cancellationToken),
                         sp,
                         logger,
                         _connectionString,
                         _queueName!);
                 }
 
-                return new ServiceBusConsumerHostedService((ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider) => MessageConsumingHandler(rawMessage, rootProvider, logger),
+                return new ServiceBusConsumerHostedService(
+                    (rawMessage, rootProvider, cancellationToken) =>
+                        MessageConsumingHandler(rawMessage, rootProvider, logger, cancellationToken),
                     sp,
                     logger,
                     _connectionString,
@@ -97,7 +101,7 @@ namespace AzureServiceBusFlow.Builders
             });
         }
 
-        private async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, ILogger<ServiceBusConsumerHostedService> logger)
+        private async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
         {
             try
             {
@@ -158,7 +162,7 @@ namespace AzureServiceBusFlow.Builders
 
                     var startTime = DateTime.UtcNow;
                     var method = handlerInterface.GetMethod("HandleAsync");
-                    await (Task)method!.Invoke(handler, [obj!, rawMessage])!;
+                    await (Task)method!.Invoke(handler, [obj!, rawMessage, cancellationToken])!;
 
                     var elapsed = DateTime.UtcNow - startTime;
 
