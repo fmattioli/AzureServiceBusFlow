@@ -12,7 +12,7 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 
 
 builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("")
+    .UseConnectionString("your-asb-connection-string")
     .AddProducer<ExampleCommand1>(p => p
         .EnsureQueueExists("command-queue-one")
         .WithCommandProducer()
