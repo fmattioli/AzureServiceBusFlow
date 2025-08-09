@@ -21,14 +21,16 @@ public class ServiceBusConsumerHostedService(
             ? _client.CreateProcessor(entityName, new ServiceBusProcessorOptions
             {
                 MaxConcurrentCalls = 5,
-                MaxAutoLockRenewalDuration = TimeSpan.FromMinutes(60),
+                MaxAutoLockRenewalDuration = Timeout.InfiniteTimeSpan,
                 AutoCompleteMessages = false,
+                ReceiveMode = ServiceBusReceiveMode.ReceiveAndDelete
             })
             : _client.CreateProcessor(entityName, subscriptionName, new ServiceBusProcessorOptions
             {
                 MaxConcurrentCalls = 5,
                 MaxAutoLockRenewalDuration = TimeSpan.FromMinutes(60),
                 AutoCompleteMessages = false,
+                ReceiveMode = ServiceBusReceiveMode.ReceiveAndDelete
             });
 
         _processor.ProcessMessageAsync += ProcessMessageHandler;
