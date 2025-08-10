@@ -1,4 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Models;
 using AzureServiceBusFlow.Producers;
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,10 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureServiceBusFlow.Builders
 {
-    public class ServiceBusProducerConfigurationBuilder<TMessage>(string connectionString, IServiceCollection services)
+    public class ServiceBusProducerConfigurationBuilder<TMessage>(AzureServiceBusConfiguration azureServiceBusConfiguration, IServiceCollection services)
         where TMessage : class, IServiceBusMessage
     {
-        private readonly string _connectionString = connectionString;
+        private readonly AzureServiceBusConfiguration _azureServiceBusConfiguration = azureServiceBusConfiguration;
         private readonly IServiceCollection _services = services;
 
         private string? _topicName;
@@ -23,7 +24,7 @@ namespace AzureServiceBusFlow.Builders
 
         public ServiceBusProducerConfigurationBuilder<TMessage> EnsureQueueExists(string queueName)
         {
-            var managementClient = new ManagementClient(_connectionString);
+            var managementClient = new ManagementClient(_azureServiceBusConfiguration.ConnectionString);
 
             if (!managementClient.QueueExistsAsync(queueName).GetAwaiter().GetResult())
             {
@@ -37,7 +38,7 @@ namespace AzureServiceBusFlow.Builders
 
         public ServiceBusProducerConfigurationBuilder<TMessage> EnsureTopicExists(string topicName)
         {
-            var managementClient = new ManagementClient(_connectionString);
+            var managementClient = new ManagementClient(_azureServiceBusConfiguration.ConnectionString);
             if (!managementClient.TopicExistsAsync(topicName).GetAwaiter().GetResult())
             {
                 managementClient.CreateTopicAsync(topicName).GetAwaiter().GetResult();
@@ -84,7 +85,7 @@ namespace AzureServiceBusFlow.Builders
                 _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
                 {
                     var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
-                    return new ServiceBusProducer<TMessage>(_connectionString, _queueName, logger);
+                    return new ServiceBusProducer<TMessage>(_azureServiceBusConfiguration, _queueName, logger);
                 });
 
                 return;
@@ -95,7 +96,7 @@ namespace AzureServiceBusFlow.Builders
                 _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
                 {
                     var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
-                    return new ServiceBusProducer<TMessage>(_connectionString, _topicName, logger);
+                    return new ServiceBusProducer<TMessage>(_azureServiceBusConfiguration, _topicName, logger);
                 });
 
                 return;

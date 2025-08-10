@@ -1,5 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
 using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Models;
+
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -9,9 +11,9 @@ namespace AzureServiceBusFlow.Producers
     {
         private readonly ServiceBusSender _sender;
         private readonly ILogger _logger;
-        public ServiceBusProducer(string connectionString, string queueOrTopicName, ILogger logger)
+        public ServiceBusProducer(AzureServiceBusConfiguration azureServiceBusConfiguration, string queueOrTopicName, ILogger logger)
         {
-            var client = new ServiceBusClient(connectionString);
+            var client = new ServiceBusClient(azureServiceBusConfiguration.ConnectionString);
             _sender = client.CreateSender(queueOrTopicName);
 
             _logger = logger;

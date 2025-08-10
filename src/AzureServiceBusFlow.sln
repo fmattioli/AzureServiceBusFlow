@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusFlow", "AzureServiceBusFlow\AzureServiceBusFlow.csproj", "{FE52E82F-71A8-43B6-BCE4-0D6086C09748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusFlow.Sample.Queues", "AzureServiceBusFlow.Configurations.ApiTestOne\AzureServiceBusFlow.Sample.Queues.csproj", "{19B6543B-C546-4EDD-AC66-3A46AF0E1C00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusFlow.Sample", "AzureServiceBusFlow.Sample\AzureServiceBusFlow.Sample.csproj", "{19B6543B-C546-4EDD-AC66-3A46AF0E1C00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,6 @@
 ﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Models;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AzureServiceBusFlow.Builders
@@ -13,16 +15,16 @@ namespace AzureServiceBusFlow.Builders
         /// <summary>
         /// The connection string used to connect to Azure Service Bus.
         /// </summary>
-        public string ConnectionString { get; private set; } = null!;
+        public AzureServiceBusConfiguration AzureServiceBusConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// Sets the connection string that will be used for all Service Bus operations.
         /// </summary>
         /// <param name="connectionString">Azure Service Bus connection string.</param>
         /// <returns>Returns the builder itself for method chaining.</returns>
-        public ServiceBusConfigurationBuilder UseConnectionString(string connectionString)
+        public ServiceBusConfigurationBuilder ConfigureAzureServiceBus(AzureServiceBusConfiguration azureServiceBusConfiguration)
         {
-            ConnectionString = connectionString;
+            AzureServiceBusConfiguration = azureServiceBusConfiguration;
             return this;
         }
 
@@ -34,7 +36,7 @@ namespace AzureServiceBusFlow.Builders
         /// <returns>Returns the builder itself for method chaining.</returns>
         public ServiceBusConfigurationBuilder AddProducer<TMessage>(Action<ServiceBusProducerConfigurationBuilder<TMessage>> configure) where TMessage : class, IServiceBusMessage
         {
-            var builder = new ServiceBusProducerConfigurationBuilder<TMessage>(ConnectionString, _services);
+            var builder = new ServiceBusProducerConfigurationBuilder<TMessage>(AzureServiceBusConfiguration, _services);
             configure(builder);
             builder.Build();
             return this;
@@ -47,7 +49,7 @@ namespace AzureServiceBusFlow.Builders
         /// <returns>Returns the builder itself for method chaining.</returns>
         public ServiceBusConfigurationBuilder AddConsumer(Action<ServiceBusConsumerConfigurationBuilder> configure)
         {
-            var builder = new ServiceBusConsumerConfigurationBuilder(ConnectionString, _services);
+            var builder = new ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration, _services);
             configure(builder);
             builder.Build();
             return this;
@@ -59,7 +61,7 @@ namespace AzureServiceBusFlow.Builders
         /// <exception cref="InvalidOperationException">Thrown when the connection string is not set.</exception>
         public void Build()
         {
-            if (string.IsNullOrEmpty(ConnectionString))
+            if (string.IsNullOrEmpty(AzureServiceBusConfiguration.ConnectionString))
             {
                 throw new InvalidOperationException("Connection string is required.");
             }

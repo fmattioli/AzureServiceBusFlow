@@ -1,4 +1,5 @@
 ﻿using Azure.Messaging.ServiceBus;
+using AzureServiceBusFlow.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -8,29 +9,31 @@ public class ServiceBusConsumerHostedService(
     Func<ServiceBusReceivedMessage, IServiceProvider, CancellationToken, Task> messageHandler,
     IServiceProvider serviceProvider,
     ILogger logger,
-    string connectionString,
-    string entityName,
+    AzureServiceBusConfiguration azureServiceBusConfiguration,
+    string queueOrTopicName,
     string subscriptionName = null!) : IHostedService, IAsyncDisposable
 {
-    private readonly ServiceBusClient _client = new(connectionString);
+    private readonly ServiceBusClient _client = new(azureServiceBusConfiguration.ConnectionString);
     private ServiceBusProcessor _processor = null!;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
         _processor = subscriptionName is null
-            ? _client.CreateProcessor(entityName, new ServiceBusProcessorOptions
+            ? _client.CreateProcessor(queueOrTopicName, new ServiceBusProcessorOptions
             {
                 MaxConcurrentCalls = 5,
-                MaxAutoLockRenewalDuration = Timeout.InfiniteTimeSpan,
-                AutoCompleteMessages = false,
-                ReceiveMode = ServiceBusReceiveMode.ReceiveAndDelete
+                MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
+                AutoCompleteMessages = azureServiceBusConfiguration.ServiceBusReceiveMode == ServiceBusReceiveMode.PeekLock,
+                ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
+                Identifier = queueOrTopicName,
             })
-            : _client.CreateProcessor(entityName, subscriptionName, new ServiceBusProcessorOptions
+            : _client.CreateProcessor(queueOrTopicName, subscriptionName, new ServiceBusProcessorOptions
             {
                 MaxConcurrentCalls = 5,
                 MaxAutoLockRenewalDuration = TimeSpan.FromMinutes(60),
                 AutoCompleteMessages = false,
-                ReceiveMode = ServiceBusReceiveMode.ReceiveAndDelete
+                ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
+                Identifier = queueOrTopicName + " - " + subscriptionName,
             });
 
         _processor.ProcessMessageAsync += ProcessMessageHandler;
@@ -41,16 +44,7 @@ public class ServiceBusConsumerHostedService(
 
     private async Task ProcessMessageHandler(ProcessMessageEventArgs args)
     {
-        try
-        {
-            await messageHandler(args.Message, serviceProvider, args.CancellationToken);
-            await args.CompleteMessageAsync(args.Message);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Process message error: {ErrorSource}", ex.StackTrace);
-            await args.AbandonMessageAsync(args.Message);
-        }
+        await messageHandler(args.Message, serviceProvider, args.CancellationToken);
     }
 
     private Task ProcessErrorHandler(ProcessErrorEventArgs args)

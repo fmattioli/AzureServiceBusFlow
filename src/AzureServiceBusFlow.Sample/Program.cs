@@ -1,4 +1,5 @@
 using AzureServiceBusFlow.Extensions;
+using AzureServiceBusFlow.Models;
 using AzureServiceBusFlow.Sample.Queues.Commands;
 using AzureServiceBusFlow.Sample.Queues.Events;
 using Mattioli.Configurations.Transformers;
@@ -10,9 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<BearerSecuritySchemeTransformer>(); });
 
+var azureServiceBusConfig = new AzureServiceBusConfiguration
+{
+    ConnectionString = "",
+    ServiceBusReceiveMode = Azure.Messaging.ServiceBus.ServiceBusReceiveMode.PeekLock,
+    MaxConcurrentCalls = 10,
+    MaxAutoLockRenewalDurationInSeconds = 1800
+};
 
 builder.Services.AddAzureServiceBus(cfg => cfg
-    .UseConnectionString("your-asb-connection-string")
+    .ConfigureAzureServiceBus(azureServiceBusConfig)
     .AddProducer<ExampleCommand1>(p => p
         .EnsureQueueExists("command-queue-one")
         .WithCommandProducer()

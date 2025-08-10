@@ -1,6 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
 using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Hosts;
+using AzureServiceBusFlow.Models;
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,9 +10,9 @@ using Newtonsoft.Json;
 
 namespace AzureServiceBusFlow.Builders
 {
-    public class ServiceBusConsumerConfigurationBuilder(string connectionString, IServiceCollection services)
+    public class ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration _azureServiceBusConfiguration, IServiceCollection services)
     {
-        private readonly string _connectionString = connectionString;
+        private readonly string _connectionString = _azureServiceBusConfiguration.ConnectionString;
         private readonly IServiceCollection _services = services;
         private readonly Dictionary<Type, List<Type>> _handlers = [];
 
@@ -86,7 +87,7 @@ namespace AzureServiceBusFlow.Builders
                             MessageConsumingHandler(rawMessage, rootProvider, logger, cancellationToken),
                         sp,
                         logger,
-                        _connectionString,
+                        _azureServiceBusConfiguration,
                         _queueName!);
                 }
 
@@ -95,7 +96,7 @@ namespace AzureServiceBusFlow.Builders
                         MessageConsumingHandler(rawMessage, rootProvider, logger, cancellationToken),
                     sp,
                     logger,
-                    _connectionString,
+                    _azureServiceBusConfiguration,
                     _topicName!,
                     _subscriptionName!);
             });
