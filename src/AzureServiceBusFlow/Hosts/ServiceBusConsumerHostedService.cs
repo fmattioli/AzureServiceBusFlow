@@ -30,8 +30,8 @@ public class ServiceBusConsumerHostedService(
             : _client.CreateProcessor(queueOrTopicName, subscriptionName, new ServiceBusProcessorOptions
             {
                 MaxConcurrentCalls = 5,
-                MaxAutoLockRenewalDuration = TimeSpan.FromMinutes(60),
-                AutoCompleteMessages = false,
+                MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
+                AutoCompleteMessages = azureServiceBusConfiguration.ServiceBusReceiveMode == ServiceBusReceiveMode.PeekLock,
                 ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
                 Identifier = queueOrTopicName + " - " + subscriptionName,
             });
