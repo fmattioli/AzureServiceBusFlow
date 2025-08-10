@@ -21,7 +21,7 @@ public class ServiceBusConsumerHostedService(
         _processor = subscriptionName is null
             ? _client.CreateProcessor(queueOrTopicName, new ServiceBusProcessorOptions
             {
-                MaxConcurrentCalls = 5,
+                MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
                 MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
                 AutoCompleteMessages = azureServiceBusConfiguration.ServiceBusReceiveMode == ServiceBusReceiveMode.PeekLock,
                 ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
@@ -29,7 +29,7 @@ public class ServiceBusConsumerHostedService(
             })
             : _client.CreateProcessor(queueOrTopicName, subscriptionName, new ServiceBusProcessorOptions
             {
-                MaxConcurrentCalls = 5,
+                MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
                 MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
                 AutoCompleteMessages = azureServiceBusConfiguration.ServiceBusReceiveMode == ServiceBusReceiveMode.PeekLock,
                 ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
