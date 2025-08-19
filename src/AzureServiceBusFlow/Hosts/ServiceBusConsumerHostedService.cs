@@ -18,23 +18,18 @@ public class ServiceBusConsumerHostedService(
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        var options = new ServiceBusProcessorOptions
+        {
+            MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
+            MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
+            AutoCompleteMessages = false,
+            ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
+            Identifier = queueOrTopicName
+        };
+
         _processor = subscriptionName is null
-            ? _client.CreateProcessor(queueOrTopicName, new ServiceBusProcessorOptions
-            {
-                MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
-                MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
-                AutoCompleteMessages = false,
-                ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
-                Identifier = queueOrTopicName,
-            })
-            : _client.CreateProcessor(queueOrTopicName, subscriptionName, new ServiceBusProcessorOptions
-            {
-                MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
-                MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
-                AutoCompleteMessages = false,
-                ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
-                Identifier = queueOrTopicName + " - " + subscriptionName,
-            });
+            ? _client.CreateProcessor(queueOrTopicName, options)
+            : _client.CreateProcessor(queueOrTopicName, subscriptionName, options);
 
         _processor.ProcessMessageAsync += ProcessMessageHandler;
         _processor.ProcessErrorAsync += ProcessErrorHandler;
@@ -44,17 +39,33 @@ public class ServiceBusConsumerHostedService(
 
     private async Task ProcessMessageHandler(ProcessMessageEventArgs args)
     {
-        await messageHandler(args.Message, serviceProvider, args.CancellationToken);
+        var message = args.Message;
 
-        if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
+        try
         {
-            await args.CompleteMessageAsync(args.Message, args.CancellationToken);
+            await messageHandler(message, serviceProvider, args.CancellationToken);
+
+            if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
+            {
+                await args.CompleteMessageAsync(message, args.CancellationToken);
+                logger.LogInformation("Message {MessageId} completed with successful.", message.MessageId);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Erro ao processar mensagem {MessageId}", message.MessageId);
+
+            if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
+            {
+                await args.AbandonMessageAsync(message, cancellationToken: args.CancellationToken);
+                logger.LogInformation("Message {MessageId} abandoned. Will retry again.", message.MessageId);
+            }
         }
     }
 
     private Task ProcessErrorHandler(ProcessErrorEventArgs args)
     {
-        logger.LogError(args.Exception, "Processor error: {ErrorSource}", args.ErrorSource);
+        logger.LogError(args.Exception, "Erro no processor: {ErrorSource}", args.ErrorSource);
         return Task.CompletedTask;
     }
 
