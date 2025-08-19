@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
-    <PackageReference Include="Mattioli.Configurations" Version="1.47.0" />
+    <PackageReference Include="Mattioli.Configurations" Version="1.50.0" />
   </ItemGroup>
 
   <ItemGroup>

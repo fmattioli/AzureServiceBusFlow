@@ -23,7 +23,7 @@ public class ServiceBusConsumerHostedService(
             {
                 MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
                 MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
-                AutoCompleteMessages = azureServiceBusConfiguration.ServiceBusReceiveMode == ServiceBusReceiveMode.PeekLock,
+                AutoCompleteMessages = false,
                 ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
                 Identifier = queueOrTopicName,
             })
@@ -31,7 +31,7 @@ public class ServiceBusConsumerHostedService(
             {
                 MaxConcurrentCalls = azureServiceBusConfiguration.MaxConcurrentCalls,
                 MaxAutoLockRenewalDuration = TimeSpan.FromSeconds(azureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds),
-                AutoCompleteMessages = azureServiceBusConfiguration.ServiceBusReceiveMode == ServiceBusReceiveMode.PeekLock,
+                AutoCompleteMessages = false,
                 ReceiveMode = azureServiceBusConfiguration.ServiceBusReceiveMode,
                 Identifier = queueOrTopicName + " - " + subscriptionName,
             });
@@ -45,6 +45,11 @@ public class ServiceBusConsumerHostedService(
     private async Task ProcessMessageHandler(ProcessMessageEventArgs args)
     {
         await messageHandler(args.Message, serviceProvider, args.CancellationToken);
+
+        if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
+        {
+            await args.CompleteMessageAsync(args.Message, args.CancellationToken);
+        }
     }
 
     private Task ProcessErrorHandler(ProcessErrorEventArgs args)
