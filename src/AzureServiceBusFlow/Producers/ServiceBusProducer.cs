@@ -27,7 +27,7 @@ namespace AzureServiceBusFlow.Producers
                 Subject = message.RoutingKey,
                 ApplicationProperties =
                 {
-                    { "MessageType", message.GetType().Name },
+                    { "MessageType", message.GetType().FullName },
                     { "CreatedAt", message.CreatedDate.ToString("O") }
                 }
             };

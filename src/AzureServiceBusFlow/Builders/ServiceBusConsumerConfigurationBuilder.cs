@@ -119,7 +119,9 @@ namespace AzureServiceBusFlow.Builders
                     return;
                 }
 
-                var messageType = _handlers.Keys.FirstOrDefault(t => t.Name == messageTypeName);
+                var messageType = _handlers.Keys.FirstOrDefault(t => 
+                    string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) || string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
+
                 if (messageType == null)
                 {
                     logger.LogWarning(
