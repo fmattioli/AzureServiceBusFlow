@@ -48,12 +48,12 @@ public class ServiceBusConsumerHostedService(
             if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
             {
                 await args.CompleteMessageAsync(message, args.CancellationToken);
-                logger.LogInformation("Message {MessageId} completed with successful.", message.MessageId);
+                logger.LogInformation("Message {MessageId} produced and consumed with successful.", message.MessageId);
             }
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Erro ao processar mensagem {MessageId}", message.MessageId);
+            logger.LogError(ex, "Error while trying process MessageId {MessageId} - MessageBody {Body}", message.MessageId, message.Body);
 
             if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
             {

@@ -104,85 +104,78 @@ namespace AzureServiceBusFlow.Builders
 
         private async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
         {
-            try
+            if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
             {
-                if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
-                {
-                    logger.LogWarning("MessageType property not found on message at {Time}", DateTime.UtcNow);
-                    return;
-                }
+                logger.LogWarning("MessageType property not found on message at {Time}", DateTime.UtcNow);
+                return;
+            }
 
-                var messageTypeName = messageTypeNameObj as string;
-                if (string.IsNullOrWhiteSpace(messageTypeName))
-                {
-                    logger.LogWarning("MessageType property is null or empty at {Time}", DateTime.UtcNow);
-                    return;
-                }
+            var messageTypeName = messageTypeNameObj as string;
+            if (string.IsNullOrWhiteSpace(messageTypeName))
+            {
+                logger.LogWarning("MessageType property is null or empty at {Time}", DateTime.UtcNow);
+                return;
+            }
 
-                var messageType = _handlers.Keys.FirstOrDefault(t => 
-                    string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) || string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
+            var messageType = _handlers.Keys.FirstOrDefault(t =>
+                string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) || string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
 
-                if (messageType == null)
+            if (messageType == null)
+            {
+                logger.LogWarning(
+                    "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
+                    messageTypeName, DateTime.UtcNow
+                );
+                return;
+            }
+
+            var json = rawMessage.Body.ToString();
+            var obj = JsonConvert.DeserializeObject(json, messageType);
+            if (obj == null)
+            {
+                logger.LogWarning("Failed to deserialize message of type {MessageType} at {Time}", messageTypeName, DateTime.UtcNow);
+                return;
+            }
+
+            var handlerTypes = _handlers[messageType];
+
+            foreach (var handlerType in handlerTypes)
+            {
+                using var scope = rootProvider.CreateScope();
+
+                var handler = scope.ServiceProvider.GetRequiredService(handlerType);
+
+                var handlerInterface = handlerType.GetInterfaces()
+                    .ToList()
+                    .Find(i =>
+                        i.IsGenericType &&
+                        i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
+                        i.GenericTypeArguments[0] == messageType);
+
+                if (handlerInterface == null)
                 {
                     logger.LogWarning(
-                        "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
-                        messageTypeName, DateTime.UtcNow
+                        "Handler {HandlerName} does not implement IMessageHandler<> as expected. Time: {Time}",
+                        handlerType.Name, DateTime.UtcNow
                     );
-                    return;
+                    continue;
                 }
 
-                var json = rawMessage.Body.ToString();
-                var obj = JsonConvert.DeserializeObject(json, messageType);
-                if (obj == null)
-                {
-                    logger.LogWarning("Failed to deserialize message of type {MessageType} at {Time}", messageTypeName, DateTime.UtcNow);
-                    return;
-                }
+                var startTime = DateTime.UtcNow;
+                var method = handlerInterface.GetMethod("HandleAsync");
+                await (Task)method!.Invoke(handler, [obj!, rawMessage, cancellationToken])!;
 
-                var handlerTypes = _handlers[messageType];
+                var elapsed = DateTime.UtcNow - startTime;
 
-                foreach (var handlerType in handlerTypes)
-                {
-                    using var scope = rootProvider.CreateScope();
-
-                    var handler = scope.ServiceProvider.GetRequiredService(handlerType);
-
-                    var handlerInterface = handlerType.GetInterfaces()
-                        .ToList()
-                        .Find(i =>
-                            i.IsGenericType &&
-                            i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
-                            i.GenericTypeArguments[0] == messageType);
-
-                    if (handlerInterface == null)
-                    {
-                        logger.LogWarning(
-                            "Handler {HandlerName} does not implement IMessageHandler<> as expected. Time: {Time}",
-                            handlerType.Name, DateTime.UtcNow
-                        );
-                        continue;
-                    }
-
-                    var startTime = DateTime.UtcNow;
-                    var method = handlerInterface.GetMethod("HandleAsync");
-                    await (Task)method!.Invoke(handler, [obj!, rawMessage, cancellationToken])!;
-
-                    var elapsed = DateTime.UtcNow - startTime;
-
-                    logger.LogInformation(
-                        "Message {MessageType} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
-                        messageTypeName,
-                        handlerType.Name,
-                        startTime.ToString("o"),
-                        elapsed.TotalMilliseconds
-                    );
-                }
+                logger.LogInformation(
+                    "Message {MessageType} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
+                    messageTypeName,
+                    handlerType.Name,
+                    startTime.ToString("o"),
+                    elapsed.TotalMilliseconds
+                );
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error processing message in handler");
-                throw new InvalidOperationException("Error while trying to process message.", ex);
-            }
+
         }
     }
 }
