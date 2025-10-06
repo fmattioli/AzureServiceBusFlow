@@ -8,5 +8,6 @@ namespace AzureServiceBusFlow.Models
         public required ServiceBusReceiveMode ServiceBusReceiveMode { get; set; }
         public int MaxConcurrentCalls { get; set; }
         public int MaxAutoLockRenewalDurationInSeconds { get; set; }
+        public int MaxRetryAttempts { get; set; }
     }
 }
