@@ -1,9 +1,9 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Sample.Queues.Events;
-using AzureServiceBusFlow.Sample.Queues.Models;
+using AzureServiceBusFlow.Sample.Events;
+using AzureServiceBusFlow.Sample.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AzureServiceBusFlow.Sample.Queues.Controllers
+namespace AzureServiceBusFlow.Sample.Controllers
 {
     [Route("api/events")]
     [ApiController]

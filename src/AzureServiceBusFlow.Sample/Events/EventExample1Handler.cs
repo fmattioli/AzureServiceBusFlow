@@ -1,7 +1,8 @@
 ﻿using Azure.Messaging.ServiceBus;
+
 using AzureServiceBusFlow.Abstractions;
 
-namespace AzureServiceBusFlow.Sample.Queues.Events
+namespace AzureServiceBusFlow.Sample.Events
 {
     public class EventExample1Handler : IMessageHandler<ExampleEvent1>
     {

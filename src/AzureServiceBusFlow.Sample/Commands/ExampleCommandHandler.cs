@@ -1,12 +1,14 @@
 ﻿using Azure.Messaging.ServiceBus;
+
 using AzureServiceBusFlow.Abstractions;
 
-namespace AzureServiceBusFlow.Sample.Queues.Commands
+namespace AzureServiceBusFlow.Sample.Commands
 {
     public class CommandExemple1Handler : IMessageHandler<ExampleCommand1>
     {
         public Task HandleAsync(ExampleCommand1 message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)
         {
+            throw new Exception("Erro");
             return Task.CompletedTask;
         }
     }

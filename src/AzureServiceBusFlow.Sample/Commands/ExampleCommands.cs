@@ -1,7 +1,7 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Sample.Queues.Models;
+using AzureServiceBusFlow.Sample.Models;
 
-namespace AzureServiceBusFlow.Sample.Queues.Commands
+namespace AzureServiceBusFlow.Sample.Commands
 {
 
     public class ExampleCommand1 : IServiceBusMessage

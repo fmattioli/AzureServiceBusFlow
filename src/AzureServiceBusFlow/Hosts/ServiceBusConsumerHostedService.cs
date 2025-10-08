@@ -21,10 +21,10 @@ public class ServiceBusConsumerHostedService(
         .Handle<Exception>()
         .WaitAndRetryAsync(
             retryCount: azureServiceBusConfiguration.MaxRetryAttempts,
-            sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)), // backoff exponencial
+            sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)),
             onRetry: (exception, timeSpan, attempt, context) =>
             {
-                logger.LogWarning(exception, "Retry {Attempt} after {Delay}", attempt, timeSpan);
+                logger.LogError(exception, "Attempt to process azure service bus message again. Retry {Attempt} after {Delay}", attempt, timeSpan);
             });
 
     public Task StartAsync(CancellationToken cancellationToken)
@@ -54,16 +54,21 @@ public class ServiceBusConsumerHostedService(
 
         try
         {
-            await _retryPolicy.ExecuteAsync(async token =>
+            if (_processor.ReceiveMode == ServiceBusReceiveMode.ReceiveAndDelete)
             {
-                await messageHandler(message, serviceProvider, token);
-            }, args.CancellationToken);
+                await _retryPolicy.ExecuteAsync(async _ =>
+                {
+                    await messageHandler(message, serviceProvider, args.CancellationToken);
+                }, CancellationToken.None);
+            }
 
             if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
             {
+                await messageHandler(message, serviceProvider, args.CancellationToken);
                 await args.CompleteMessageAsync(message, args.CancellationToken);
-                logger.LogInformation("Message {MessageId} produced and consumed with successful.", message.MessageId);
             }
+
+            logger.LogInformation("Message {MessageId} produced and consumed with successful.", message.MessageId);
         }
         catch (Exception ex)
         {

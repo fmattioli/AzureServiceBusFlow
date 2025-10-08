@@ -1,8 +1,10 @@
 using AzureServiceBusFlow.Extensions;
 using AzureServiceBusFlow.Models;
-using AzureServiceBusFlow.Sample.Queues.Commands;
-using AzureServiceBusFlow.Sample.Queues.Events;
+using AzureServiceBusFlow.Sample.Commands;
+using AzureServiceBusFlow.Sample.Events;
+
 using Mattioli.Configurations.Transformers;
+
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +16,10 @@ builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<Be
 var azureServiceBusConfig = new AzureServiceBusConfiguration
 {
     ConnectionString = "",
-    ServiceBusReceiveMode = Azure.Messaging.ServiceBus.ServiceBusReceiveMode.PeekLock,
+    ServiceBusReceiveMode = Azure.Messaging.ServiceBus.ServiceBusReceiveMode.ReceiveAndDelete,
     MaxConcurrentCalls = 10,
-    MaxAutoLockRenewalDurationInSeconds = 1800
+    MaxAutoLockRenewalDurationInSeconds = 1800,
+    MaxRetryAttempts = 2
 };
 
 builder.Services.AddAzureServiceBus(cfg => cfg

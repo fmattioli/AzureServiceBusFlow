@@ -1,4 +1,4 @@
-﻿namespace AzureServiceBusFlow.Sample.Queues.Models
+﻿namespace AzureServiceBusFlow.Sample.Models
 {
     public class ExampleMessage
     {

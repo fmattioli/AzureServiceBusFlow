@@ -1,9 +1,9 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Sample.Queues.Commands;
-using AzureServiceBusFlow.Sample.Queues.Models;
+using AzureServiceBusFlow.Sample.Commands;
+using AzureServiceBusFlow.Sample.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AzureServiceBusFlow.Sample.Queues.Controllers
+namespace AzureServiceBusFlow.Sample.Controllers
 {
     [Route("api/commands")]
     [ApiController]

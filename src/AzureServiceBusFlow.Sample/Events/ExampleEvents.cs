@@ -1,7 +1,7 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Sample.Queues.Models;
+using AzureServiceBusFlow.Sample.Models;
 
-namespace AzureServiceBusFlow.Sample.Queues.Events
+namespace AzureServiceBusFlow.Sample.Events
 {
     public class ExampleEvent1 : IServiceBusMessage
     {
