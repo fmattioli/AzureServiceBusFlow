@@ -2,6 +2,8 @@
 using AzureServiceBusFlow.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Polly;
+using Polly.Retry;
 
 namespace AzureServiceBusFlow.Hosts;
 
@@ -15,6 +17,15 @@ public class ServiceBusConsumerHostedService(
 {
     private readonly ServiceBusClient _client = new(azureServiceBusConfiguration.ConnectionString);
     private ServiceBusProcessor _processor = null!;
+    private readonly AsyncRetryPolicy _retryPolicy = Policy
+        .Handle<Exception>()
+        .WaitAndRetryAsync(
+            retryCount: azureServiceBusConfiguration.MaxRetryAttempts,
+            sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)), // backoff exponencial
+            onRetry: (exception, timeSpan, attempt, context) =>
+            {
+                logger.LogWarning(exception, "Retry {Attempt} after {Delay}", attempt, timeSpan);
+            });
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -43,7 +54,10 @@ public class ServiceBusConsumerHostedService(
 
         try
         {
-            await messageHandler(message, serviceProvider, args.CancellationToken);
+            await _retryPolicy.ExecuteAsync(async token =>
+            {
+                await messageHandler(message, serviceProvider, token);
+            }, args.CancellationToken);
 
             if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
             {
