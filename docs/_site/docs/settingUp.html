@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | AzureServiceBusFlow </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | AzureServiceBusFlow ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/settingUp.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AzureServiceBusFlow">
+            AzureServiceBusFlow
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<h3 id="-step-1-install-the-nuget-package">📦 Step 1: Install the NuGet Package</h3>
+<p>Start by installing the <strong>AzureServiceBusFlow</strong> package from NuGet:</p>
+<pre><code class="lang-bash">dotnet add package AzureServiceBusFlow
+</code></pre>
+<p>You can also find it <a href="https://www.nuget.org/packages/AzureServiceBusFlow">on NuGet.org</a>.</p>
+<p>This package contains all the necessary components to configure Producers / Consumers, register Queues / Topics and publish Messagens / Events to AzureServiceBus.</p>
+<hr>
+<h3 id="-step-2-configure-the-appsettingsjson">⚙️ Step 2: Configure the <code>appsettings.json</code></h3>
+<p>After installing the package, it's time to configure your <code>appsettings.json</code> file.<br>
+You need to define the basic configuration for Azure Service Bus to work.</p>
+<p>Here’s a configuration example:</p>
+<pre><code class="lang-json">&quot;AzureServiceBusConfigurationSettings&quot;: {
+    &quot;ConnectionString&quot;: &quot;&quot;,
+    &quot;ServiceBusReceiveMode&quot;: &quot;ReceiveAndDelete&quot;,
+    &quot;MaxAutoLockRenewalDurationInSeconds&quot;: &quot;1800&quot;,
+    &quot;MaxConcurrentCalls&quot;: &quot;10&quot;,
+    &quot;MaxRetryAttempts&quot;: &quot;3&quot;
+}
+</code></pre>
+<ul>
+<li><strong>ConnectionString</strong>: The full connection string to your Azure Service Bus instance, typically in the format: <code>Endpoint=sb://&lt;your-servicebus-namespace-name&gt;.servicebus.windows.net/;SharedAccessKeyName=&lt;your-access-key-name&gt;;SharedAccessKey=&lt;your-access-key-value&gt;</code>.</li>
+<li><strong>ServiceBusReceiveMode</strong>: Defines how messages are handled after being received.
+<ul>
+<li><strong>&quot;PeekLock&quot;</strong>: The message is locked for processing and remains in the queue until it is explicitly completed or abandoned. If the receiver fails to complete the message within the lock duration, the message becomes available again for other receivers.</li>
+<li><strong>&quot;ReceiveAndDelete&quot;</strong>: The message is automatically removed from the queue as soon as it is received.</li>
+</ul>
+</li>
+<li><strong>MaxAutoLockRenewalDurationInSeconds</strong>: The maximum duration, in seconds, that the message lock will be automatically renewed while the message is being processed.</li>
+<li><strong>MaxConcurrentCalls</strong>: Specifies the maximum number of messages that can be processed concurrently.</li>
+<li><strong>MaxRetryAttempts</strong>: Defines the maximum number of retry attempts the message handler will perform to reprocess a message if an exception occurs.</li>
+</ul>
+<hr>
+<h3 id="-step-3-register-azureservicebus-in-programcs">🧩 Step 3: Register AzureServiceBus in <code>Program.cs</code></h3>
+<p>Now that your <code>appsettings.json</code> is configured, it's time to enable AzureServiceBus in your application.</p>
+<p>Inside your <code>Program.cs</code>, register the AzureServiceBus in DI container with the AddAzureServiceBus extension method and set the configure method.</p>
+<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
+    .ConfigureAzureServiceBus(azureServiceBusConfig));
+</code></pre>
+<p>This method need a <strong><code>AzureServiceBusConfiguration</code></strong> instance to configure all the necessary properties to work with the Azure Service Bus. This configuration class is provided by <strong>AzureServiceBusFlow</strong>.</p>
+<p>At this time, no queues, topics, producers or consumers are configured and registered. This will be done in the next pages.</p>
+<blockquote>
+<p>💡 I recommend you create a class called Settings and map the appsettings.json on this class, you can merge your personal appsettings config and also add the AzureServiceBusFlow properties that are required. For example:</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;Settings&quot;: {
+    &quot;AzureServiceBusConfigurationSettings&quot;: {
+        &quot;ConnectionString&quot;: &quot;&quot;,
+        &quot;ServiceBusReceiveMode&quot;: &quot;ReceiveAndDelete&quot;,
+        &quot;MaxAutoLockRenewalDurationInSeconds&quot;: &quot;1800&quot;,
+        &quot;MaxConcurrentCalls&quot;: &quot;10&quot;,
+        &quot;MaxRetryAttempts&quot;: &quot;3&quot;
+    }
+  }
+}
+
+</code></pre>
+<pre><code class="lang-csharp">public class Settings
+{
+    public AzureServiceBusConfiguration AzureServiceBusConfigurationSettings { get; }
+}
+</code></pre>
+<pre><code class="lang-csharp">var applicationSettings = builder.Configuration.GetSection(&quot;Settings&quot;).Get&lt;Settings&gt;();
+</code></pre>
+<h3 id="-next-steps-create-messages-producers-consumers-queues-and-topics">🔒 Next Steps: Create Messages, Producers, Consumers, Queues and Topics.</h3>
+<p>In the next step, we will explain how to create Messages and Producers that will publish to a specific queue or topic in Azure Service Bus.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/settingUp.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
