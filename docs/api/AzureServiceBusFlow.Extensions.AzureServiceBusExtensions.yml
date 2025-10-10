@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Extensions/AzureServiceBusExtensions.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: AzureServiceBusExtensions
     path: ../src/AzureServiceBusFlow/Extensions/AzureServiceBusExtensions.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Extensions/AzureServiceBusExtensions.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: AddAzureServiceBus
     path: ../src/AzureServiceBusFlow/Extensions/AzureServiceBusExtensions.cs

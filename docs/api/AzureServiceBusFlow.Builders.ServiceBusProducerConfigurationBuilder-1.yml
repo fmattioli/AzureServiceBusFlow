@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ServiceBusProducerConfigurationBuilder
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -98,7 +98,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: WithTopic
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -132,7 +132,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: EnsureQueueExists
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: EnsureTopicExists
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -200,7 +200,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: WithCommandProducer
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -230,7 +230,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: WithEventProducer
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -260,7 +260,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ToTopic
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -294,7 +294,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ToQueue
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
@@ -328,7 +328,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: WithQueue
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs

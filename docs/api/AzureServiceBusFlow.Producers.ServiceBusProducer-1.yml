@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ServiceBusProducer
     path: ../src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ProduceAsync
     path: ../src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs

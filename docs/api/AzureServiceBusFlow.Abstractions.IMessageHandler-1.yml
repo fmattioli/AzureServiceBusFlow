@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: IMessageHandler
     path: ../src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
@@ -46,7 +46,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: HandleAsync
     path: ../src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs

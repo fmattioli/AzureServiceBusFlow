@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | AzureServiceBusFlow </title>
+      <title>Messages | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | AzureServiceBusFlow ">
+      <meta name="title" content="Messages | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/registeringProducers.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/messageComponent.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,67 +85,58 @@
         </div>
 
         <article data-uid="">
+<h1 id="messages">Messages</h1>
 
-<h2 id="producers">Producers</h2>
-<p>To simplify the process of sending messages to Azure Service Bus, we created an abstraction that encapsulates the publishing logic.</p>
-<p>This approach keeps the implementation consistent and allows any type of message to be sent using the same pattern.</p>
+<p>In <strong>AzureServiceBusFlow (AsbFlow)</strong>, every message that is sent through the Azure Service Bus — whether it is a <strong>Command</strong> or an <strong>Event</strong> — must implement the <code>IServiceBusMessage</code> interface.</p>
+<p>This interface defines the basic structure that all messages must follow, ensuring consistency and allowing the framework to automatically handle serialization, metadata, and routing.</p>
 <br>
-<h3 id="-registering-a-producer">⚙️ Registering a Producer</h3>
-<p>To register a producer and configure which message it will send, use the <strong><code>AddProducer()</code></strong> method inside the <strong><code>AddAzureServiceBus()</code></strong> configuration in <strong><code>Program.cs</code></strong>:</p>
-<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
-    .ConfigureAzureServiceBus(azureServiceBusConfig)
-    .AddProducer&lt;ExampleCommand1&gt;(p =&gt; p
-        .EnsureQueueExists(&quot;command-queue-one&quot;)
-        .WithCommandProducer()
-        .ToQueue(&quot;command-queue-one&quot;)));
-</code></pre>
-<p>The code above registers a producer for the <strong><code>ExampleCommand1</code></strong> Message created earlier in this documentation (<a href="/docs/creatingMessages.html">ExampleCommand1</a>).</p>
-<ul>
-<li><strong><code>EnsureQueueExists()</code></strong>: Ensures that the specified <strong>Queue</strong> exists in Azure Service Bus. If the <strong>Queue</strong> does not exist, it will be created automatically.</li>
-<li><strong><code>WithCommandProducer()</code></strong>: Specifies that the producer is of type <strong>CommandProducer</strong>. Alternatively, you can configure an <strong>EventProducer</strong> or a <strong>CommandProducer</strong>, depending on the message type.</li>
-<li><strong><code>ToQueue()</code></strong>: Defines the <strong>Queue</strong> where the message will be published.</li>
-</ul>
-<br>
-<h3 id="-publishing-messages">📤 Publishing Messages</h3>
-<p>Once the producer is configured, it can be used to publish messages to the bus. Here’s an example of how to do it.</p>
-<blockquote>
-<p>To publish a message using a <strong>CommandProducer</strong>, inject an instance of <strong><code>ICommandProducer</code></strong> and call <strong><code>ProduceCommandAsync()</code></strong>, passing the message as a parameter.</p>
-</blockquote>
-<pre><code class="lang-csharp">[Route(&quot;api/commands&quot;)]
-[ApiController]
-public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer) : ControllerBase
+<h2 id="-iservicebusmessage-interface">🧩 IServiceBusMessage Interface</h2>
+<pre><code class="lang-csharp">public interface IServiceBusMessage
 {
-    [HttpPost(&quot;command-example-one&quot;)]
-    public async Task&lt;IActionResult&gt; Example1(CancellationToken cancellationToken)
-    {
-        ExampleCommand1 command = new()
-        {
-            ExampleMessage = new ExampleMessage
-            {
-                Cliente = &quot;jose&quot;,
-                Id = Guid.NewGuid(),
-                Valor = 1111
-            }
-        };
-
-        await _producer.ProduceCommandAsync(command, cancellationToken);
-        return Ok();
-    }
+    string RoutingKey { get; }
+    DateTime CreatedDate { get; }
 }
 </code></pre>
-<hr>
-<h3 id="-summary">🧭 Summary</h3>
+<p>Every message must expose:</p>
 <ul>
-<li><strong>💬 Message</strong> created</li>
-<li><strong>📤 Producer</strong> configured</li>
-<li><strong>📬 Queue</strong> created and registred</li>
+<li><strong>RoutingKey</strong> → used to identify or categorize the message (often a unique ID or business key)</li>
+<li><strong>CreatedDate</strong> → timestamp of when the message was created</li>
 </ul>
-<p>Next step: <strong><a href="/docs/creatingConsumers.html">Create MessageHandler</a></strong> to consume and process the message.</p>
+<br>
+<h2 id="-example-of-a-command-message">🧱 Example of a Command Message</h2>
+<pre><code class="lang-csharp">public class ExampleCommand1 : IServiceBusMessage
+{
+    public string RoutingKey =&gt; ExampleMessage.Id.ToString();
+    public DateTime CreatedDate =&gt; DateTime.UtcNow;
+    public required ExampleMessage ExampleMessage { get; set; }
+}
+
+public class ExampleMessage
+{
+    public Guid Id { get; set; }
+    public string? Cliente { get; set; }
+    public decimal Valor { get; set; }
+}
+</code></pre>
+<p>This structure provides:</p>
+<ul>
+<li>A <strong>strongly typed</strong> message model</li>
+<li>Easy serialization through the built-in producer</li>
+<li>A unified standard for both <strong>commands</strong> and <strong>events</strong></li>
+</ul>
+<br>
+<h2 id="-architectural-meaning">⚙️ Architectural Meaning</h2>
+<p>Although both <strong>commands</strong> and <strong>events</strong> share the same implementation, they differ in intention:</p>
+<ul>
+<li>A <strong>Command</strong> represents the intention to perform an action.</li>
+<li>An <strong>Event</strong> indicates that something has already happened.</li>
+</ul>
+<p>The distinction is purely architectural and helps maintain clear separation of responsibilities between services.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/registeringProducers.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/messageComponent.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

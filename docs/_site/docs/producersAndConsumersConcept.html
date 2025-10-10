@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | AzureServiceBusFlow </title>
+      <title>Producers and Consumers | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | AzureServiceBusFlow ">
+      <meta name="title" content="Producers and Consumers | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/registeringProducers.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/producersAndConsumersConcept.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,67 +85,60 @@
         </div>
 
         <article data-uid="">
+<h1 id="producers-and-consumers">Producers and Consumers</h1>
 
-<h2 id="producers">Producers</h2>
-<p>To simplify the process of sending messages to Azure Service Bus, we created an abstraction that encapsulates the publishing logic.</p>
-<p>This approach keeps the implementation consistent and allows any type of message to be sent using the same pattern.</p>
+<p>In <strong>AzureServiceBusFlow</strong>, communication between services happens through <strong>producers</strong> and <strong>consumers</strong>, which abstract away the complexity of connecting to Azure Service Bus.</p>
 <br>
-<h3 id="-registering-a-producer">⚙️ Registering a Producer</h3>
-<p>To register a producer and configure which message it will send, use the <strong><code>AddProducer()</code></strong> method inside the <strong><code>AddAzureServiceBus()</code></strong> configuration in <strong><code>Program.cs</code></strong>:</p>
-<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
-    .ConfigureAzureServiceBus(azureServiceBusConfig)
-    .AddProducer&lt;ExampleCommand1&gt;(p =&gt; p
-        .EnsureQueueExists(&quot;command-queue-one&quot;)
-        .WithCommandProducer()
-        .ToQueue(&quot;command-queue-one&quot;)));
-</code></pre>
-<p>The code above registers a producer for the <strong><code>ExampleCommand1</code></strong> Message created earlier in this documentation (<a href="/docs/creatingMessages.html">ExampleCommand1</a>).</p>
+<h2 id="-producers">🚀 Producers</h2>
+<p>A <strong>producer</strong> (also known as a <strong>sender</strong>) is responsible for <strong>sending messages</strong> to a queue or topic.</p>
+<p>With <strong>AsbFlow</strong>, producers are registered and configured fluently using simple definitions.<br>
+They can send either <strong>commands</strong> or <strong>events</strong>, depending on the communication model.</p>
+<p>Example responsibilities:</p>
 <ul>
-<li><strong><code>EnsureQueueExists()</code></strong>: Ensures that the specified <strong>Queue</strong> exists in Azure Service Bus. If the <strong>Queue</strong> does not exist, it will be created automatically.</li>
-<li><strong><code>WithCommandProducer()</code></strong>: Specifies that the producer is of type <strong>CommandProducer</strong>. Alternatively, you can configure an <strong>EventProducer</strong> or a <strong>CommandProducer</strong>, depending on the message type.</li>
-<li><strong><code>ToQueue()</code></strong>: Defines the <strong>Queue</strong> where the message will be published.</li>
+<li>Serializing the message payload</li>
+<li>Sending the message to the appropriate Azure Service Bus entity</li>
+<li>Logging and error handling</li>
 </ul>
 <br>
-<h3 id="-publishing-messages">📤 Publishing Messages</h3>
-<p>Once the producer is configured, it can be used to publish messages to the bus. Here’s an example of how to do it.</p>
-<blockquote>
-<p>To publish a message using a <strong>CommandProducer</strong>, inject an instance of <strong><code>ICommandProducer</code></strong> and call <strong><code>ProduceCommandAsync()</code></strong>, passing the message as a parameter.</p>
-</blockquote>
-<pre><code class="lang-csharp">[Route(&quot;api/commands&quot;)]
-[ApiController]
-public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer) : ControllerBase
-{
-    [HttpPost(&quot;command-example-one&quot;)]
-    public async Task&lt;IActionResult&gt; Example1(CancellationToken cancellationToken)
-    {
-        ExampleCommand1 command = new()
-        {
-            ExampleMessage = new ExampleMessage
-            {
-                Cliente = &quot;jose&quot;,
-                Id = Guid.NewGuid(),
-                Valor = 1111
-            }
-        };
-
-        await _producer.ProduceCommandAsync(command, cancellationToken);
-        return Ok();
-    }
-}
-</code></pre>
-<hr>
-<h3 id="-summary">🧭 Summary</h3>
+<h2 id="-consumers">📥 Consumers</h2>
+<p>A <strong>consumer</strong> (or <strong>receiver</strong>) is responsible for <strong>receiving and processing messages</strong> from queues or subscriptions.</p>
+<p>In <strong>AsbFlow</strong>, consumers are also registered fluently and can automatically bind to queues or subscriptions, depending on message type.</p>
+<p>Example responsibilities:</p>
 <ul>
-<li><strong>💬 Message</strong> created</li>
-<li><strong>📤 Producer</strong> configured</li>
-<li><strong>📬 Queue</strong> created and registred</li>
+<li>Deserializing the message</li>
+<li>Executing the related business logic</li>
+<li>Handling retries and exceptions</li>
 </ul>
-<p>Next step: <strong><a href="/docs/creatingConsumers.html">Create MessageHandler</a></strong> to consume and process the message.</p>
+<br>
+<h2 id="-relationship">🧩 Relationship</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Producer</strong></td>
+<td style="text-align: left;">Sends messages to Azure Service Bus (queues or topics).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Consumer</strong></td>
+<td style="text-align: left;">Listens for and processes incoming messages.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Queue/Topic</strong></td>
+<td style="text-align: left;">The channel through which messages flow.</td>
+</tr>
+</tbody>
+</table>
+<p>This abstraction makes it easy to maintain a <strong>clean architecture</strong>, where producers and consumers are clearly separated and follow consistent configuration patterns.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/registeringProducers.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/producersAndConsumersConcept.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ICommandProducer
     path: ../src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
@@ -46,7 +46,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ProduceCommandAsync
     path: ../src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
