@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/registeringProducers.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/creatingConsumers.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,66 +86,59 @@
 
         <article data-uid="">
 
-<h2 id="producers">Producers</h2>
-<p>To simplify the process of sending messages to Azure Service Bus, we created an abstraction that encapsulates the publishing logic.</p>
-<p>This approach keeps the implementation consistent and allows any type of message to be sent using the same pattern.</p>
-<br>
-<h3 id="-registering-a-producer">⚙️ Registering a Producer</h3>
-<p>To register a producer and configure which message it will send, use the <strong><code>AddProducer()</code></strong> method inside the <strong><code>AddAzureServiceBus()</code></strong> configuration in <strong><code>Program.cs</code></strong>:</p>
+<h2 id="consumers">Consumers</h2>
+<p><strong>AzureServiceBusFlow</strong> also simplify the creation of <strong>Consumers</strong> or <strong>MessageHandlers</strong> by implementing the <strong><code>IMessageHandler&lt;&gt;</code></strong> interface and passing the <strong>Message</strong> that will be consumed as the Type of the <strong>Handler</strong>.</p>
+<blockquote>
+<p>This interface provides the <code>HandleAsync()</code> method that is used to process the received message.</p>
+</blockquote>
+<hr>
+<h3 id="-creating-a-consumer">🛠️ Creating a Consumer</h3>
+<pre><code class="lang-csharp">public class CommandExample1Handler : IMessageHandler&lt;ExampleCommand1&gt;
+{
+    public Task HandleAsync(ExampleCommand1 message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+}
+</code></pre>
+<p>The MessageHandler above consume a Message of type ExampleCommand1, created earlier in this documentation (<a href="/docs/creatingMessages.html">ExampleCommand1</a>).</p>
+<hr>
+<h3 id="-registering-consumer">⚙️ Registering Consumer</h3>
+<p>To register the <strong>Consumer</strong>, aka <strong>MessageHandler</strong>, we need to use the <strong><code>AddConsumer()</code></strong> extension method in <strong><code>AddAzureServiceBus()</code></strong> configuration methon in <strong><code>Program.cs</code></strong>.</p>
+<blockquote>
+<p>the <strong><code>AddConsummer()</code></strong> method requires a Action of type ServiceBusConsumerConfigurationBuilder to configure the Consumer using this methods:</p>
+<ul>
+<li><code>FromQueue()</code>: Defines the Queue this Consumer will be receiving messages.</li>
+<li><code>FromTopic()</code>: Defines the Topic this Consumer will be receiving messages.</li>
+<li><code>EnsureSubscriptionExists()</code>: Ensure that the subscription passed exists in AzureServiceBus, creates it if doesn`t exists.</li>
+<li><code>AddHandler&lt;TMessage, TMessageHandler&gt;()</code>: Defines the <strong>Consumer</strong> / <strong>MessageHandler</strong> that is goint to consume a specific Message from a Queue or a Topic. More than one Consumer to the same <strong>Message</strong>, <strong>Queue</strong> or <strong>Topic</strong> can be defined in the same <code>AddConsumer()</code></li>
+</ul>
+</blockquote>
+<p>This example shows the full configuration for:</p>
+<ul>
+<li>Registering a <strong>Message</strong></li>
+<li>Creating a <strong>Producer</strong> for it</li>
+<li>Publishing in a specifi <strong>Queue</strong></li>
+<li>Configuring 2 <strong>Consumers</strong> / <strong>MessageHandlers</strong> for the same <strong>Message</strong></li>
+<li>Consuming this <strong>Message</strong> from the same <strong>Queue</strong>.</li>
+</ul>
 <pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
     .ConfigureAzureServiceBus(azureServiceBusConfig)
     .AddProducer&lt;ExampleCommand1&gt;(p =&gt; p
         .EnsureQueueExists(&quot;command-queue-one&quot;)
         .WithCommandProducer()
-        .ToQueue(&quot;command-queue-one&quot;)));
+        .ToQueue(&quot;command-queue-one&quot;))
+    .AddConsumer(c =&gt; c
+        .FromQueue(&quot;command-queue-one&quot;)
+        .AddHandler&lt;ExampleCommand1, CommandExemple1Handler&gt;()
+        .AddHandler&lt;ExampleCommand1, CommandExampleTwoHandlersPerOneMessageHandler&gt;())
+    );
 </code></pre>
-<p>The code above registers a producer for the <strong><code>ExampleCommand1</code></strong> Message created earlier in this documentation (<a href="/docs/creatingMessages.html">ExampleCommand1</a>).</p>
-<ul>
-<li><strong><code>EnsureQueueExists()</code></strong>: Ensures that the specified <strong>Queue</strong> exists in Azure Service Bus. If the <strong>Queue</strong> does not exist, it will be created automatically.</li>
-<li><strong><code>WithCommandProducer()</code></strong>: Specifies that the producer is of type <strong>CommandProducer</strong>. Alternatively, you can configure an <strong>EventProducer</strong> or a <strong>CommandProducer</strong>, depending on the message type.</li>
-<li><strong><code>ToQueue()</code></strong>: Defines the <strong>Queue</strong> where the message will be published.</li>
-</ul>
-<br>
-<h3 id="-publishing-messages">📤 Publishing Messages</h3>
-<p>Once the producer is configured, it can be used to publish messages to the bus. Here’s an example of how to do it.</p>
-<blockquote>
-<p>To publish a message using a <strong>CommandProducer</strong>, inject an instance of <strong><code>ICommandProducer</code></strong> and call <strong><code>ProduceCommandAsync()</code></strong>, passing the message as a parameter.</p>
-</blockquote>
-<pre><code class="lang-csharp">[Route(&quot;api/commands&quot;)]
-[ApiController]
-public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer) : ControllerBase
-{
-    [HttpPost(&quot;command-example-one&quot;)]
-    public async Task&lt;IActionResult&gt; Example1(CancellationToken cancellationToken)
-    {
-        ExampleCommand1 command = new()
-        {
-            ExampleMessage = new ExampleMessage
-            {
-                Cliente = &quot;jose&quot;,
-                Id = Guid.NewGuid(),
-                Valor = 1111
-            }
-        };
-
-        await _producer.ProduceCommandAsync(command, cancellationToken);
-        return Ok();
-    }
-}
-</code></pre>
-<hr>
-<h3 id="-summary">🧭 Summary</h3>
-<ul>
-<li><strong>💬 Message</strong> created</li>
-<li><strong>📤 Producer</strong> configured</li>
-<li><strong>📬 Queue</strong> created and registred</li>
-</ul>
-<p>Next step: <strong><a href="/docs/creatingConsumers.html">Create MessageHandler</a></strong> to consume and process the message.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/registeringProducers.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/creatingConsumers.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

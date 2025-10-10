@@ -4,6 +4,7 @@ To simplify the process of sending messages to Azure Service Bus, we created an 
 
 This approach keeps the implementation consistent and allows any type of message to be sent using the same pattern.
 
+<br>
 
 ### ⚙️ Registering a Producer
 
@@ -18,10 +19,10 @@ builder.Services.AddAzureServiceBus(cfg => cfg
         .ToQueue("command-queue-one")));
 ```
 
-The code above registers a producer for the **`ExampleCommand1`** record created earlier in this documentation ([ExampleCommand1](/docs/creatingMessages.html)).
-- **`EnsureQueueExists`**: Ensures that the specified **Queue** exists in Azure Service Bus. If the **Queue** does not exist, it will be created automatically.
-- **`WithCommandProducer`**: Specifies that the producer is of type **CommandProducer**. Alternatively, you can configure an **EventProducer** or a **CommandProducer**, depending on the message type.  
-- **`ToQueue`**: Defines the **Queue** where the message will be published.
+The code above registers a producer for the **`ExampleCommand1`** Message created earlier in this documentation ([ExampleCommand1](/docs/creatingMessages.html)).
+- **`EnsureQueueExists()`**: Ensures that the specified **Queue** exists in Azure Service Bus. If the **Queue** does not exist, it will be created automatically.
+- **`WithCommandProducer()`**: Specifies that the producer is of type **CommandProducer**. Alternatively, you can configure an **EventProducer** or a **CommandProducer**, depending on the message type.  
+- **`ToQueue()`**: Defines the **Queue** where the message will be published.
 
 <br>
 
@@ -34,7 +35,7 @@ Once the producer is configured, it can be used to publish messages to the bus. 
 ```csharp
 [Route("api/commands")]
 [ApiController]
-public class CommandController(ICommandProducer<ExampleCommand1> _producerOne, ICommandProducer<ExampleCommand2> _producerTwo) : ControllerBase
+public class CommandController(ICommandProducer<ExampleCommand1> _producer) : ControllerBase
 {
     [HttpPost("command-example-one")]
     public async Task<IActionResult> Example1(CancellationToken cancellationToken)
@@ -49,7 +50,7 @@ public class CommandController(ICommandProducer<ExampleCommand1> _producerOne, I
             }
         };
 
-        await _producerOne.ProduceCommandAsync(command, cancellationToken);
+        await _producer.ProduceCommandAsync(command, cancellationToken);
         return Ok();
     }
 }
@@ -62,4 +63,4 @@ public class CommandController(ICommandProducer<ExampleCommand1> _producerOne, I
 - **📤 Producer** configured
 - **📬 Queue** created and registred
 
-Next step: **[Create MessageHandler](/docs/creatingMessageHandler.html)** to consume and process the message.
+Next step: **[Create MessageHandler](/docs/creatingConsumers.html)** to consume and process the message.

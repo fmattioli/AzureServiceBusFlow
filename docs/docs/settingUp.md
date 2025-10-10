@@ -50,7 +50,7 @@ builder.Services.AddAzureServiceBus(cfg => cfg
     .ConfigureAzureServiceBus(azureServiceBusConfig));
 ```
 
-This method need a **`AzureServiceBusConfiguration`** instance to configure all the necessary properties to work with the Azure Service Bus. This configuration class is provided by **AzureServiceBusFlow**. 
+This method need a **`AzureServiceBusConfiguration`** instance to configure all the necessary properties to work with the Azure Service Bus. This configuration class is provided by **AzureServiceBusFlow** and its parameters are the same as the JSON object configured in **⚙️Step 2**. 
 
 At this time, no queues, topics, producers or consumers are configured and registered. This will be done in the next pages.
 
@@ -81,7 +81,8 @@ public class Settings
 ```csharp
 var applicationSettings = builder.Configuration.GetSection("Settings").Get<Settings>();
 ```
-
+<br><br>
+---
 ### 🔒 Next Steps: Create Messages, Producers, Consumers, Queues and Topics.
 
 In the next step, we will explain how to create Messages and Producers that will publish to a specific queue or topic in Azure Service Bus.

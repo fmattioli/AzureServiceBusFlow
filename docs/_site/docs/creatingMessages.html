@@ -89,7 +89,7 @@
 <h2 id="messages">Messages</h2>
 <p>The <strong>AzureServiceBusFlow</strong> defines a standard approach for creating messages that will be published to the bus. This ensures that the <strong>MessageHandler</strong> receives the correct message type and processes it properly.</p>
 <br>
-<p>To create these messages, you need to define a record or class that implements the <strong><code>IServiceBusMessage</code></strong> interface from the <strong>AzureServiceBusFlow</strong> package.</p>
+<p>To create these messages, you need to define a record or class that implements <strong><code>IServiceBusMessage</code></strong> interface from the <strong>AzureServiceBusFlow</strong> package.</p>
 <pre><code class="lang-csharp">public class ExampleCommand1 : IServiceBusMessage
 {
     public string RoutingKey =&gt; ExampleMessage.Id.ToString();

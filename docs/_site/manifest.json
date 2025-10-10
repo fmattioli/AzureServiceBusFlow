@@ -12,10 +12,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/creatingMessageHandlers.md",
+      "source_relative_path": "docs/creatingConsumers.md",
       "output": {
         ".html": {
-          "relative_path": "docs/creatingMessageHandlers.html"
+          "relative_path": "docs/creatingConsumers.html"
         }
       },
       "version": ""

@@ -2,9 +2,11 @@
 
 The **AzureServiceBusFlow** defines a standard approach for creating messages that will be published to the bus. This ensures that the **MessageHandler** receives the correct message type and processes it properly.  
 
-<br>
+---
 
-To create these messages, you need to define a record or class that implements the **`IServiceBusMessage`** interface from the **AzureServiceBusFlow** package.
+### ✉️ Creating Messages
+
+To create these messages, you need to define a record or class that implements **`IServiceBusMessage`** interface from the **AzureServiceBusFlow** package.
 
 ```csharp
 public class ExampleCommand1 : IServiceBusMessage

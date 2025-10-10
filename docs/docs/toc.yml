@@ -1,8 +1,20 @@
 - name: Setting Up
   href: settingUp.md
-- name: Creating Messages
+
+- name: Messages
   href: creatingMessages.md
-- name: Registering Producers
+  items:
+    - name: Creating Messages
+      href: creatingMessages.md
+
+- name: Producers
   href: registeringProducers.md
-- name: Creating MessageHandlers
-  href: creatingMessageHandlers.md
+  items:
+    - name: Registering Producers
+      href: registeringProducers.md
+
+- name: Consumers
+  href: creatingConsumers.md
+  items:
+    - name: Creating Consumers
+      href: creatingConsumers.md

@@ -124,7 +124,7 @@ You need to define the basic configuration for Azure Service Bus to work.</p>
 <pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
     .ConfigureAzureServiceBus(azureServiceBusConfig));
 </code></pre>
-<p>This method need a <strong><code>AzureServiceBusConfiguration</code></strong> instance to configure all the necessary properties to work with the Azure Service Bus. This configuration class is provided by <strong>AzureServiceBusFlow</strong>.</p>
+<p>This method need a <strong><code>AzureServiceBusConfiguration</code></strong> instance to configure all the necessary properties to work with the Azure Service Bus. This configuration class is provided by <strong>AzureServiceBusFlow</strong> and its parameters are the same as the JSON object configured in <strong>⚙️Step 2</strong>.</p>
 <p>At this time, no queues, topics, producers or consumers are configured and registered. This will be done in the next pages.</p>
 <blockquote>
 <p>💡 I recommend you create a class called Settings and map the appsettings.json on this class, you can merge your personal appsettings config and also add the AzureServiceBusFlow properties that are required. For example:</p>
@@ -149,6 +149,7 @@ You need to define the basic configuration for Azure Service Bus to work.</p>
 </code></pre>
 <pre><code class="lang-csharp">var applicationSettings = builder.Configuration.GetSection(&quot;Settings&quot;).Get&lt;Settings&gt;();
 </code></pre>
+<h2 id="section"><br><br></h2>
 <h3 id="-next-steps-create-messages-producers-consumers-queues-and-topics">🔒 Next Steps: Create Messages, Producers, Consumers, Queues and Topics.</h3>
 <p>In the next step, we will explain how to create Messages and Producers that will publish to a specific queue or topic in Azure Service Bus.</p>
 
