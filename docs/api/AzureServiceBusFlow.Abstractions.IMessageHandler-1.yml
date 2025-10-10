@@ -1,0 +1,237 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  commentId: T:AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  id: IMessageHandler`1
+  parent: AzureServiceBusFlow.Abstractions
+  children:
+  - AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IMessageHandler<T>
+  nameWithType: IMessageHandler<T>
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>
+  type: Interface
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: IMessageHandler
+    path: ../src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
+    startLine: 4
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: public interface IMessageHandler<in T>
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IMessageHandler(Of In T)
+  nameWithType.vb: IMessageHandler(Of T)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T)
+  name.vb: IMessageHandler(Of T)
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)
+  id: HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
+  nameWithType: IMessageHandler<T>.HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>.HandleAsync(T, Azure.Messaging.ServiceBus.ServiceBusReceivedMessage, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: HandleAsync
+    path: ../src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs
+    startLine: 6
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: Task HandleAsync(T message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)
+    parameters:
+    - id: message
+      type: '{T}'
+    - id: rawMessage
+      type: Azure.Messaging.ServiceBus.ServiceBusReceivedMessage
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function HandleAsync(message As T, rawMessage As ServiceBusReceivedMessage, cancellationToken As CancellationToken) As Task
+  overload: AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync*
+  nameWithType.vb: IMessageHandler(Of T).HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T).HandleAsync(T, Azure.Messaging.ServiceBus.ServiceBusReceivedMessage, System.Threading.CancellationToken)
+references:
+- uid: AzureServiceBusFlow.Abstractions
+  commentId: N:AzureServiceBusFlow.Abstractions
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Abstractions
+  nameWithType: AzureServiceBusFlow.Abstractions
+  fullName: AzureServiceBusFlow.Abstractions
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync*
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync
+  href: AzureServiceBusFlow.Abstractions.IMessageHandler-1.html#AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync__0_Azure_Messaging_ServiceBus_ServiceBusReceivedMessage_System_Threading_CancellationToken_
+  name: HandleAsync
+  nameWithType: IMessageHandler<T>.HandleAsync
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>.HandleAsync
+  nameWithType.vb: IMessageHandler(Of T).HandleAsync
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T).HandleAsync
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Azure.Messaging.ServiceBus.ServiceBusReceivedMessage
+  commentId: T:Azure.Messaging.ServiceBus.ServiceBusReceivedMessage
+  parent: Azure.Messaging.ServiceBus
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage
+  name: ServiceBusReceivedMessage
+  nameWithType: ServiceBusReceivedMessage
+  fullName: Azure.Messaging.ServiceBus.ServiceBusReceivedMessage
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Azure.Messaging.ServiceBus
+  commentId: N:Azure.Messaging.ServiceBus
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/azure
+  name: Azure.Messaging.ServiceBus
+  nameWithType: Azure.Messaging.ServiceBus
+  fullName: Azure.Messaging.ServiceBus
+  spec.csharp:
+  - uid: Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure
+  - name: .
+  - uid: Azure.Messaging
+    name: Messaging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging
+  - name: .
+  - uid: Azure.Messaging.ServiceBus
+    name: ServiceBus
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus
+  spec.vb:
+  - uid: Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure
+  - name: .
+  - uid: Azure.Messaging
+    name: Messaging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging
+  - name: .
+  - uid: Azure.Messaging.ServiceBus
+    name: ServiceBus
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

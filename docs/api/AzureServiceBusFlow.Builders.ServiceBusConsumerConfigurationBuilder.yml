@@ -1,0 +1,635 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  id: ServiceBusConsumerConfigurationBuilder
+  parent: AzureServiceBusFlow.Builders
+  children:
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler``2
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(System.String,System.String)
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(System.String)
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ServiceBusConsumerConfigurationBuilder
+  nameWithType: ServiceBusConsumerConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  type: Class
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ServiceBusConsumerConfigurationBuilder
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 12
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: public class ServiceBusConsumerConfigurationBuilder
+    content.vb: Public Class ServiceBusConsumerConfigurationBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  id: '#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)'
+  parent: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  langs:
+  - csharp
+  - vb
+  name: ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration, IServiceCollection)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration, IServiceCollection)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  type: Constructor
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: .ctor
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 12
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: public ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration _azureServiceBusConfiguration, IServiceCollection services)
+    parameters:
+    - id: _azureServiceBusConfiguration
+      type: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    content.vb: Public Sub New(_azureServiceBusConfiguration As AzureServiceBusConfiguration, services As IServiceCollection)
+  overload: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor*
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.New(AzureServiceBusConfiguration, IServiceCollection)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.New(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name.vb: New(AzureServiceBusConfiguration, IServiceCollection)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(System.String)
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(System.String)
+  id: FromQueue(System.String)
+  parent: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  langs:
+  - csharp
+  - vb
+  name: FromQueue(string)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromQueue(string)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(string)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: FromQueue
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 22
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: public ServiceBusConsumerConfigurationBuilder FromQueue(string queueName)
+    parameters:
+    - id: queueName
+      type: System.String
+    return:
+      type: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+    content.vb: Public Function FromQueue(queueName As String) As ServiceBusConsumerConfigurationBuilder
+  overload: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue*
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.FromQueue(String)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(String)
+  name.vb: FromQueue(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(System.String,System.String)
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(System.String,System.String)
+  id: FromTopic(System.String,System.String)
+  parent: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  langs:
+  - csharp
+  - vb
+  name: FromTopic(string, string)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromTopic(string, string)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: FromTopic
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 28
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: public ServiceBusConsumerConfigurationBuilder FromTopic(string topicName, string subscriptionName)
+    parameters:
+    - id: topicName
+      type: System.String
+    - id: subscriptionName
+      type: System.String
+    return:
+      type: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+    content.vb: Public Function FromTopic(topicName As String, subscriptionName As String) As ServiceBusConsumerConfigurationBuilder
+  overload: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic*
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.FromTopic(String, String)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(String, String)
+  name.vb: FromTopic(String, String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(System.String,System.String)
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(System.String,System.String)
+  id: EnsureSubscriptionExists(System.String,System.String)
+  parent: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  langs:
+  - csharp
+  - vb
+  name: EnsureSubscriptionExists(string, string)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(string, string)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: EnsureSubscriptionExists
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 35
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: public ServiceBusConsumerConfigurationBuilder EnsureSubscriptionExists(string topicName, string subscriptionName)
+    parameters:
+    - id: topicName
+      type: System.String
+    - id: subscriptionName
+      type: System.String
+    return:
+      type: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+    content.vb: Public Function EnsureSubscriptionExists(topicName As String, subscriptionName As String) As ServiceBusConsumerConfigurationBuilder
+  overload: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists*
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(String, String)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(String, String)
+  name.vb: EnsureSubscriptionExists(String, String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler``2
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler``2
+  id: AddHandler``2
+  parent: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddHandler<TMessage, THandler>()
+  nameWithType: ServiceBusConsumerConfigurationBuilder.AddHandler<TMessage, THandler>()
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler<TMessage, THandler>()
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: AddHandler
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 47
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: 'public ServiceBusConsumerConfigurationBuilder AddHandler<TMessage, THandler>() where TMessage : class, IServiceBusMessage where THandler : class, IMessageHandler<TMessage>'
+    typeParameters:
+    - id: TMessage
+    - id: THandler
+    return:
+      type: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+    content.vb: Public Function [AddHandler](Of TMessage As {Class, IServiceBusMessage}, THandler As {Class, IMessageHandler(Of TMessage)})() As ServiceBusConsumerConfigurationBuilder
+  overload: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler*
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.AddHandler(Of TMessage, THandler)()
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler(Of TMessage, THandler)()
+  name.vb: AddHandler(Of TMessage, THandler)()
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  id: Build
+  parent: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: ServiceBusConsumerConfigurationBuilder.Build()
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build()
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: Build
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusConsumerConfigurationBuilder.cs
+    startLine: 71
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: public void Build()
+    content.vb: Public Sub Build()
+  overload: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build*
+references:
+- uid: AzureServiceBusFlow.Builders
+  commentId: N:AzureServiceBusFlow.Builders
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Builders
+  nameWithType: AzureServiceBusFlow.Builders
+  fullName: AzureServiceBusFlow.Builders
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Builders
+    name: Builders
+    href: AzureServiceBusFlow.Builders.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Builders
+    name: Builders
+    href: AzureServiceBusFlow.Builders.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder__ctor_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: ServiceBusConsumerConfigurationBuilder
+  nameWithType: ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.New
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.New
+  name.vb: New
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  commentId: T:AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  parent: AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html
+  name: AzureServiceBusConfiguration
+  nameWithType: AzureServiceBusConfiguration
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_FromQueue_System_String_
+  name: FromQueue
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromQueue
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  parent: AzureServiceBusFlow.Builders
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html
+  name: ServiceBusConsumerConfigurationBuilder
+  nameWithType: ServiceBusConsumerConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_FromTopic_System_String_System_String_
+  name: FromTopic
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromTopic
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_EnsureSubscriptionExists_System_String_System_String_
+  name: EnsureSubscriptionExists
+  nameWithType: ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_AddHandler__2
+  name: AddHandler
+  nameWithType: ServiceBusConsumerConfigurationBuilder.AddHandler
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_Build
+  name: Build
+  nameWithType: ServiceBusConsumerConfigurationBuilder.Build
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build

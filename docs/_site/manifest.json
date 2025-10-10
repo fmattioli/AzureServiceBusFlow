@@ -11,6 +11,299 @@
       }
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Abstractions.IEventProducer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Abstractions.IEventProducer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Abstractions.IEventProducer<TEvent>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Abstractions.IMessageHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Abstractions.IMessageHandler-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Abstractions.IMessageHandler<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Abstractions.IServiceBusMessage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Abstractions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Abstractions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder",
+      "Summary": "<p sourcefile=\"api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.yml\" sourcestartlinenumber=\"1\">Builder for configuring Azure Service Bus, allowing connection, producers, and consumers setup.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Builders.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Builders",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Extensions.AzureServiceBusExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Hosts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Hosts.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Hosts",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Models.AzureServiceBusConfiguration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Producers.CommandProducer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Producers.CommandProducer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Producers.CommandProducer<TCommand>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Producers.EventProducer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Producers.EventProducer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Producers.EventProducer<TEvent>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Producers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Producers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Producers",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "docs/creatingConsumers.md",
       "output": {

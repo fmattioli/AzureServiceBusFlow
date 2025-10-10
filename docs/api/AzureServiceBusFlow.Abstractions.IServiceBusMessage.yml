@@ -1,0 +1,152 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  id: IServiceBusMessage
+  parent: AzureServiceBusFlow.Abstractions
+  children:
+  - AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  - AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  langs:
+  - csharp
+  - vb
+  name: IServiceBusMessage
+  nameWithType: IServiceBusMessage
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  type: Interface
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: IServiceBusMessage
+    path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
+    startLine: 2
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: public interface IServiceBusMessage
+    content.vb: Public Interface IServiceBusMessage
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  commentId: P:AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  id: RoutingKey
+  parent: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  langs:
+  - csharp
+  - vb
+  name: RoutingKey
+  nameWithType: IServiceBusMessage.RoutingKey
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: RoutingKey
+    path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
+    startLine: 4
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: string RoutingKey { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property RoutingKey As String
+  overload: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey*
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  commentId: P:AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  id: CreatedDate
+  parent: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  langs:
+  - csharp
+  - vb
+  name: CreatedDate
+  nameWithType: IServiceBusMessage.CreatedDate
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: CreatedDate
+    path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
+    startLine: 5
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: DateTime CreatedDate { get; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: ReadOnly Property CreatedDate As Date
+  overload: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate*
+references:
+- uid: AzureServiceBusFlow.Abstractions
+  commentId: N:AzureServiceBusFlow.Abstractions
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Abstractions
+  nameWithType: AzureServiceBusFlow.Abstractions
+  fullName: AzureServiceBusFlow.Abstractions
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey*
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  href: AzureServiceBusFlow.Abstractions.IServiceBusMessage.html#AzureServiceBusFlow_Abstractions_IServiceBusMessage_RoutingKey
+  name: RoutingKey
+  nameWithType: IServiceBusMessage.RoutingKey
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate*
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  href: AzureServiceBusFlow.Abstractions.IServiceBusMessage.html#AzureServiceBusFlow_Abstractions_IServiceBusMessage_CreatedDate
+  name: CreatedDate
+  nameWithType: IServiceBusMessage.CreatedDate
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date

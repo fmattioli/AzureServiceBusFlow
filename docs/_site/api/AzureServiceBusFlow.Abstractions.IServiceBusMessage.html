@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | AzureServiceBusFlow </title>
+      <title>Interface IServiceBusMessage | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | AzureServiceBusFlow ">
+      <meta name="title" content="Interface IServiceBusMessage | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/creatingMessages.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/new/documentation/apiSpec/new?filename=AzureServiceBusFlow_Abstractions_IServiceBusMessage.md&amp;value=---%0Auid%3A%20AzureServiceBusFlow.Abstractions.IServiceBusMessage%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,39 +84,111 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="">
+        <article data-uid="AzureServiceBusFlow.Abstractions.IServiceBusMessage">
 
-<h2 id="messages">Messages</h2>
-<p>The <strong>AzureServiceBusFlow</strong> defines a standard approach for creating messages that will be published to the bus. This ensures that the <strong>MessageHandler</strong> receives the correct message type and processes it properly.</p>
-<hr>
-<h3 id="-creating-messages">✉️ Creating Messages</h3>
-<p>To create these messages, you need to define a record or class that implements <strong><code>IServiceBusMessage</code></strong> interface from the <strong>AzureServiceBusFlow</strong> package.</p>
-<pre><code class="lang-csharp">public class ExampleCommand1 : IServiceBusMessage
-{
-    public string RoutingKey =&gt; ExampleMessage.Id.ToString();
-    public DateTime CreatedDate =&gt; DateTime.UtcNow;
-    public required ExampleMessage ExampleMessage { get; set; }
-}
 
-public class ExampleMessage
-{
-    public Guid Id { get; set; }
-    public string? Cliente { get; set; }
-    public decimal Valor { get; set; }
-}
-</code></pre>
-<p>The <strong>RoutingKey</strong> and <strong>CreatedDate</strong> properties are used internally by <strong>AzureServiceBusFlow</strong>, while <strong>ExampleMessage</strong> represents the actual content of the message being sent.</p>
-<p>The message above is just an example and the <strong>Content</strong> can be of any type, such as a class, record, struct, integer, string, IEnumerable...</p>
-<hr>
-<p>To register which messages will be sent to the bus, we need to configure the <strong>Producers</strong> to publish the messages. <code>Check out the next page to know how to register it.</code></p>
+
+  <h1 id="AzureServiceBusFlow_Abstractions_IServiceBusMessage" data-uid="AzureServiceBusFlow.Abstractions.IServiceBusMessage" class="text-break">
+Interface IServiceBusMessage  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs/#L3"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AzureServiceBusFlow.html">AzureServiceBusFlow</a>.<a class="xref" href="AzureServiceBusFlow.Abstractions.html">Abstractions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AzureServiceBusFlow.Configurations.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IServiceBusMessage</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AzureServiceBusFlow_Abstractions_IServiceBusMessage_CreatedDate_" data-uid="AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate*"></a>
+
+  <h3 id="AzureServiceBusFlow_Abstractions_IServiceBusMessage_CreatedDate" data-uid="AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate">
+  CreatedDate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateTime CreatedDate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AzureServiceBusFlow_Abstractions_IServiceBusMessage_RoutingKey_" data-uid="AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey*"></a>
+
+  <h3 id="AzureServiceBusFlow_Abstractions_IServiceBusMessage_RoutingKey" data-uid="AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey">
+  RoutingKey
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string RoutingKey { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/docs/docs/creatingMessages.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/documentation/src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs/#L3" class="edit-link">Edit this page</a>
         </div>
 
-        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

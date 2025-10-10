@@ -1,0 +1,127 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Abstractions
+  commentId: N:AzureServiceBusFlow.Abstractions
+  id: AzureServiceBusFlow.Abstractions
+  children:
+  - AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  - AzureServiceBusFlow.Abstractions.IEventProducer`1
+  - AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  - AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  - AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Abstractions
+  nameWithType: AzureServiceBusFlow.Abstractions
+  fullName: AzureServiceBusFlow.Abstractions
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  commentId: T:AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html
+  name: ICommandProducer<TCommand>
+  nameWithType: ICommandProducer<TCommand>
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>
+  nameWithType.vb: ICommandProducer(Of TCommand)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand)
+  name.vb: ICommandProducer(Of TCommand)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+    name: ICommandProducer
+    href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html
+  - name: <
+  - name: TCommand
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+    name: ICommandProducer
+    href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCommand
+  - name: )
+- uid: AzureServiceBusFlow.Abstractions.IEventProducer`1
+  commentId: T:AzureServiceBusFlow.Abstractions.IEventProducer`1
+  href: AzureServiceBusFlow.Abstractions.IEventProducer-1.html
+  name: IEventProducer<TEvent>
+  nameWithType: IEventProducer<TEvent>
+  fullName: AzureServiceBusFlow.Abstractions.IEventProducer<TEvent>
+  nameWithType.vb: IEventProducer(Of TEvent)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IEventProducer(Of TEvent)
+  name.vb: IEventProducer(Of TEvent)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IEventProducer`1
+    name: IEventProducer
+    href: AzureServiceBusFlow.Abstractions.IEventProducer-1.html
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IEventProducer`1
+    name: IEventProducer
+    href: AzureServiceBusFlow.Abstractions.IEventProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  commentId: T:AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  href: AzureServiceBusFlow.Abstractions.IMessageHandler-1.html
+  name: IMessageHandler<T>
+  nameWithType: IMessageHandler<T>
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>
+  nameWithType.vb: IMessageHandler(Of T)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T)
+  name.vb: IMessageHandler(Of T)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+    name: IMessageHandler
+    href: AzureServiceBusFlow.Abstractions.IMessageHandler-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+    name: IMessageHandler
+    href: AzureServiceBusFlow.Abstractions.IMessageHandler-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  href: AzureServiceBusFlow.Abstractions.IServiceBusMessage.html
+  name: IServiceBusMessage
+  nameWithType: IServiceBusMessage
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  name: IServiceBusProducer<TMessage>
+  nameWithType: IServiceBusProducer<TMessage>
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>
+  nameWithType.vb: IServiceBusProducer(Of TMessage)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage)
+  name.vb: IServiceBusProducer(Of TMessage)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  - name: <
+  - name: TMessage
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMessage
+  - name: )

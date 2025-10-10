@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Extensions
+  commentId: N:AzureServiceBusFlow.Extensions
+  id: AzureServiceBusFlow.Extensions
+  children:
+  - AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Extensions
+  nameWithType: AzureServiceBusFlow.Extensions
+  fullName: AzureServiceBusFlow.Extensions
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  commentId: T:AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  href: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.html
+  name: AzureServiceBusExtensions
+  nameWithType: AzureServiceBusExtensions
+  fullName: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions

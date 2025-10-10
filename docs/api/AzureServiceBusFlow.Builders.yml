@@ -1,0 +1,81 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Builders
+  commentId: N:AzureServiceBusFlow.Builders
+  id: AzureServiceBusFlow.Builders
+  children:
+  - AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+  - AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Builders
+  nameWithType: AzureServiceBusFlow.Builders
+  fullName: AzureServiceBusFlow.Builders
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+  parent: AzureServiceBusFlow.Builders
+  href: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html
+  name: ServiceBusConfigurationBuilder
+  nameWithType: ServiceBusConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  parent: AzureServiceBusFlow.Builders
+  href: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html
+  name: ServiceBusConsumerConfigurationBuilder
+  nameWithType: ServiceBusConsumerConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+  parent: AzureServiceBusFlow.Builders
+  href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html
+  name: ServiceBusProducerConfigurationBuilder<TMessage>
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage)
+  name.vb: ServiceBusProducerConfigurationBuilder(Of TMessage)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+    name: ServiceBusProducerConfigurationBuilder
+    href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html
+  - name: <
+  - name: TMessage
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+    name: ServiceBusProducerConfigurationBuilder
+    href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMessage
+  - name: )
+- uid: AzureServiceBusFlow.Builders
+  commentId: N:AzureServiceBusFlow.Builders
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Builders
+  nameWithType: AzureServiceBusFlow.Builders
+  fullName: AzureServiceBusFlow.Builders
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Builders
+    name: Builders
+    href: AzureServiceBusFlow.Builders.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Builders
+    name: Builders
+    href: AzureServiceBusFlow.Builders.html
