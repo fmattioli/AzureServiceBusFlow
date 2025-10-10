@@ -1,0 +1,718 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  commentId: T:AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  id: ServiceBusProducer`1
+  parent: AzureServiceBusFlow.Producers
+  children:
+  - AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,Microsoft.Extensions.Logging.ILogger)
+  - AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: ServiceBusProducer<TMessage>
+  nameWithType: ServiceBusProducer<TMessage>
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>
+  type: Class
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ServiceBusProducer
+    path: ../src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
+    startLine: 9
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Producers
+  syntax:
+    content: 'public class ServiceBusProducer<TMessage> : IServiceBusProducer<TMessage> where TMessage : class, IServiceBusMessage'
+    typeParameters:
+    - id: TMessage
+    content.vb: Public Class ServiceBusProducer(Of TMessage As {Class, IServiceBusMessage}) Implements IServiceBusProducer(Of TMessage)
+  inheritance:
+  - System.Object
+  implements:
+  - AzureServiceBusFlow.Abstractions.IServiceBusProducer{{TMessage}}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: ServiceBusProducer(Of TMessage)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage)
+  name.vb: ServiceBusProducer(Of TMessage)
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,Microsoft.Extensions.Logging.ILogger)
+  commentId: M:AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,Microsoft.Extensions.Logging.ILogger)
+  id: '#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,Microsoft.Extensions.Logging.ILogger)'
+  parent: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  langs:
+  - csharp
+  - vb
+  name: ServiceBusProducer(AzureServiceBusConfiguration, string, ILogger)
+  nameWithType: ServiceBusProducer<TMessage>.ServiceBusProducer(AzureServiceBusConfiguration, string, ILogger)
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ServiceBusProducer(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, string, Microsoft.Extensions.Logging.ILogger)
+  type: Constructor
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: .ctor
+    path: ../src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
+    startLine: 13
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Producers
+  syntax:
+    content: public ServiceBusProducer(AzureServiceBusConfiguration azureServiceBusConfiguration, string queueOrTopicName, ILogger logger)
+    parameters:
+    - id: azureServiceBusConfiguration
+      type: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+    - id: queueOrTopicName
+      type: System.String
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger
+    content.vb: Public Sub New(azureServiceBusConfiguration As AzureServiceBusConfiguration, queueOrTopicName As String, logger As ILogger)
+  overload: AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor*
+  nameWithType.vb: ServiceBusProducer(Of TMessage).New(AzureServiceBusConfiguration, String, ILogger)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).New(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, String, Microsoft.Extensions.Logging.ILogger)
+  name.vb: New(AzureServiceBusConfiguration, String, ILogger)
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  id: ProduceAsync(`0,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  langs:
+  - csharp
+  - vb
+  name: ProduceAsync(TMessage, CancellationToken)
+  nameWithType: ServiceBusProducer<TMessage>.ProduceAsync(TMessage, CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ProduceAsync(TMessage, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ProduceAsync
+    path: ../src/AzureServiceBusFlow/Producers/ServiceBusProducer.cs
+    startLine: 21
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Producers
+  example: []
+  syntax:
+    content: public Task ProduceAsync(TMessage message, CancellationToken cancellationToken)
+    parameters:
+    - id: message
+      type: '{TMessage}'
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ProduceAsync(message As TMessage, cancellationToken As CancellationToken) As Task
+  overload: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync*
+  implements:
+  - AzureServiceBusFlow.Abstractions.IServiceBusProducer{{TMessage}}.ProduceAsync({TMessage},System.Threading.CancellationToken)
+  nameWithType.vb: ServiceBusProducer(Of TMessage).ProduceAsync(TMessage, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).ProduceAsync(TMessage, System.Threading.CancellationToken)
+references:
+- uid: AzureServiceBusFlow.Producers
+  commentId: N:AzureServiceBusFlow.Producers
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Producers
+  nameWithType: AzureServiceBusFlow.Producers
+  fullName: AzureServiceBusFlow.Producers
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Producers
+    name: Producers
+    href: AzureServiceBusFlow.Producers.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Producers
+    name: Producers
+    href: AzureServiceBusFlow.Producers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer{{TMessage}}
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0}
+  parent: AzureServiceBusFlow.Abstractions
+  definition: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  name: IServiceBusProducer<TMessage>
+  nameWithType: IServiceBusProducer<TMessage>
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>
+  nameWithType.vb: IServiceBusProducer(Of TMessage)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage)
+  name.vb: IServiceBusProducer(Of TMessage)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  - name: <
+  - name: TMessage
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMessage
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  name: IServiceBusProducer<TMessage>
+  nameWithType: IServiceBusProducer<TMessage>
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>
+  nameWithType.vb: IServiceBusProducer(Of TMessage)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage)
+  name.vb: IServiceBusProducer(Of TMessage)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  - name: <
+  - name: TMessage
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMessage
+  - name: )
+- uid: AzureServiceBusFlow.Abstractions
+  commentId: N:AzureServiceBusFlow.Abstractions
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Abstractions
+  nameWithType: AzureServiceBusFlow.Abstractions
+  fullName: AzureServiceBusFlow.Abstractions
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor*
+  commentId: Overload:AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor
+  href: AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1__ctor_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_System_String_Microsoft_Extensions_Logging_ILogger_
+  name: ServiceBusProducer
+  nameWithType: ServiceBusProducer<TMessage>.ServiceBusProducer
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ServiceBusProducer
+  nameWithType.vb: ServiceBusProducer(Of TMessage).New
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).New
+  name.vb: New
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  commentId: T:AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  parent: AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html
+  name: AzureServiceBusConfiguration
+  nameWithType: AzureServiceBusConfiguration
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Microsoft.Extensions.Logging.ILogger
+  commentId: T:Microsoft.Extensions.Logging.ILogger
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Microsoft.Extensions.Logging.ILogger
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync*
+  commentId: Overload:AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync
+  href: AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  name: ProduceAsync
+  nameWithType: ServiceBusProducer<TMessage>.ProduceAsync
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ProduceAsync
+  nameWithType.vb: ServiceBusProducer(Of TMessage).ProduceAsync
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).ProduceAsync
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer{{TMessage}}.ProduceAsync({TMessage},System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0}.ProduceAsync(`0,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Abstractions.IServiceBusProducer{{TMessage}}
+  definition: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  name: ProduceAsync(TMessage, CancellationToken)
+  nameWithType: IServiceBusProducer<TMessage>.ProduceAsync(TMessage, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>.ProduceAsync(TMessage, System.Threading.CancellationToken)
+  nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0}.ProduceAsync(`0,System.Threading.CancellationToken)
+    name: ProduceAsync
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  - name: (
+  - name: TMessage
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0}.ProduceAsync(`0,System.Threading.CancellationToken)
+    name: ProduceAsync
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  - name: (
+  - name: TMessage
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: '{TMessage}'
+  commentId: '!:TMessage'
+  definition: TMessage
+  name: TMessage
+  nameWithType: TMessage
+  fullName: TMessage
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  isExternal: true
+  href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  name: ProduceAsync(TMessage, CancellationToken)
+  nameWithType: IServiceBusProducer<TMessage>.ProduceAsync(TMessage, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>.ProduceAsync(TMessage, System.Threading.CancellationToken)
+  nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+    name: ProduceAsync
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  - name: (
+  - name: TMessage
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+    name: ProduceAsync
+    href: AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  - name: (
+  - name: TMessage
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: TMessage
+  name: TMessage
+  nameWithType: TMessage
+  fullName: TMessage
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

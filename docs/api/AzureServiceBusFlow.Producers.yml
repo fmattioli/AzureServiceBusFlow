@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Producers
+  commentId: N:AzureServiceBusFlow.Producers
+  id: AzureServiceBusFlow.Producers
+  children:
+  - AzureServiceBusFlow.Producers.CommandProducer`1
+  - AzureServiceBusFlow.Producers.EventProducer`1
+  - AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Producers
+  nameWithType: AzureServiceBusFlow.Producers
+  fullName: AzureServiceBusFlow.Producers
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1
+  commentId: T:AzureServiceBusFlow.Producers.CommandProducer`1
+  href: AzureServiceBusFlow.Producers.CommandProducer-1.html
+  name: CommandProducer<TCommand>
+  nameWithType: CommandProducer<TCommand>
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>
+  nameWithType.vb: CommandProducer(Of TCommand)
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand)
+  name.vb: CommandProducer(Of TCommand)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Producers.CommandProducer`1
+    name: CommandProducer
+    href: AzureServiceBusFlow.Producers.CommandProducer-1.html
+  - name: <
+  - name: TCommand
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Producers.CommandProducer`1
+    name: CommandProducer
+    href: AzureServiceBusFlow.Producers.CommandProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCommand
+  - name: )
+- uid: AzureServiceBusFlow.Producers.EventProducer`1
+  commentId: T:AzureServiceBusFlow.Producers.EventProducer`1
+  href: AzureServiceBusFlow.Producers.EventProducer-1.html
+  name: EventProducer<TEvent>
+  nameWithType: EventProducer<TEvent>
+  fullName: AzureServiceBusFlow.Producers.EventProducer<TEvent>
+  nameWithType.vb: EventProducer(Of TEvent)
+  fullName.vb: AzureServiceBusFlow.Producers.EventProducer(Of TEvent)
+  name.vb: EventProducer(Of TEvent)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Producers.EventProducer`1
+    name: EventProducer
+    href: AzureServiceBusFlow.Producers.EventProducer-1.html
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Producers.EventProducer`1
+    name: EventProducer
+    href: AzureServiceBusFlow.Producers.EventProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  commentId: T:AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  href: AzureServiceBusFlow.Producers.ServiceBusProducer-1.html
+  name: ServiceBusProducer<TMessage>
+  nameWithType: ServiceBusProducer<TMessage>
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>
+  nameWithType.vb: ServiceBusProducer(Of TMessage)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage)
+  name.vb: ServiceBusProducer(Of TMessage)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+    name: ServiceBusProducer
+    href: AzureServiceBusFlow.Producers.ServiceBusProducer-1.html
+  - name: <
+  - name: TMessage
+  - name: '>'
+  spec.vb:
+  - uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+    name: ServiceBusProducer
+    href: AzureServiceBusFlow.Producers.ServiceBusProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMessage
+  - name: )

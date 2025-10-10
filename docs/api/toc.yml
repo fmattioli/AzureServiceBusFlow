@@ -1,0 +1,69 @@
+### YamlMime:TableOfContent
+items:
+- uid: AzureServiceBusFlow.Abstractions
+  name: AzureServiceBusFlow.Abstractions
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+    name: ICommandProducer<TCommand>
+    type: Interface
+  - uid: AzureServiceBusFlow.Abstractions.IEventProducer`1
+    name: IEventProducer<TEvent>
+    type: Interface
+  - uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+    name: IMessageHandler<T>
+    type: Interface
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+    name: IServiceBusMessage
+    type: Interface
+  - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+    name: IServiceBusProducer<TMessage>
+    type: Interface
+- uid: AzureServiceBusFlow.Builders
+  name: AzureServiceBusFlow.Builders
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+    name: ServiceBusConfigurationBuilder
+    type: Class
+  - uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+    name: ServiceBusConsumerConfigurationBuilder
+    type: Class
+  - uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+    name: ServiceBusProducerConfigurationBuilder<TMessage>
+    type: Class
+- uid: AzureServiceBusFlow.Extensions
+  name: AzureServiceBusFlow.Extensions
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+    name: AzureServiceBusExtensions
+    type: Class
+- uid: AzureServiceBusFlow.Hosts
+  name: AzureServiceBusFlow.Hosts
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+    name: ServiceBusConsumerHostedService
+    type: Class
+- uid: AzureServiceBusFlow.Models
+  name: AzureServiceBusFlow.Models
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+    name: AzureServiceBusConfiguration
+    type: Class
+- uid: AzureServiceBusFlow.Producers
+  name: AzureServiceBusFlow.Producers
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Producers.CommandProducer`1
+    name: CommandProducer<TCommand>
+    type: Class
+  - uid: AzureServiceBusFlow.Producers.EventProducer`1
+    name: EventProducer<TEvent>
+    type: Class
+  - uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+    name: ServiceBusProducer<TMessage>
+    type: Class
+memberLayout: SamePage

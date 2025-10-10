@@ -1,3 +1,835 @@
 ### YamlMime:XRefMap
 sorted: true
-references: []
+references:
+- uid: AzureServiceBusFlow.Abstractions
+  name: AzureServiceBusFlow.Abstractions
+  href: api/AzureServiceBusFlow.Abstractions.html
+  commentId: N:AzureServiceBusFlow.Abstractions
+  fullName: AzureServiceBusFlow.Abstractions
+  nameWithType: AzureServiceBusFlow.Abstractions
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  name: ICommandProducer<TCommand>
+  href: api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.html
+  commentId: T:AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  name.vb: ICommandProducer(Of TCommand)
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand)
+  nameWithType: ICommandProducer<TCommand>
+  nameWithType.vb: ICommandProducer(Of TCommand)
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  name: ProduceCommandAsync(TCommand, CancellationToken)
+  href: api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, CancellationToken)
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, CancellationToken)
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync*
+  name: ProduceCommandAsync
+  href: api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync_
+  commentId: Overload:AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync
+- uid: AzureServiceBusFlow.Abstractions.IEventProducer`1
+  name: IEventProducer<TEvent>
+  href: api/AzureServiceBusFlow.Abstractions.IEventProducer-1.html
+  commentId: T:AzureServiceBusFlow.Abstractions.IEventProducer`1
+  name.vb: IEventProducer(Of TEvent)
+  fullName: AzureServiceBusFlow.Abstractions.IEventProducer<TEvent>
+  fullName.vb: AzureServiceBusFlow.Abstractions.IEventProducer(Of TEvent)
+  nameWithType: IEventProducer<TEvent>
+  nameWithType.vb: IEventProducer(Of TEvent)
+- uid: AzureServiceBusFlow.Abstractions.IEventProducer`1.ProduceEventAsync(`0,System.Threading.CancellationToken)
+  name: ProduceEventAsync(TEvent, CancellationToken)
+  href: api/AzureServiceBusFlow.Abstractions.IEventProducer-1.html#AzureServiceBusFlow_Abstractions_IEventProducer_1_ProduceEventAsync__0_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Abstractions.IEventProducer`1.ProduceEventAsync(`0,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IEventProducer<TEvent>.ProduceEventAsync(TEvent, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IEventProducer(Of TEvent).ProduceEventAsync(TEvent, System.Threading.CancellationToken)
+  nameWithType: IEventProducer<TEvent>.ProduceEventAsync(TEvent, CancellationToken)
+  nameWithType.vb: IEventProducer(Of TEvent).ProduceEventAsync(TEvent, CancellationToken)
+- uid: AzureServiceBusFlow.Abstractions.IEventProducer`1.ProduceEventAsync*
+  name: ProduceEventAsync
+  href: api/AzureServiceBusFlow.Abstractions.IEventProducer-1.html#AzureServiceBusFlow_Abstractions_IEventProducer_1_ProduceEventAsync_
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IEventProducer`1.ProduceEventAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Abstractions.IEventProducer<TEvent>.ProduceEventAsync
+  fullName.vb: AzureServiceBusFlow.Abstractions.IEventProducer(Of TEvent).ProduceEventAsync
+  nameWithType: IEventProducer<TEvent>.ProduceEventAsync
+  nameWithType.vb: IEventProducer(Of TEvent).ProduceEventAsync
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  name: IMessageHandler<T>
+  href: api/AzureServiceBusFlow.Abstractions.IMessageHandler-1.html
+  commentId: T:AzureServiceBusFlow.Abstractions.IMessageHandler`1
+  name.vb: IMessageHandler(Of T)
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T)
+  nameWithType: IMessageHandler<T>
+  nameWithType.vb: IMessageHandler(Of T)
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)
+  name: HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
+  href: api/AzureServiceBusFlow.Abstractions.IMessageHandler-1.html#AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync__0_Azure_Messaging_ServiceBus_ServiceBusReceivedMessage_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>.HandleAsync(T, Azure.Messaging.ServiceBus.ServiceBusReceivedMessage, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T).HandleAsync(T, Azure.Messaging.ServiceBus.ServiceBusReceivedMessage, System.Threading.CancellationToken)
+  nameWithType: IMessageHandler<T>.HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
+  nameWithType.vb: IMessageHandler(Of T).HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
+- uid: AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync*
+  name: HandleAsync
+  href: api/AzureServiceBusFlow.Abstractions.IMessageHandler-1.html#AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync_
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Abstractions.IMessageHandler<T>.HandleAsync
+  fullName.vb: AzureServiceBusFlow.Abstractions.IMessageHandler(Of T).HandleAsync
+  nameWithType: IMessageHandler<T>.HandleAsync
+  nameWithType.vb: IMessageHandler(Of T).HandleAsync
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  name: IServiceBusMessage
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.html
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage
+  nameWithType: IServiceBusMessage
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  name: CreatedDate
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.html#AzureServiceBusFlow_Abstractions_IServiceBusMessage_CreatedDate
+  commentId: P:AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  nameWithType: IServiceBusMessage.CreatedDate
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate*
+  name: CreatedDate
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.html#AzureServiceBusFlow_Abstractions_IServiceBusMessage_CreatedDate_
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.CreatedDate
+  nameWithType: IServiceBusMessage.CreatedDate
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  name: RoutingKey
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.html#AzureServiceBusFlow_Abstractions_IServiceBusMessage_RoutingKey
+  commentId: P:AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  nameWithType: IServiceBusMessage.RoutingKey
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey*
+  name: RoutingKey
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusMessage.html#AzureServiceBusFlow_Abstractions_IServiceBusMessage_RoutingKey_
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusMessage.RoutingKey
+  nameWithType: IServiceBusMessage.RoutingKey
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  name: IServiceBusProducer<TMessage>
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html
+  commentId: T:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  name.vb: IServiceBusProducer(Of TMessage)
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage)
+  nameWithType: IServiceBusProducer<TMessage>
+  nameWithType.vb: IServiceBusProducer(Of TMessage)
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  name: ProduceAsync(TMessage, CancellationToken)
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>.ProduceAsync(TMessage, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, System.Threading.CancellationToken)
+  nameWithType: IServiceBusProducer<TMessage>.ProduceAsync(TMessage, CancellationToken)
+  nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, CancellationToken)
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync*
+  name: ProduceAsync
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync_
+  commentId: Overload:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>.ProduceAsync
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync
+  nameWithType: IServiceBusProducer<TMessage>.ProduceAsync
+  nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync
+- uid: AzureServiceBusFlow.Builders
+  name: AzureServiceBusFlow.Builders
+  href: api/AzureServiceBusFlow.Builders.html
+  commentId: N:AzureServiceBusFlow.Builders
+  fullName: AzureServiceBusFlow.Builders
+  nameWithType: AzureServiceBusFlow.Builders
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+  name: ServiceBusConfigurationBuilder
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder
+  nameWithType: ServiceBusConfigurationBuilder
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: ServiceBusConfigurationBuilder(IServiceCollection)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name.vb: New(IServiceCollection)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ServiceBusConfigurationBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.New(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: ServiceBusConfigurationBuilder.ServiceBusConfigurationBuilder(IServiceCollection)
+  nameWithType.vb: ServiceBusConfigurationBuilder.New(IServiceCollection)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.#ctor*
+  name: ServiceBusConfigurationBuilder
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder__ctor_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ServiceBusConfigurationBuilder
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.New
+  nameWithType: ServiceBusConfigurationBuilder.ServiceBusConfigurationBuilder
+  nameWithType.vb: ServiceBusConfigurationBuilder.New
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer(System.Action{AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder})
+  name: AddConsumer(Action<ServiceBusConsumerConfigurationBuilder>)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_AddConsumer_System_Action_AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder__
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer(System.Action{AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder})
+  name.vb: AddConsumer(Action(Of ServiceBusConsumerConfigurationBuilder))
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer(System.Action<AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder>)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer(System.Action(Of AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder))
+  nameWithType: ServiceBusConfigurationBuilder.AddConsumer(Action<ServiceBusConsumerConfigurationBuilder>)
+  nameWithType.vb: ServiceBusConfigurationBuilder.AddConsumer(Action(Of ServiceBusConsumerConfigurationBuilder))
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer*
+  name: AddConsumer
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_AddConsumer_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddConsumer
+  nameWithType: ServiceBusConfigurationBuilder.AddConsumer
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer*
+  name: AddProducer
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_AddProducer_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer
+  nameWithType: ServiceBusConfigurationBuilder.AddProducer
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer``1(System.Action{AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder{``0}})
+  name: AddProducer<TMessage>(Action<ServiceBusProducerConfigurationBuilder<TMessage>>)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_AddProducer__1_System_Action_AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder___0___
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer``1(System.Action{AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder{``0}})
+  name.vb: AddProducer(Of TMessage)(Action(Of ServiceBusProducerConfigurationBuilder(Of TMessage)))
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer<TMessage>(System.Action<AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>>)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AddProducer(Of TMessage)(System.Action(Of AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage)))
+  nameWithType: ServiceBusConfigurationBuilder.AddProducer<TMessage>(Action<ServiceBusProducerConfigurationBuilder<TMessage>>)
+  nameWithType.vb: ServiceBusConfigurationBuilder.AddProducer(Of TMessage)(Action(Of ServiceBusProducerConfigurationBuilder(Of TMessage)))
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+  name: AzureServiceBusConfiguration
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_AzureServiceBusConfiguration
+  commentId: P:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+  nameWithType: ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AzureServiceBusConfiguration*
+  name: AzureServiceBusConfiguration
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_AzureServiceBusConfiguration_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+  nameWithType: ServiceBusConfigurationBuilder.AzureServiceBusConfiguration
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.Build
+  name: Build()
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_Build
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.Build
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.Build()
+  nameWithType: ServiceBusConfigurationBuilder.Build()
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.Build*
+  name: Build
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_Build_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.Build
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.Build
+  nameWithType: ServiceBusConfigurationBuilder.Build
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ConfigureAzureServiceBus(AzureServiceBusFlow.Models.AzureServiceBusConfiguration)
+  name: ConfigureAzureServiceBus(AzureServiceBusConfiguration)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_ConfigureAzureServiceBus_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ConfigureAzureServiceBus(AzureServiceBusFlow.Models.AzureServiceBusConfiguration)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ConfigureAzureServiceBus(AzureServiceBusFlow.Models.AzureServiceBusConfiguration)
+  nameWithType: ServiceBusConfigurationBuilder.ConfigureAzureServiceBus(AzureServiceBusConfiguration)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ConfigureAzureServiceBus*
+  name: ConfigureAzureServiceBus
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder_ConfigureAzureServiceBus_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ConfigureAzureServiceBus
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder.ConfigureAzureServiceBus
+  nameWithType: ServiceBusConfigurationBuilder.ConfigureAzureServiceBus
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  name: ServiceBusConsumerConfigurationBuilder
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder
+  nameWithType: ServiceBusConsumerConfigurationBuilder
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration, IServiceCollection)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder__ctor_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name.vb: New(AzureServiceBusConfiguration, IServiceCollection)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.New(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration, IServiceCollection)
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.New(AzureServiceBusConfiguration, IServiceCollection)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor*
+  name: ServiceBusConsumerConfigurationBuilder
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder__ctor_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.New
+  nameWithType: ServiceBusConsumerConfigurationBuilder.ServiceBusConsumerConfigurationBuilder
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.New
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler*
+  name: AddHandler
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_AddHandler_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler
+  nameWithType: ServiceBusConsumerConfigurationBuilder.AddHandler
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler``2
+  name: AddHandler<TMessage, THandler>()
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_AddHandler__2
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler``2
+  name.vb: AddHandler(Of TMessage, THandler)()
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler<TMessage, THandler>()
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.AddHandler(Of TMessage, THandler)()
+  nameWithType: ServiceBusConsumerConfigurationBuilder.AddHandler<TMessage, THandler>()
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.AddHandler(Of TMessage, THandler)()
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  name: Build()
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_Build
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build()
+  nameWithType: ServiceBusConsumerConfigurationBuilder.Build()
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build*
+  name: Build
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_Build_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.Build
+  nameWithType: ServiceBusConsumerConfigurationBuilder.Build
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(System.String,System.String)
+  name: EnsureSubscriptionExists(string, string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_EnsureSubscriptionExists_System_String_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(System.String,System.String)
+  name.vb: EnsureSubscriptionExists(String, String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(string, string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(String, String)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(string, string)
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists(String, String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists*
+  name: EnsureSubscriptionExists
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_EnsureSubscriptionExists_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists
+  nameWithType: ServiceBusConsumerConfigurationBuilder.EnsureSubscriptionExists
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(System.String)
+  name: FromQueue(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_FromQueue_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(System.String)
+  name.vb: FromQueue(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue(String)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromQueue(string)
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.FromQueue(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue*
+  name: FromQueue
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_FromQueue_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromQueue
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromQueue
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(System.String,System.String)
+  name: FromTopic(string, string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_FromTopic_System_String_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(System.String,System.String)
+  name.vb: FromTopic(String, String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(string, string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic(String, String)
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromTopic(string, string)
+  nameWithType.vb: ServiceBusConsumerConfigurationBuilder.FromTopic(String, String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic*
+  name: FromTopic
+  href: api/AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.html#AzureServiceBusFlow_Builders_ServiceBusConsumerConfigurationBuilder_FromTopic_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusConsumerConfigurationBuilder.FromTopic
+  nameWithType: ServiceBusConsumerConfigurationBuilder.FromTopic
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+  name: ServiceBusProducerConfigurationBuilder<TMessage>
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html
+  commentId: T:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+  name.vb: ServiceBusProducerConfigurationBuilder(Of TMessage)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: ServiceBusProducerConfigurationBuilder(AzureServiceBusConfiguration, IServiceCollection)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1__ctor_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name.vb: New(AzureServiceBusConfiguration, IServiceCollection)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.ServiceBusProducerConfigurationBuilder(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).New(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.ServiceBusProducerConfigurationBuilder(AzureServiceBusConfiguration, IServiceCollection)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).New(AzureServiceBusConfiguration, IServiceCollection)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.#ctor*
+  name: ServiceBusProducerConfigurationBuilder
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1__ctor_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.ServiceBusProducerConfigurationBuilder
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).New
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.ServiceBusProducerConfigurationBuilder
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).New
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureQueueExists(System.String)
+  name: EnsureQueueExists(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_EnsureQueueExists_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureQueueExists(System.String)
+  name.vb: EnsureQueueExists(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.EnsureQueueExists(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureQueueExists(String)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.EnsureQueueExists(string)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureQueueExists(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureQueueExists*
+  name: EnsureQueueExists
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_EnsureQueueExists_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureQueueExists
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.EnsureQueueExists
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureQueueExists
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.EnsureQueueExists
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureQueueExists
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureTopicExists(System.String)
+  name: EnsureTopicExists(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_EnsureTopicExists_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureTopicExists(System.String)
+  name.vb: EnsureTopicExists(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.EnsureTopicExists(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureTopicExists(String)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.EnsureTopicExists(string)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureTopicExists(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureTopicExists*
+  name: EnsureTopicExists
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_EnsureTopicExists_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureTopicExists
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.EnsureTopicExists
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureTopicExists
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.EnsureTopicExists
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).EnsureTopicExists
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToQueue(System.String)
+  name: ToQueue(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_ToQueue_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToQueue(System.String)
+  name.vb: ToQueue(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.ToQueue(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).ToQueue(String)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.ToQueue(string)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).ToQueue(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToQueue*
+  name: ToQueue
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_ToQueue_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToQueue
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.ToQueue
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).ToQueue
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.ToQueue
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).ToQueue
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToTopic(System.String)
+  name: ToTopic(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_ToTopic_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToTopic(System.String)
+  name.vb: ToTopic(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.ToTopic(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).ToTopic(String)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.ToTopic(string)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).ToTopic(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToTopic*
+  name: ToTopic
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_ToTopic_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToTopic
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.ToTopic
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).ToTopic
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.ToTopic
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).ToTopic
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithCommandProducer
+  name: WithCommandProducer()
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithCommandProducer
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithCommandProducer
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithCommandProducer()
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithCommandProducer()
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithCommandProducer()
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithCommandProducer()
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithCommandProducer*
+  name: WithCommandProducer
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithCommandProducer_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithCommandProducer
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithCommandProducer
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithCommandProducer
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithCommandProducer
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithCommandProducer
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithEventProducer
+  name: WithEventProducer()
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithEventProducer
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithEventProducer
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithEventProducer()
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithEventProducer()
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithEventProducer()
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithEventProducer()
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithEventProducer*
+  name: WithEventProducer
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithEventProducer_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithEventProducer
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithEventProducer
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithEventProducer
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithEventProducer
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithEventProducer
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithQueue(System.String)
+  name: WithQueue(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithQueue_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithQueue(System.String)
+  name.vb: WithQueue(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithQueue(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithQueue(String)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithQueue(string)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithQueue(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithQueue*
+  name: WithQueue
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithQueue_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithQueue
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithQueue
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithQueue
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithQueue
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithQueue
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic(System.String)
+  name: WithTopic(string)
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithTopic_System_String_
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic(System.String)
+  name.vb: WithTopic(String)
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic(string)
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic(String)
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic(string)
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic(String)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic*
+  name: WithTopic
+  href: api/AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithTopic_
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic
+- uid: AzureServiceBusFlow.Extensions
+  name: AzureServiceBusFlow.Extensions
+  href: api/AzureServiceBusFlow.Extensions.html
+  commentId: N:AzureServiceBusFlow.Extensions
+  fullName: AzureServiceBusFlow.Extensions
+  nameWithType: AzureServiceBusFlow.Extensions
+- uid: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  name: AzureServiceBusExtensions
+  href: api/AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.html
+  commentId: T:AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  fullName: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  nameWithType: AzureServiceBusExtensions
+- uid: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder})
+  name: AddAzureServiceBus(IServiceCollection, Action<ServiceBusConfigurationBuilder>)
+  href: api/AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.html#AzureServiceBusFlow_Extensions_AzureServiceBusExtensions_AddAzureServiceBus_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_AzureServiceBusFlow_Builders_ServiceBusConfigurationBuilder__
+  commentId: M:AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder})
+  name.vb: AddAzureServiceBus(IServiceCollection, Action(Of ServiceBusConfigurationBuilder))
+  fullName: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action<AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder>)
+  fullName.vb: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action(Of AzureServiceBusFlow.Builders.ServiceBusConfigurationBuilder))
+  nameWithType: AzureServiceBusExtensions.AddAzureServiceBus(IServiceCollection, Action<ServiceBusConfigurationBuilder>)
+  nameWithType.vb: AzureServiceBusExtensions.AddAzureServiceBus(IServiceCollection, Action(Of ServiceBusConfigurationBuilder))
+- uid: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus*
+  name: AddAzureServiceBus
+  href: api/AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.html#AzureServiceBusFlow_Extensions_AzureServiceBusExtensions_AddAzureServiceBus_
+  commentId: Overload:AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions.AddAzureServiceBus
+  nameWithType: AzureServiceBusExtensions.AddAzureServiceBus
+- uid: AzureServiceBusFlow.Hosts
+  name: AzureServiceBusFlow.Hosts
+  href: api/AzureServiceBusFlow.Hosts.html
+  commentId: N:AzureServiceBusFlow.Hosts
+  fullName: AzureServiceBusFlow.Hosts
+  nameWithType: AzureServiceBusFlow.Hosts
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+  name: ServiceBusConsumerHostedService
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html
+  commentId: T:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+  nameWithType: ServiceBusConsumerHostedService
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.#ctor(System.Func{Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.IServiceProvider,System.Threading.CancellationToken,System.Threading.Tasks.Task},System.IServiceProvider,Microsoft.Extensions.Logging.ILogger,AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,System.String)
+  name: ServiceBusConsumerHostedService(Func<ServiceBusReceivedMessage, IServiceProvider, CancellationToken, Task>, IServiceProvider, ILogger, AzureServiceBusConfiguration, string, string)
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService__ctor_System_Func_Azure_Messaging_ServiceBus_ServiceBusReceivedMessage_System_IServiceProvider_System_Threading_CancellationToken_System_Threading_Tasks_Task__System_IServiceProvider_Microsoft_Extensions_Logging_ILogger_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_System_String_System_String_
+  commentId: M:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.#ctor(System.Func{Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.IServiceProvider,System.Threading.CancellationToken,System.Threading.Tasks.Task},System.IServiceProvider,Microsoft.Extensions.Logging.ILogger,AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,System.String)
+  name.vb: New(Func(Of ServiceBusReceivedMessage, IServiceProvider, CancellationToken, Task), IServiceProvider, ILogger, AzureServiceBusConfiguration, String, String)
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.ServiceBusConsumerHostedService(System.Func<Azure.Messaging.ServiceBus.ServiceBusReceivedMessage, System.IServiceProvider, System.Threading.CancellationToken, System.Threading.Tasks.Task>, System.IServiceProvider, Microsoft.Extensions.Logging.ILogger, AzureServiceBusFlow.Models.AzureServiceBusConfiguration, string, string)
+  fullName.vb: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.New(System.Func(Of Azure.Messaging.ServiceBus.ServiceBusReceivedMessage, System.IServiceProvider, System.Threading.CancellationToken, System.Threading.Tasks.Task), System.IServiceProvider, Microsoft.Extensions.Logging.ILogger, AzureServiceBusFlow.Models.AzureServiceBusConfiguration, String, String)
+  nameWithType: ServiceBusConsumerHostedService.ServiceBusConsumerHostedService(Func<ServiceBusReceivedMessage, IServiceProvider, CancellationToken, Task>, IServiceProvider, ILogger, AzureServiceBusConfiguration, string, string)
+  nameWithType.vb: ServiceBusConsumerHostedService.New(Func(Of ServiceBusReceivedMessage, IServiceProvider, CancellationToken, Task), IServiceProvider, ILogger, AzureServiceBusConfiguration, String, String)
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.#ctor*
+  name: ServiceBusConsumerHostedService
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService__ctor_
+  commentId: Overload:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.ServiceBusConsumerHostedService
+  fullName.vb: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.New
+  nameWithType: ServiceBusConsumerHostedService.ServiceBusConsumerHostedService
+  nameWithType.vb: ServiceBusConsumerHostedService.New
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.DisposeAsync
+  name: DisposeAsync()
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService_DisposeAsync
+  commentId: M:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.DisposeAsync
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.DisposeAsync()
+  nameWithType: ServiceBusConsumerHostedService.DisposeAsync()
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.DisposeAsync*
+  name: DisposeAsync
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService_DisposeAsync_
+  commentId: Overload:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.DisposeAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.DisposeAsync
+  nameWithType: ServiceBusConsumerHostedService.DisposeAsync
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StartAsync(System.Threading.CancellationToken)
+  name: StartAsync(CancellationToken)
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService_StartAsync_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StartAsync(System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StartAsync(System.Threading.CancellationToken)
+  nameWithType: ServiceBusConsumerHostedService.StartAsync(CancellationToken)
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StartAsync*
+  name: StartAsync
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService_StartAsync_
+  commentId: Overload:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StartAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StartAsync
+  nameWithType: ServiceBusConsumerHostedService.StartAsync
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StopAsync(System.Threading.CancellationToken)
+  name: StopAsync(CancellationToken)
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService_StopAsync_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StopAsync(System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StopAsync(System.Threading.CancellationToken)
+  nameWithType: ServiceBusConsumerHostedService.StopAsync(CancellationToken)
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StopAsync*
+  name: StopAsync
+  href: api/AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html#AzureServiceBusFlow_Hosts_ServiceBusConsumerHostedService_StopAsync_
+  commentId: Overload:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StopAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.StopAsync
+  nameWithType: ServiceBusConsumerHostedService.StopAsync
+- uid: AzureServiceBusFlow.Models
+  name: AzureServiceBusFlow.Models
+  href: api/AzureServiceBusFlow.Models.html
+  commentId: N:AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  name: AzureServiceBusConfiguration
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html
+  commentId: T:AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  nameWithType: AzureServiceBusConfiguration
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  name: ConnectionString
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_ConnectionString
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  nameWithType: AzureServiceBusConfiguration.ConnectionString
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString*
+  name: ConnectionString
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_ConnectionString_
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  nameWithType: AzureServiceBusConfiguration.ConnectionString
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  name: MaxAutoLockRenewalDurationInSeconds
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxAutoLockRenewalDurationInSeconds
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  nameWithType: AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds*
+  name: MaxAutoLockRenewalDurationInSeconds
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxAutoLockRenewalDurationInSeconds_
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  nameWithType: AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  name: MaxConcurrentCalls
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxConcurrentCalls
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  nameWithType: AzureServiceBusConfiguration.MaxConcurrentCalls
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls*
+  name: MaxConcurrentCalls
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxConcurrentCalls_
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  nameWithType: AzureServiceBusConfiguration.MaxConcurrentCalls
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  name: MaxRetryAttempts
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxRetryAttempts
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  nameWithType: AzureServiceBusConfiguration.MaxRetryAttempts
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts*
+  name: MaxRetryAttempts
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxRetryAttempts_
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  nameWithType: AzureServiceBusConfiguration.MaxRetryAttempts
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  name: ServiceBusReceiveMode
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_ServiceBusReceiveMode
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  nameWithType: AzureServiceBusConfiguration.ServiceBusReceiveMode
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode*
+  name: ServiceBusReceiveMode
+  href: api/AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_ServiceBusReceiveMode_
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  nameWithType: AzureServiceBusConfiguration.ServiceBusReceiveMode
+- uid: AzureServiceBusFlow.Producers
+  name: AzureServiceBusFlow.Producers
+  href: api/AzureServiceBusFlow.Producers.html
+  commentId: N:AzureServiceBusFlow.Producers
+  fullName: AzureServiceBusFlow.Producers
+  nameWithType: AzureServiceBusFlow.Producers
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1
+  name: CommandProducer<TCommand>
+  href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html
+  commentId: T:AzureServiceBusFlow.Producers.CommandProducer`1
+  name.vb: CommandProducer(Of TCommand)
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand)
+  nameWithType: CommandProducer<TCommand>
+  nameWithType.vb: CommandProducer(Of TCommand)
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1.#ctor(AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0})
+  name: CommandProducer(IServiceBusProducer<TCommand>)
+  href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html#AzureServiceBusFlow_Producers_CommandProducer_1__ctor_AzureServiceBusFlow_Abstractions_IServiceBusProducer__0__
+  commentId: M:AzureServiceBusFlow.Producers.CommandProducer`1.#ctor(AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0})
+  name.vb: New(IServiceBusProducer(Of TCommand))
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>.CommandProducer(AzureServiceBusFlow.Abstractions.IServiceBusProducer<TCommand>)
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).New(AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TCommand))
+  nameWithType: CommandProducer<TCommand>.CommandProducer(IServiceBusProducer<TCommand>)
+  nameWithType.vb: CommandProducer(Of TCommand).New(IServiceBusProducer(Of TCommand))
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1.#ctor*
+  name: CommandProducer
+  href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html#AzureServiceBusFlow_Producers_CommandProducer_1__ctor_
+  commentId: Overload:AzureServiceBusFlow.Producers.CommandProducer`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>.CommandProducer
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).New
+  nameWithType: CommandProducer<TCommand>.CommandProducer
+  nameWithType.vb: CommandProducer(Of TCommand).New
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  name: ProduceCommandAsync(TCommand, CancellationToken)
+  href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html#AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>.ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+  nameWithType: CommandProducer<TCommand>.ProduceCommandAsync(TCommand, CancellationToken)
+  nameWithType.vb: CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, CancellationToken)
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync*
+  name: ProduceCommandAsync
+  href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html#AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync_
+  commentId: Overload:AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>.ProduceCommandAsync
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).ProduceCommandAsync
+  nameWithType: CommandProducer<TCommand>.ProduceCommandAsync
+  nameWithType.vb: CommandProducer(Of TCommand).ProduceCommandAsync
+- uid: AzureServiceBusFlow.Producers.EventProducer`1
+  name: EventProducer<TEvent>
+  href: api/AzureServiceBusFlow.Producers.EventProducer-1.html
+  commentId: T:AzureServiceBusFlow.Producers.EventProducer`1
+  name.vb: EventProducer(Of TEvent)
+  fullName: AzureServiceBusFlow.Producers.EventProducer<TEvent>
+  fullName.vb: AzureServiceBusFlow.Producers.EventProducer(Of TEvent)
+  nameWithType: EventProducer<TEvent>
+  nameWithType.vb: EventProducer(Of TEvent)
+- uid: AzureServiceBusFlow.Producers.EventProducer`1.#ctor(AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0})
+  name: EventProducer(IServiceBusProducer<TEvent>)
+  href: api/AzureServiceBusFlow.Producers.EventProducer-1.html#AzureServiceBusFlow_Producers_EventProducer_1__ctor_AzureServiceBusFlow_Abstractions_IServiceBusProducer__0__
+  commentId: M:AzureServiceBusFlow.Producers.EventProducer`1.#ctor(AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0})
+  name.vb: New(IServiceBusProducer(Of TEvent))
+  fullName: AzureServiceBusFlow.Producers.EventProducer<TEvent>.EventProducer(AzureServiceBusFlow.Abstractions.IServiceBusProducer<TEvent>)
+  fullName.vb: AzureServiceBusFlow.Producers.EventProducer(Of TEvent).New(AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TEvent))
+  nameWithType: EventProducer<TEvent>.EventProducer(IServiceBusProducer<TEvent>)
+  nameWithType.vb: EventProducer(Of TEvent).New(IServiceBusProducer(Of TEvent))
+- uid: AzureServiceBusFlow.Producers.EventProducer`1.#ctor*
+  name: EventProducer
+  href: api/AzureServiceBusFlow.Producers.EventProducer-1.html#AzureServiceBusFlow_Producers_EventProducer_1__ctor_
+  commentId: Overload:AzureServiceBusFlow.Producers.EventProducer`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Producers.EventProducer<TEvent>.EventProducer
+  fullName.vb: AzureServiceBusFlow.Producers.EventProducer(Of TEvent).New
+  nameWithType: EventProducer<TEvent>.EventProducer
+  nameWithType.vb: EventProducer(Of TEvent).New
+- uid: AzureServiceBusFlow.Producers.EventProducer`1.ProduceEventAsync(`0,System.Threading.CancellationToken)
+  name: ProduceEventAsync(TEvent, CancellationToken)
+  href: api/AzureServiceBusFlow.Producers.EventProducer-1.html#AzureServiceBusFlow_Producers_EventProducer_1_ProduceEventAsync__0_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Producers.EventProducer`1.ProduceEventAsync(`0,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.EventProducer<TEvent>.ProduceEventAsync(TEvent, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.EventProducer(Of TEvent).ProduceEventAsync(TEvent, System.Threading.CancellationToken)
+  nameWithType: EventProducer<TEvent>.ProduceEventAsync(TEvent, CancellationToken)
+  nameWithType.vb: EventProducer(Of TEvent).ProduceEventAsync(TEvent, CancellationToken)
+- uid: AzureServiceBusFlow.Producers.EventProducer`1.ProduceEventAsync*
+  name: ProduceEventAsync
+  href: api/AzureServiceBusFlow.Producers.EventProducer-1.html#AzureServiceBusFlow_Producers_EventProducer_1_ProduceEventAsync_
+  commentId: Overload:AzureServiceBusFlow.Producers.EventProducer`1.ProduceEventAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Producers.EventProducer<TEvent>.ProduceEventAsync
+  fullName.vb: AzureServiceBusFlow.Producers.EventProducer(Of TEvent).ProduceEventAsync
+  nameWithType: EventProducer<TEvent>.ProduceEventAsync
+  nameWithType.vb: EventProducer(Of TEvent).ProduceEventAsync
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  name: ServiceBusProducer<TMessage>
+  href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html
+  commentId: T:AzureServiceBusFlow.Producers.ServiceBusProducer`1
+  name.vb: ServiceBusProducer(Of TMessage)
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage)
+  nameWithType: ServiceBusProducer<TMessage>
+  nameWithType.vb: ServiceBusProducer(Of TMessage)
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,Microsoft.Extensions.Logging.ILogger)
+  name: ServiceBusProducer(AzureServiceBusConfiguration, string, ILogger)
+  href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1__ctor_AzureServiceBusFlow_Models_AzureServiceBusConfiguration_System_String_Microsoft_Extensions_Logging_ILogger_
+  commentId: M:AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor(AzureServiceBusFlow.Models.AzureServiceBusConfiguration,System.String,Microsoft.Extensions.Logging.ILogger)
+  name.vb: New(AzureServiceBusConfiguration, String, ILogger)
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ServiceBusProducer(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, string, Microsoft.Extensions.Logging.ILogger)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).New(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, String, Microsoft.Extensions.Logging.ILogger)
+  nameWithType: ServiceBusProducer<TMessage>.ServiceBusProducer(AzureServiceBusConfiguration, string, ILogger)
+  nameWithType.vb: ServiceBusProducer(Of TMessage).New(AzureServiceBusConfiguration, String, ILogger)
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor*
+  name: ServiceBusProducer
+  href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1__ctor_
+  commentId: Overload:AzureServiceBusFlow.Producers.ServiceBusProducer`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ServiceBusProducer
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).New
+  nameWithType: ServiceBusProducer<TMessage>.ServiceBusProducer
+  nameWithType.vb: ServiceBusProducer(Of TMessage).New
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  name: ProduceAsync(TMessage, CancellationToken)
+  href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ProduceAsync(TMessage, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).ProduceAsync(TMessage, System.Threading.CancellationToken)
+  nameWithType: ServiceBusProducer<TMessage>.ProduceAsync(TMessage, CancellationToken)
+  nameWithType.vb: ServiceBusProducer(Of TMessage).ProduceAsync(TMessage, CancellationToken)
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync*
+  name: ProduceAsync
+  href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1_ProduceAsync_
+  commentId: Overload:AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ProduceAsync
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).ProduceAsync
+  nameWithType: ServiceBusProducer<TMessage>.ProduceAsync
+  nameWithType.vb: ServiceBusProducer(Of TMessage).ProduceAsync

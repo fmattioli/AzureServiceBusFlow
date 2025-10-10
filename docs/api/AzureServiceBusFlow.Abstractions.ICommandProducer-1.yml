@@ -1,0 +1,190 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  commentId: T:AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  id: ICommandProducer`1
+  parent: AzureServiceBusFlow.Abstractions
+  children:
+  - AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: ICommandProducer<TCommand>
+  nameWithType: ICommandProducer<TCommand>
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>
+  type: Interface
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ICommandProducer
+    path: ../src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
+    startLine: 2
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: 'public interface ICommandProducer<in TCommand> where TCommand : class, IServiceBusMessage'
+    typeParameters:
+    - id: TCommand
+    content.vb: Public Interface ICommandProducer(Of In TCommand As {Class, IServiceBusMessage})
+  nameWithType.vb: ICommandProducer(Of TCommand)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand)
+  name.vb: ICommandProducer(Of TCommand)
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  id: ProduceCommandAsync(`0,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Abstractions.ICommandProducer`1
+  langs:
+  - csharp
+  - vb
+  name: ProduceCommandAsync(TCommand, CancellationToken)
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ProduceCommandAsync
+    path: ../src/AzureServiceBusFlow/Abstractions/ICommandProducer.cs
+    startLine: 4
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken)
+    parameters:
+    - id: command
+      type: '{TCommand}'
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function ProduceCommandAsync(command As TCommand, cancellationToken As CancellationToken) As Task
+  overload: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync*
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+references:
+- uid: AzureServiceBusFlow.Abstractions
+  commentId: N:AzureServiceBusFlow.Abstractions
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Abstractions
+  nameWithType: AzureServiceBusFlow.Abstractions
+  fullName: AzureServiceBusFlow.Abstractions
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Abstractions
+    name: Abstractions
+    href: AzureServiceBusFlow.Abstractions.html
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync*
+  commentId: Overload:AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync
+  href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_
+  name: ProduceCommandAsync
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync
+- uid: '{TCommand}'
+  commentId: '!:TCommand'
+  definition: TCommand
+  name: TCommand
+  nameWithType: TCommand
+  fullName: TCommand
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: TCommand
+  name: TCommand
+  nameWithType: TCommand
+  fullName: TCommand
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

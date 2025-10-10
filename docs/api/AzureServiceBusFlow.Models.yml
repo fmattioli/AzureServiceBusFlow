@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  id: AzureServiceBusFlow.Models
+  children:
+  - AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  commentId: T:AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  parent: AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html
+  name: AzureServiceBusConfiguration
+  nameWithType: AzureServiceBusConfiguration
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html

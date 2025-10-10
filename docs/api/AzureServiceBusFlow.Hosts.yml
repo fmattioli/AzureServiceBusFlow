@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Hosts
+  commentId: N:AzureServiceBusFlow.Hosts
+  id: AzureServiceBusFlow.Hosts
+  children:
+  - AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Hosts
+  nameWithType: AzureServiceBusFlow.Hosts
+  fullName: AzureServiceBusFlow.Hosts
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+  commentId: T:AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
+  href: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService.html
+  name: ServiceBusConsumerHostedService
+  nameWithType: ServiceBusConsumerHostedService
+  fullName: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService

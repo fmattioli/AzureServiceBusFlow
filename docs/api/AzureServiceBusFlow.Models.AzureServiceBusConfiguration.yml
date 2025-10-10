@@ -1,0 +1,545 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  commentId: T:AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  id: AzureServiceBusConfiguration
+  parent: AzureServiceBusFlow.Models
+  children:
+  - AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  - AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  - AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  - AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  - AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusConfiguration
+  nameWithType: AzureServiceBusConfiguration
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  type: Class
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: AzureServiceBusConfiguration
+    path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+    startLine: 4
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Models
+  syntax:
+    content: public class AzureServiceBusConfiguration
+    content.vb: Public Class AzureServiceBusConfiguration
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  id: ConnectionString
+  parent: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ConnectionString
+  nameWithType: AzureServiceBusConfiguration.ConnectionString
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ConnectionString
+    path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+    startLine: 6
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Models
+  syntax:
+    content: public required string ConnectionString { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ConnectionString As String
+  overload: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString*
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  id: ServiceBusReceiveMode
+  parent: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ServiceBusReceiveMode
+  nameWithType: AzureServiceBusConfiguration.ServiceBusReceiveMode
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ServiceBusReceiveMode
+    path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+    startLine: 7
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Models
+  syntax:
+    content: public required ServiceBusReceiveMode ServiceBusReceiveMode { get; set; }
+    parameters: []
+    return:
+      type: Azure.Messaging.ServiceBus.ServiceBusReceiveMode
+    content.vb: Public Property ServiceBusReceiveMode As ServiceBusReceiveMode
+  overload: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode*
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  id: MaxConcurrentCalls
+  parent: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  langs:
+  - csharp
+  - vb
+  name: MaxConcurrentCalls
+  nameWithType: AzureServiceBusConfiguration.MaxConcurrentCalls
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: MaxConcurrentCalls
+    path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+    startLine: 8
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Models
+  syntax:
+    content: public int MaxConcurrentCalls { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxConcurrentCalls As Integer
+  overload: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls*
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  id: MaxAutoLockRenewalDurationInSeconds
+  parent: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  langs:
+  - csharp
+  - vb
+  name: MaxAutoLockRenewalDurationInSeconds
+  nameWithType: AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: MaxAutoLockRenewalDurationInSeconds
+    path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+    startLine: 9
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Models
+  syntax:
+    content: public int MaxAutoLockRenewalDurationInSeconds { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxAutoLockRenewalDurationInSeconds As Integer
+  overload: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds*
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  commentId: P:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  id: MaxRetryAttempts
+  parent: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  langs:
+  - csharp
+  - vb
+  name: MaxRetryAttempts
+  nameWithType: AzureServiceBusConfiguration.MaxRetryAttempts
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  type: Property
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+      branch: documentation
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: MaxRetryAttempts
+    path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
+    startLine: 10
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Models
+  syntax:
+    content: public int MaxRetryAttempts { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxRetryAttempts As Integer
+  overload: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts*
+references:
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString*
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_ConnectionString
+  name: ConnectionString
+  nameWithType: AzureServiceBusConfiguration.ConnectionString
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ConnectionString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode*
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_ServiceBusReceiveMode
+  name: ServiceBusReceiveMode
+  nameWithType: AzureServiceBusConfiguration.ServiceBusReceiveMode
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
+- uid: Azure.Messaging.ServiceBus.ServiceBusReceiveMode
+  commentId: T:Azure.Messaging.ServiceBus.ServiceBusReceiveMode
+  parent: Azure.Messaging.ServiceBus
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusreceivemode
+  name: ServiceBusReceiveMode
+  nameWithType: ServiceBusReceiveMode
+  fullName: Azure.Messaging.ServiceBus.ServiceBusReceiveMode
+- uid: Azure.Messaging.ServiceBus
+  commentId: N:Azure.Messaging.ServiceBus
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/azure
+  name: Azure.Messaging.ServiceBus
+  nameWithType: Azure.Messaging.ServiceBus
+  fullName: Azure.Messaging.ServiceBus
+  spec.csharp:
+  - uid: Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure
+  - name: .
+  - uid: Azure.Messaging
+    name: Messaging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging
+  - name: .
+  - uid: Azure.Messaging.ServiceBus
+    name: ServiceBus
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus
+  spec.vb:
+  - uid: Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure
+  - name: .
+  - uid: Azure.Messaging
+    name: Messaging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging
+  - name: .
+  - uid: Azure.Messaging.ServiceBus
+    name: ServiceBus
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls*
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxConcurrentCalls
+  name: MaxConcurrentCalls
+  nameWithType: AzureServiceBusConfiguration.MaxConcurrentCalls
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxConcurrentCalls
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds*
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxAutoLockRenewalDurationInSeconds
+  name: MaxAutoLockRenewalDurationInSeconds
+  nameWithType: AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxAutoLockRenewalDurationInSeconds
+- uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts*
+  commentId: Overload:AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
+  href: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.html#AzureServiceBusFlow_Models_AzureServiceBusConfiguration_MaxRetryAttempts
+  name: MaxRetryAttempts
+  nameWithType: AzureServiceBusConfiguration.MaxRetryAttempts
+  fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.MaxRetryAttempts
