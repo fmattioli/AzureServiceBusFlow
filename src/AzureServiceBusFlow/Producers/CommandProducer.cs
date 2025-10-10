@@ -1,4 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Models;
 
 namespace AzureServiceBusFlow.Producers
 {
@@ -10,6 +11,11 @@ namespace AzureServiceBusFlow.Producers
         public Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken)
         {
             return _producer.ProduceAsync(command, cancellationToken);
+        }
+
+        public Task ProduceCommandAsync(TCommand command, MessageOptions messageOptions, CancellationToken cancellationToken)
+        {
+            return _producer.ProduceAsync(command, messageOptions, cancellationToken);
         }
     }
 }
