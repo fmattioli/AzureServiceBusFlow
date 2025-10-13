@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | AzureServiceBusFlow </title>
+      <title>Consumers | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | AzureServiceBusFlow ">
+      <meta name="title" content="Consumers | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -85,14 +85,14 @@
         </div>
 
         <article data-uid="">
+<h1 id="consumers">Consumers</h1>
 
-<h2 id="consumers">Consumers</h2>
 <p><strong>AzureServiceBusFlow</strong> also simplify the creation of <strong>Consumers</strong> or <strong>MessageHandlers</strong> by implementing the <strong><code>IMessageHandler&lt;&gt;</code></strong> interface and passing the <strong>Message</strong> that will be consumed as the Type of the <strong>Handler</strong>.</p>
 <blockquote>
 <p>This interface provides the <code>HandleAsync()</code> method that is used to process the received message.</p>
 </blockquote>
-<hr>
-<h3 id="-creating-a-consumer">🛠️ Creating a Consumer</h3>
+<br>
+<h2 id="-creating-a-consumer">🛠️ Creating a Consumer</h2>
 <pre><code class="lang-csharp">public class CommandExample1Handler : IMessageHandler&lt;ExampleCommand1&gt;
 {
     public Task HandleAsync(ExampleCommand1 message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)
@@ -102,8 +102,8 @@
 }
 </code></pre>
 <p>The MessageHandler above consume a Message of type ExampleCommand1, created earlier in this documentation (<a href="/docs/creatingMessages.html">ExampleCommand1</a>).</p>
-<hr>
-<h3 id="-registering-consumer">⚙️ Registering Consumer</h3>
+<br>
+<h2 id="-registering-consumer">⚙️ Registering Consumer</h2>
 <p>To register the <strong>Consumer</strong>, aka <strong>MessageHandler</strong>, we need to use the <strong><code>AddConsumer()</code></strong> extension method in <strong><code>AddAzureServiceBus()</code></strong> configuration methon in <strong><code>Program.cs</code></strong>.</p>
 <blockquote>
 <p>the <strong><code>AddConsummer()</code></strong> method requires a Action of type ServiceBusConsumerConfigurationBuilder to configure the Consumer using this methods:</p>
@@ -119,7 +119,7 @@
 <li>Registering a <strong>Message</strong></li>
 <li>Creating a <strong>Producer</strong> for it</li>
 <li>Publishing in a specifi <strong>Queue</strong></li>
-<li>Configuring 2 <strong>Consumers</strong> / <strong>MessageHandlers</strong> for the same <strong>Message</strong></li>
+<li>Configuring a <strong>Consumer</strong> / <strong>MessageHandler</strong> for the <strong>Message</strong></li>
 <li>Consuming this <strong>Message</strong> from the same <strong>Queue</strong>.</li>
 </ul>
 <pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
@@ -130,9 +130,18 @@
         .ToQueue(&quot;command-queue-one&quot;))
     .AddConsumer(c =&gt; c
         .FromQueue(&quot;command-queue-one&quot;)
-        .AddHandler&lt;ExampleCommand1, CommandExemple1Handler&gt;()
-        .AddHandler&lt;ExampleCommand1, CommandExampleTwoHandlersPerOneMessageHandler&gt;())
+        .AddHandler&lt;ExampleCommand1, CommandExemple1Handler&gt;())
     );
+</code></pre>
+<p>The complete flow of sending a message and consuming it with the <code>MessageHandler</code> we just created is shown below.</p>
+<pre><code class="lang-mermaid">flowchart LR
+
+A[__producer_] --&gt;|ExampleCommand1| B
+B --&gt;|ExampleCommand1| C[CommandExemple1Handler]
+
+subgraph AzureServiceBus
+        B([command-queue-one])
+    end
 </code></pre>
 
 </article>

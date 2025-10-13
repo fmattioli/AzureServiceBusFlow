@@ -19,7 +19,6 @@
       href: producersComponent.md
 
 - name: Configuring in your API
-  href: settingUp.md
   items:
     - name: Configuration
       href: settingUp.md

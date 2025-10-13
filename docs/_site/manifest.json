@@ -222,6 +222,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Models.MessageOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Models.MessageOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Models.MessageOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AzureServiceBusFlow.Models.yml",
       "output": {
         ".html": {

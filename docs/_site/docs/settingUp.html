@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | AzureServiceBusFlow </title>
+      <title>Configuring your API | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | AzureServiceBusFlow ">
+      <meta name="title" content="Configuring your API | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -85,15 +85,17 @@
         </div>
 
         <article data-uid="">
+<h1 id="configuring-your-api">Configuring your API</h1>
 
-<h3 id="-step-1-install-the-nuget-package">📦 Step 1: Install the NuGet Package</h3>
+<br>
+<h2 id="-step-1-install-the-nuget-package">📦 Step 1: Install the NuGet Package</h2>
 <p>Start by installing the <strong>AzureServiceBusFlow</strong> package from NuGet:</p>
 <pre><code class="lang-bash">dotnet add package AzureServiceBusFlow
 </code></pre>
 <p>You can also find it <a href="https://www.nuget.org/packages/AzureServiceBusFlow">on NuGet.org</a>.</p>
-<p>This package contains all the necessary components to configure Producers / Consumers, register Queues / Topics and publish Messagens / Events to AzureServiceBus.</p>
-<hr>
-<h3 id="-step-2-configure-the-appsettingsjson">⚙️ Step 2: Configure the <code>appsettings.json</code></h3>
+<p>This package contains all the necessary components to configure Producers / Consumers, register Queues / Topics and publish Messages (Commands/ Events) to AzureServiceBus.</p>
+<br>
+<h2 id="-step-2-configure-the-appsettingsjson">⚙️ Step 2: Configure the <code>appsettings.json</code></h2>
 <p>After installing the package, it's time to configure your <code>appsettings.json</code> file.<br>
 You need to define the basic configuration for Azure Service Bus to work.</p>
 <p>Here’s a configuration example:</p>
@@ -117,15 +119,24 @@ You need to define the basic configuration for Azure Service Bus to work.</p>
 <li><strong>MaxConcurrentCalls</strong>: Specifies the maximum number of messages that can be processed concurrently.</li>
 <li><strong>MaxRetryAttempts</strong>: Defines the maximum number of retry attempts the message handler will perform to reprocess a message if an exception occurs.</li>
 </ul>
-<hr>
-<h3 id="-step-3-register-azureservicebus-in-programcs">🧩 Step 3: Register AzureServiceBus in <code>Program.cs</code></h3>
+<br>
+<h2 id="-step-3-register-azureservicebus-in-programcs">🧩 Step 3: Register AzureServiceBus in <code>Program.cs</code></h2>
 <p>Now that your <code>appsettings.json</code> is configured, it's time to enable AzureServiceBus in your application.</p>
 <p>Inside your <code>Program.cs</code>, register the AzureServiceBus in DI container with the AddAzureServiceBus extension method and set the configure method.</p>
-<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
+<pre><code class="lang-csharp">var azureServiceBusConfig = new AzureServiceBusConfiguration
+{
+    ConnectionString = &quot;&quot;,
+    ServiceBusReceiveMode = Azure.Messaging.ServiceBus.ServiceBusReceiveMode.ReceiveAndDelete,
+    MaxConcurrentCalls = 10,
+    MaxAutoLockRenewalDurationInSeconds = 1800,
+    MaxRetryAttempts = 2
+};
+
+builder.Services.AddAzureServiceBus(cfg =&gt; cfg
     .ConfigureAzureServiceBus(azureServiceBusConfig));
 </code></pre>
-<p>This method need a <strong><code>AzureServiceBusConfiguration</code></strong> instance to configure all the necessary properties to work with the Azure Service Bus. This configuration class is provided by <strong>AzureServiceBusFlow</strong> and its parameters are the same as the JSON object configured in <strong>⚙️Step 2</strong>.</p>
-<p>At this time, no queues, topics, producers or consumers are configured and registered. This will be done in the next pages.</p>
+<p>This method need a <strong><code>AzureServiceBusConfiguration</code></strong> instance to configure all the necessary properties to work with the Azure Service Bus.</p>
+<p>At this time, no queues, topics, producers or consumers are configured and registered. This will be done in the next steps.</p>
 <blockquote>
 <p>💡 I recommend you create a class called Settings and map the appsettings.json on this class, you can merge your personal appsettings config and also add the AzureServiceBusFlow properties that are required. For example:</p>
 </blockquote>
@@ -149,9 +160,9 @@ You need to define the basic configuration for Azure Service Bus to work.</p>
 </code></pre>
 <pre><code class="lang-csharp">var applicationSettings = builder.Configuration.GetSection(&quot;Settings&quot;).Get&lt;Settings&gt;();
 </code></pre>
-<h2 id="section"><br><br></h2>
-<h3 id="-next-steps-create-messages-producers-consumers-queues-and-topics">🔒 Next Steps: Create Messages, Producers, Consumers, Queues and Topics.</h3>
-<p>In the next step, we will explain how to create Messages and Producers that will publish to a specific queue or topic in Azure Service Bus.</p>
+<p><br><br></p>
+<h2 id="-next-steps-create-messages-producers-consumers-queues-and-topics">🔒 Next Steps: Create Messages, Producers, Consumers, Queues and Topics.</h2>
+<p>In the next step, we`ll explain how to create Messages and Producers that will publish to a specific queue or topic in Azure Service Bus.</p>
 
 </article>
 

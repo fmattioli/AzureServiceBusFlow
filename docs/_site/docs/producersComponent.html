@@ -89,6 +89,7 @@
 
 <p><strong>Producers</strong> are responsible for <strong>sending messages</strong> to Azure Service Bus queues or topics.<br>
 The <strong>AzureServiceBusFlow</strong> package provides built-in producer interfaces and implementations, allowing you to send both <strong>Commands</strong> and <strong>Events</strong> easily and consistently.</p>
+<br>
 <h2 id="-producer-interfaces">🧩 Producer Interfaces</h2>
 <p>The library defines two main producer interfaces:</p>
 <pre><code class="lang-csharp">public interface ICommandProducer&lt;in TCommand&gt; where TCommand : class, IServiceBusMessage
@@ -131,6 +132,7 @@ public interface IEventProducer&lt;in TEvent&gt; where TEvent : class, IServiceB
     }
 }
 </code></pre>
+<br>
 <h2 id="-example-of-usage-in-a-controller">🧱 Example of Usage in a Controller</h2>
 <p>You don’t need to create a custom producer class — AsbFlow already provides the implementations.
 Simply inject the appropriate interface (<strong><code>ICommandProducer</code></strong> or <strong><code>IEventProducer</code></strong>) and call the <code>Produce...Async</code> method:</p>
@@ -156,6 +158,7 @@ public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer
     }
 }
 </code></pre>
+<br>
 <h2 id="-key-points">🧠 Key Points</h2>
 <ul>
 <li>Both <strong>CommandProducer</strong> and <strong>EventProducer</strong> share the same implementation logic.</li>

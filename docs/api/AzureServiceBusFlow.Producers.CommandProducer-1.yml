@@ -6,6 +6,7 @@ items:
   parent: AzureServiceBusFlow.Producers
   children:
   - AzureServiceBusFlow.Producers.CommandProducer`1.#ctor(AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0})
+  - AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
   - AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
   langs:
   - csharp
@@ -21,7 +22,7 @@ items:
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: CommandProducer
     path: ../src/AzureServiceBusFlow/Producers/CommandProducer.cs
-    startLine: 4
+    startLine: 5
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Producers
@@ -63,7 +64,7 @@ items:
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Producers/CommandProducer.cs
-    startLine: 4
+    startLine: 5
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Producers
@@ -95,7 +96,7 @@ items:
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ProduceCommandAsync
     path: ../src/AzureServiceBusFlow/Producers/CommandProducer.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Producers
@@ -115,6 +116,46 @@ items:
   - AzureServiceBusFlow.Abstractions.ICommandProducer{{TCommand}}.ProduceCommandAsync({TCommand},System.Threading.CancellationToken)
   nameWithType.vb: CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, CancellationToken)
   fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, System.Threading.CancellationToken)
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  id: ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Producers.CommandProducer`1
+  langs:
+  - csharp
+  - vb
+  name: ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  nameWithType: CommandProducer<TCommand>.ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>.ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Producers/CommandProducer.cs
+      branch: main
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ProduceCommandAsync
+    path: ../src/AzureServiceBusFlow/Producers/CommandProducer.cs
+    startLine: 15
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Producers
+  example: []
+  syntax:
+    content: public Task ProduceCommandAsync(TCommand command, MessageOptions messageOptions, CancellationToken cancellationToken)
+    parameters:
+    - id: command
+      type: '{TCommand}'
+    - id: messageOptions
+      type: AzureServiceBusFlow.Models.MessageOptions
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ProduceCommandAsync(command As TCommand, messageOptions As MessageOptions, cancellationToken As CancellationToken) As Task
+  overload: AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync*
+  implements:
+  - AzureServiceBusFlow.Abstractions.ICommandProducer{{TCommand}}.ProduceCommandAsync({TCommand},AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  nameWithType.vb: CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
 references:
 - uid: AzureServiceBusFlow.Producers
   commentId: N:AzureServiceBusFlow.Producers
@@ -679,3 +720,123 @@ references:
     name: Tasks
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer{{TCommand}}.ProduceCommandAsync({TCommand},AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.ICommandProducer{`0}.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Abstractions.ICommandProducer{{TCommand}}
+  definition: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  name: ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer{`0}.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+    name: ProduceCommandAsync
+    href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  - name: (
+  - name: TCommand
+  - name: ','
+  - name: " "
+  - uid: AzureServiceBusFlow.Models.MessageOptions
+    name: MessageOptions
+    href: AzureServiceBusFlow.Models.MessageOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer{`0}.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+    name: ProduceCommandAsync
+    href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  - name: (
+  - name: TCommand
+  - name: ','
+  - name: " "
+  - uid: AzureServiceBusFlow.Models.MessageOptions
+    name: MessageOptions
+    href: AzureServiceBusFlow.Models.MessageOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: AzureServiceBusFlow.Models.MessageOptions
+  commentId: T:AzureServiceBusFlow.Models.MessageOptions
+  parent: AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.Models.MessageOptions.html
+  name: MessageOptions
+  nameWithType: MessageOptions
+  fullName: AzureServiceBusFlow.Models.MessageOptions
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  isExternal: true
+  href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  name: ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+    name: ProduceCommandAsync
+    href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  - name: (
+  - name: TCommand
+  - name: ','
+  - name: " "
+  - uid: AzureServiceBusFlow.Models.MessageOptions
+    name: MessageOptions
+    href: AzureServiceBusFlow.Models.MessageOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+    name: ProduceCommandAsync
+    href: AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  - name: (
+  - name: TCommand
+  - name: ','
+  - name: " "
+  - uid: AzureServiceBusFlow.Models.MessageOptions
+    name: MessageOptions
+    href: AzureServiceBusFlow.Models.MessageOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html

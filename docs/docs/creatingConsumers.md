@@ -1,12 +1,12 @@
-## Consumers
+# Consumers
 
 **AzureServiceBusFlow** also simplify the creation of **Consumers** or **MessageHandlers** by implementing the **`IMessageHandler<>`** interface and passing the **Message** that will be consumed as the Type of the **Handler**.
 
 > This interface provides the `HandleAsync()` method that is used to process the received message.
 
----
+<br>
 
-### 🛠️ Creating a Consumer
+## 🛠️ Creating a Consumer
 
 ```csharp
 public class CommandExample1Handler : IMessageHandler<ExampleCommand1>
@@ -20,8 +20,9 @@ public class CommandExample1Handler : IMessageHandler<ExampleCommand1>
 
 The MessageHandler above consume a Message of type ExampleCommand1, created earlier in this documentation ([ExampleCommand1](/docs/creatingMessages.html)).
 
---- 
-### ⚙️ Registering Consumer
+<br>
+
+## ⚙️ Registering Consumer
 
 To register the **Consumer**, aka **MessageHandler**, we need to use the **`AddConsumer()`** extension method in **`AddAzureServiceBus()`** configuration methon in **`Program.cs`**.
 
@@ -35,7 +36,7 @@ This example shows the full configuration for:
 - Registering a **Message**
 - Creating a **Producer** for it
 - Publishing in a specifi **Queue**
-- Configuring 2 **Consumers** / **MessageHandlers** for the same **Message** 
+- Configuring a **Consumer** / **MessageHandler** for the **Message** 
 - Consuming this **Message** from the same **Queue**.
 
 ```csharp
@@ -47,7 +48,20 @@ builder.Services.AddAzureServiceBus(cfg => cfg
         .ToQueue("command-queue-one"))
     .AddConsumer(c => c
         .FromQueue("command-queue-one")
-        .AddHandler<ExampleCommand1, CommandExemple1Handler>()
-        .AddHandler<ExampleCommand1, CommandExampleTwoHandlersPerOneMessageHandler>())
+        .AddHandler<ExampleCommand1, CommandExemple1Handler>())
     );
+```
+
+The complete flow of sending a message and consuming it with the `MessageHandler` we just created is shown below.
+
+
+```mermaid
+flowchart LR
+
+A[__producer_] -->|ExampleCommand1| B
+B -->|ExampleCommand1| C[CommandExemple1Handler]
+
+subgraph AzureServiceBus
+        B([command-queue-one])
+    end
 ```
