@@ -95,6 +95,8 @@ The <strong>AzureServiceBusFlow</strong> package provides built-in producer inte
 <pre><code class="lang-csharp">public interface ICommandProducer&lt;in TCommand&gt; where TCommand : class, IServiceBusMessage
 {
     Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken);
+
+    Task ProduceCommandAsync(TCommand command, MessageOptions messageOptions, CancellationToken cancellationToken);
 }
 
 public interface IEventProducer&lt;in TEvent&gt; where TEvent : class, IServiceBusMessage
@@ -103,6 +105,15 @@ public interface IEventProducer&lt;in TEvent&gt; where TEvent : class, IServiceB
 }
 </code></pre>
 <p>These interfaces abstract the underlying logic of sending messages to the Azure Service Bus.</p>
+<p>The overload of <code>ProduceCommandAsync</code> by the <strong><code>ICommandProducer&lt;TCommand&gt;</code></strong> interface accepts a <strong><code>MessageOptions</code></strong> object, defined as:</p>
+<pre><code class="lang-csharp">public record MessageOptions(TimeSpan? Delay, IDictionary&lt;string, object&gt;? ApplicationProperties);
+</code></pre>
+<p>This allows you to:</p>
+<ul>
+<li>Set a <strong>delay</strong> for the message to be consumed — for example, you can configure it to be available <strong>3 minutes after being published</strong>.</li>
+<li>Attach custom headers through the <code>ApplicationProperties</code> dictionary that travels with the message. These headers can carry metadata useful for all messages, such as tenant information, user identity, or special processing flags (e.g., skipping a message in some scenarios).</li>
+</ul>
+<p>This feature enables flexible message customization without modifying the message payload itself, following best practices for message-driven architectures.</p>
 <br>
 <h2 id="-internal-implementation">⚙️ Internal Implementation</h2>
 <p>Both producers rely on a shared low-level component: the IServiceBusProducer<tmessage> interface.</tmessage></p>

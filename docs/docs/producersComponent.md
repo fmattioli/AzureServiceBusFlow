@@ -13,6 +13,8 @@ The library defines two main producer interfaces:
 public interface ICommandProducer<in TCommand> where TCommand : class, IServiceBusMessage
 {
     Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken);
+
+    Task ProduceCommandAsync(TCommand command, MessageOptions messageOptions, CancellationToken cancellationToken);
 }
 
 public interface IEventProducer<in TEvent> where TEvent : class, IServiceBusMessage
@@ -20,8 +22,18 @@ public interface IEventProducer<in TEvent> where TEvent : class, IServiceBusMess
     Task ProduceEventAsync(TEvent @event, CancellationToken cancellationToken);
 }
 ```
-
 These interfaces abstract the underlying logic of sending messages to the Azure Service Bus.
+
+The overload of `ProduceCommandAsync` by the **`ICommandProducer<TCommand>`** interface accepts a **`MessageOptions`** object, defined as:
+
+```csharp
+public record MessageOptions(TimeSpan? Delay, IDictionary<string, object>? ApplicationProperties);
+```
+This allows you to:
+- Set a **delay** for the message to be consumed — for example, you can configure it to be available **3 minutes after being published**.
+- Attach custom headers through the `ApplicationProperties` dictionary that travels with the message. These headers can carry metadata useful for all messages, such as tenant information, user identity, or special processing flags (e.g., skipping a message in some scenarios).
+
+This feature enables flexible message customization without modifying the message payload itself, following best practices for message-driven architectures.
 
 <br>
 
