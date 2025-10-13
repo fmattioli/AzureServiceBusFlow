@@ -41,6 +41,8 @@ Here’s a configuration example:
 - **MaxConcurrentCalls**: Specifies the maximum number of messages that can be processed concurrently.
 - **MaxRetryAttempts**: Defines the maximum number of retry attempts the message handler will perform to reprocess a message if an exception occurs.
 
+> 💡 The `MaxRetryAttempts` property only makes sense when using **ReceiveAndDelete** mode. In **PeekLock** mode, Azure Service Bus retries message processing 10 times by default, so explicit retry configuration is unnecessary.
+
 <br>
 
 ## 🧩 Step 3: Register AzureServiceBus in `Program.cs`

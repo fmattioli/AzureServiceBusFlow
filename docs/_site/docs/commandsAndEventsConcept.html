@@ -100,7 +100,8 @@ Commands are <strong>imperative</strong> — they tell the system <em>what shoul
 <li><code>UpdateUserProfileCommand</code></li>
 <li><code>ProcessPaymentCommand</code></li>
 </ul>
-<p>A command typically has a <strong>single intended consumer</strong>, as it represents a direct request that must be handled once.</p>
+<p>A command typically has a <strong>single intended consumer</strong>, as it represents a direct request that must be handled once.
+*<em>It is possible to configure more than one consumer for a command, although this approach is more commonly applied to events.</em></p>
 <pre><code class="lang-mermaid">flowchart LR
 
 A[CommandProducer] --&gt; |CreateOrderCommand| B(AzureServiceBus) --&gt; C[CreateOrder]
@@ -146,7 +147,7 @@ B --&gt; E[ProcessOrder]
 </tr>
 <tr>
 <td style="text-align: left;">Consumer Count</td>
-<td style="text-align: left;">Usually one</td>
+<td style="text-align: left;">*Usually one</td>
 <td style="text-align: left;">One or many</td>
 </tr>
 <tr>
@@ -164,6 +165,9 @@ B --&gt; E[ProcessOrder]
 <br>
 <blockquote>
 <p>💡 Although they share the same implementation in code, their <strong>semantic purpose</strong> defines whether a message should be treated as a command or an event.</p>
+</blockquote>
+<blockquote>
+<p>💡Even though it is technically possible to have multiple <strong>consumers</strong> for the same <strong>message</strong>, this is not a common pattern for commands. A <strong>command</strong> represents a specific intent to perform a single action, typically handled by one consumer. <strong>Events</strong>, on the other hand, are better suited for multiple consumers, since they signal that something has already happened and can notify several parts of the system independently.</p>
 </blockquote>
 
 </article>

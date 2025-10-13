@@ -19,6 +19,7 @@ Examples:
 - `ProcessPaymentCommand`
 
 A command typically has a **single intended consumer**, as it represents a direct request that must be handled once.
+**It is possible to configure more than one consumer for a command, although this approach is more commonly applied to events.*
 
 ```mermaid
 flowchart LR
@@ -58,10 +59,12 @@ B --> E[ProcessOrder]
 | :------- | :----------- | :--------- |
 | Meaning | Intention to perform an action | Notification that something occurred |
 | Temporal Aspect | Future-oriented | Past-oriented |
-| Consumer Count | Usually one | One or many |
+| Consumer Count | *Usually one | One or many |
 | Communication Type | Point-to-point | Publish-subscribe |
 | Example | `CreateOrderCommand` | `OrderCreatedEvent` |
 
 <br>
 
 > 💡 Although they share the same implementation in code, their **semantic purpose** defines whether a message should be treated as a command or an event.
+
+> 💡* Even though it is technically possible to have multiple **consumers** for the same **message**, this is not a common pattern for commands. A **command** represents a specific intent to perform a single action, typically handled by one consumer. **Events**, on the other hand, are better suited for multiple consumers, since they signal that something has already happened and can notify several parts of the system independently.
