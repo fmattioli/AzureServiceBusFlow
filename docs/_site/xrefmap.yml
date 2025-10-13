@@ -16,6 +16,14 @@ references:
   fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand)
   nameWithType: ICommandProducer<TCommand>
   nameWithType.vb: ICommandProducer(Of TCommand)
+- uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  name: ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  href: api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  nameWithType: ICommandProducer<TCommand>.ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  nameWithType.vb: ICommandProducer(Of TCommand).ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
 - uid: AzureServiceBusFlow.Abstractions.ICommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
   name: ProduceCommandAsync(TCommand, CancellationToken)
   href: api/AzureServiceBusFlow.Abstractions.ICommandProducer-1.html#AzureServiceBusFlow_Abstractions_ICommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_
@@ -126,6 +134,14 @@ references:
   fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage)
   nameWithType: IServiceBusProducer<TMessage>
   nameWithType.vb: IServiceBusProducer(Of TMessage)
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  name: ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  href: api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>.ProduceAsync(TMessage, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  nameWithType: IServiceBusProducer<TMessage>.ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, MessageOptions, CancellationToken)
 - uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
   name: ProduceAsync(TMessage, CancellationToken)
   href: api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.html#AzureServiceBusFlow_Abstractions_IServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_
@@ -692,6 +708,57 @@ references:
   isSpec: "True"
   fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration.ServiceBusReceiveMode
   nameWithType: AzureServiceBusConfiguration.ServiceBusReceiveMode
+- uid: AzureServiceBusFlow.Models.MessageOptions
+  name: MessageOptions
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html
+  commentId: T:AzureServiceBusFlow.Models.MessageOptions
+  fullName: AzureServiceBusFlow.Models.MessageOptions
+  nameWithType: MessageOptions
+- uid: AzureServiceBusFlow.Models.MessageOptions.#ctor(System.Nullable{System.TimeSpan},System.Collections.Generic.IDictionary{System.String,System.Object})
+  name: MessageOptions(TimeSpan?, IDictionary<string, object>?)
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html#AzureServiceBusFlow_Models_MessageOptions__ctor_System_Nullable_System_TimeSpan__System_Collections_Generic_IDictionary_System_String_System_Object__
+  commentId: M:AzureServiceBusFlow.Models.MessageOptions.#ctor(System.Nullable{System.TimeSpan},System.Collections.Generic.IDictionary{System.String,System.Object})
+  name.vb: New(TimeSpan?, IDictionary(Of String, Object))
+  fullName: AzureServiceBusFlow.Models.MessageOptions.MessageOptions(System.TimeSpan?, System.Collections.Generic.IDictionary<string, object>?)
+  fullName.vb: AzureServiceBusFlow.Models.MessageOptions.New(System.TimeSpan?, System.Collections.Generic.IDictionary(Of String, Object))
+  nameWithType: MessageOptions.MessageOptions(TimeSpan?, IDictionary<string, object>?)
+  nameWithType.vb: MessageOptions.New(TimeSpan?, IDictionary(Of String, Object))
+- uid: AzureServiceBusFlow.Models.MessageOptions.#ctor*
+  name: MessageOptions
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html#AzureServiceBusFlow_Models_MessageOptions__ctor_
+  commentId: Overload:AzureServiceBusFlow.Models.MessageOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AzureServiceBusFlow.Models.MessageOptions.MessageOptions
+  fullName.vb: AzureServiceBusFlow.Models.MessageOptions.New
+  nameWithType: MessageOptions.MessageOptions
+  nameWithType.vb: MessageOptions.New
+- uid: AzureServiceBusFlow.Models.MessageOptions.ApplicationProperties
+  name: ApplicationProperties
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html#AzureServiceBusFlow_Models_MessageOptions_ApplicationProperties
+  commentId: P:AzureServiceBusFlow.Models.MessageOptions.ApplicationProperties
+  fullName: AzureServiceBusFlow.Models.MessageOptions.ApplicationProperties
+  nameWithType: MessageOptions.ApplicationProperties
+- uid: AzureServiceBusFlow.Models.MessageOptions.ApplicationProperties*
+  name: ApplicationProperties
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html#AzureServiceBusFlow_Models_MessageOptions_ApplicationProperties_
+  commentId: Overload:AzureServiceBusFlow.Models.MessageOptions.ApplicationProperties
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.MessageOptions.ApplicationProperties
+  nameWithType: MessageOptions.ApplicationProperties
+- uid: AzureServiceBusFlow.Models.MessageOptions.Delay
+  name: Delay
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html#AzureServiceBusFlow_Models_MessageOptions_Delay
+  commentId: P:AzureServiceBusFlow.Models.MessageOptions.Delay
+  fullName: AzureServiceBusFlow.Models.MessageOptions.Delay
+  nameWithType: MessageOptions.Delay
+- uid: AzureServiceBusFlow.Models.MessageOptions.Delay*
+  name: Delay
+  href: api/AzureServiceBusFlow.Models.MessageOptions.html#AzureServiceBusFlow_Models_MessageOptions_Delay_
+  commentId: Overload:AzureServiceBusFlow.Models.MessageOptions.Delay
+  isSpec: "True"
+  fullName: AzureServiceBusFlow.Models.MessageOptions.Delay
+  nameWithType: MessageOptions.Delay
 - uid: AzureServiceBusFlow.Producers
   name: AzureServiceBusFlow.Producers
   href: api/AzureServiceBusFlow.Producers.html
@@ -726,6 +793,14 @@ references:
   fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).New
   nameWithType: CommandProducer<TCommand>.CommandProducer
   nameWithType.vb: CommandProducer(Of TCommand).New
+- uid: AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  name: ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html#AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.CommandProducer<TCommand>.ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  nameWithType: CommandProducer<TCommand>.ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
+  nameWithType.vb: CommandProducer(Of TCommand).ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
 - uid: AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)
   name: ProduceCommandAsync(TCommand, CancellationToken)
   href: api/AzureServiceBusFlow.Producers.CommandProducer-1.html#AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_
@@ -816,6 +891,14 @@ references:
   fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).New
   nameWithType: ServiceBusProducer<TMessage>.ServiceBusProducer
   nameWithType.vb: ServiceBusProducer(Of TMessage).New
+- uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  name: ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1_ProduceAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_
+  commentId: M:AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  fullName: AzureServiceBusFlow.Producers.ServiceBusProducer<TMessage>.ProduceAsync(TMessage, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Producers.ServiceBusProducer(Of TMessage).ProduceAsync(TMessage, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  nameWithType: ServiceBusProducer<TMessage>.ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  nameWithType.vb: ServiceBusProducer(Of TMessage).ProduceAsync(TMessage, MessageOptions, CancellationToken)
 - uid: AzureServiceBusFlow.Producers.ServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
   name: ProduceAsync(TMessage, CancellationToken)
   href: api/AzureServiceBusFlow.Producers.ServiceBusProducer-1.html#AzureServiceBusFlow_Producers_ServiceBusProducer_1_ProduceAsync__0_System_Threading_CancellationToken_

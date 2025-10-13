@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface IMessageHandler&lt;T&gt; | AzureServiceBusFlow </title>
+      <title>Messages and Azure Service Bus Overview | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IMessageHandler&lt;T&gt; | AzureServiceBusFlow ">
+      <meta name="title" content="Messages and Azure Service Bus Overview | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/new/main/apiSpec/new?filename=AzureServiceBusFlow_Abstractions_IMessageHandler_1.md&amp;value=---%0Auid%3A%20AzureServiceBusFlow.Abstractions.IMessageHandler%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/messageConcept.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,94 +84,51 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1">
+        <article data-uid="">
+<h1 id="messages-and-azure-service-bus-overview">Messages and Azure Service Bus Overview</h1>
 
+<p><strong>Azure Service Bus</strong> is a fully managed enterprise messaging system that enables reliable communication between distributed applications.<br>
+It decouples application components, allowing them to exchange messages in a secure and asynchronous manner.</p>
+<p>In <strong>AzureServiceBusFlow (AsbFlow)</strong>, a <strong>message</strong> represents the fundamental unit of communication between different parts of the system.<br>
+Messages can be commands, events, or any other type of information that needs to be transmitted through queues or topics.</p>
+<br>
+<h2 id="-what-is-a-message">📦 What Is a Message?</h2>
+<p>A <strong>message</strong> is a piece of data sent from one application or service to another. It can represent:</p>
+<ul>
+<li>A request to perform an operation</li>
+<li>A notification that something has occurred</li>
+<li>Data exchange between microservices</li>
+</ul>
+<br>
+<h2 id="-message-flow">🔄 Message Flow</h2>
+<ol>
+<li>A <strong>producer</strong> sends a message to a queue or topic.</li>
+<li>The <strong>Azure Service Bus</strong> stores and delivers the message reliably.</li>
+<li>A <strong>consumer</strong> receives the message and processes it.</li>
+</ol>
+<br>
+<pre><code class="lang-mermaid">flowchart LR
 
-
-  <h1 id="AzureServiceBusFlow_Abstractions_IMessageHandler_1" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1" class="text-break">
-Interface IMessageHandler&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L5"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AzureServiceBusFlow.html">AzureServiceBusFlow</a>.<a class="xref" href="AzureServiceBusFlow.Abstractions.html">Abstractions</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>AzureServiceBusFlow.Configurations.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"></div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IMessageHandler&lt;in T&gt;</code></pre>
-  </div>
-
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync_" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync*"></a>
-
-  <h3 id="AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync__0_Azure_Messaging_ServiceBus_ServiceBusReceivedMessage_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)">
-  HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task HandleAsync(T message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>message</code> <span class="xref">T</span></dt>
-    <dd></dd>
-    <dt><code>rawMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage">ServiceBusReceivedMessage</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+A[Producer] --&gt;|Message| B(Azure Service Bus)
+B --&gt;|Message| C[Consumer]
+</code></pre>
+<br>
+<p>This architecture ensures asynchronous, loosely coupled communication, improving scalability and resilience in distributed systems.</p>
+<h2 id="-asbflows-role">🚀 AsbFlow’s Role</h2>
+<p><strong>AzureServiceBusFlow</strong> simplifies the process of defining and managing these messages by:</p>
+<ul>
+<li>Providing a clean, strongly typed model for message definition</li>
+<li>Enforcing consistent configuration patterns for message producers and consumers</li>
+<li>Allowing automatic setup of queues, topics, and subscriptions</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L5" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/messageConcept.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

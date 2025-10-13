@@ -222,6 +222,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Models.MessageOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Models.MessageOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Models.MessageOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AzureServiceBusFlow.Models.yml",
       "output": {
         ".html": {
@@ -305,6 +319,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/commandsAndEventsConcept.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/commandsAndEventsConcept.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/creatingConsumers.md",
       "output": {
         ".html": {
@@ -319,6 +343,66 @@
       "output": {
         ".html": {
           "relative_path": "docs/creatingMessages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/messageComponent.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/messageComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/messageConcept.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/messageConcept.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/messageHandlerComponent.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/messageHandlerComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/producersAndConsumersConcept.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/producersAndConsumersConcept.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/producersComponent.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/producersComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/queuesAndTopicsConcept.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/queuesAndTopicsConcept.html"
         }
       },
       "version": ""

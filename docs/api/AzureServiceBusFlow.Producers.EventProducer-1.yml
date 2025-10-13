@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Producers/EventProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: EventProducer
     path: ../src/AzureServiceBusFlow/Producers/EventProducer.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Producers/EventProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Producers/EventProducer.cs
@@ -91,7 +91,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Producers/EventProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ProduceEventAsync
     path: ../src/AzureServiceBusFlow/Producers/EventProducer.cs

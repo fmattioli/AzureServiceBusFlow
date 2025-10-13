@@ -5,6 +5,7 @@ items:
   id: AzureServiceBusFlow.Models
   children:
   - AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+  - AzureServiceBusFlow.Models.MessageOptions
   langs:
   - csharp
   - vb
@@ -22,6 +23,13 @@ references:
   name: AzureServiceBusConfiguration
   nameWithType: AzureServiceBusConfiguration
   fullName: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
+- uid: AzureServiceBusFlow.Models.MessageOptions
+  commentId: T:AzureServiceBusFlow.Models.MessageOptions
+  parent: AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.Models.MessageOptions.html
+  name: MessageOptions
+  nameWithType: MessageOptions
+  fullName: AzureServiceBusFlow.Models.MessageOptions
 - uid: AzureServiceBusFlow.Models
   commentId: N:AzureServiceBusFlow.Models
   href: AzureServiceBusFlow.html

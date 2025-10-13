@@ -53,6 +53,9 @@ items:
   - uid: AzureServiceBusFlow.Models.AzureServiceBusConfiguration
     name: AzureServiceBusConfiguration
     type: Class
+  - uid: AzureServiceBusFlow.Models.MessageOptions
+    name: MessageOptions
+    type: Class
 - uid: AzureServiceBusFlow.Producers
   name: AzureServiceBusFlow.Producers
   type: Namespace

@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: AzureServiceBusConfiguration
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ConnectionString
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
@@ -84,7 +84,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ServiceBusReceiveMode
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
@@ -113,7 +113,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: MaxConcurrentCalls
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
@@ -142,7 +142,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: MaxAutoLockRenewalDurationInSeconds
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: MaxRetryAttempts
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs

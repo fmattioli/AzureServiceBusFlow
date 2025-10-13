@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: IServiceBusMessage
     path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
@@ -42,7 +42,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: RoutingKey
     path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
@@ -71,7 +71,7 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: CreatedDate
     path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusMessage.cs

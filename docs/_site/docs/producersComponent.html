@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/registeringProducers.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/producersComponent.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,48 +85,57 @@
         </div>
 
         <article data-uid="">
-<h1 id="producers">Producers</h1>
+<h1 id="producers"><strong>Producers</strong></h1>
 
-<p>To simplify the process of sending messages to Azure Service Bus, we created an abstraction that encapsulates the publishing logic.</p>
-<p>This approach keeps the implementation consistent and allows any type of message to be sent using the same pattern.</p>
+<p><strong>Producers</strong> are responsible for <strong>sending messages</strong> to Azure Service Bus queues or topics.<br>
+The <strong>AzureServiceBusFlow</strong> package provides built-in producer interfaces and implementations, allowing you to send both <strong>Commands</strong> and <strong>Events</strong> easily and consistently.</p>
 <br>
-<h2 id="-registering-a-producer">⚙️ Registering a Producer</h2>
-<h3 id="sending-messages-to-a-queue">Sending Messages to a Queue</h3>
-<p>To register a producer and configure which message it will send, use the <strong><code>AddProducer()</code></strong> method inside the <strong><code>AddAzureServiceBus()</code></strong> configuration method in <strong><code>Program.cs</code></strong>:</p>
-<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
-    .ConfigureAzureServiceBus(azureServiceBusConfig)
-    .AddProducer&lt;ExampleCommand1&gt;(p =&gt; p
-        .EnsureQueueExists(&quot;command-queue-one&quot;)
-        .WithCommandProducer()
-        .ToQueue(&quot;command-queue-one&quot;)));
+<h2 id="-producer-interfaces">🧩 Producer Interfaces</h2>
+<p>The library defines two main producer interfaces:</p>
+<pre><code class="lang-csharp">public interface ICommandProducer&lt;in TCommand&gt; where TCommand : class, IServiceBusMessage
+{
+    Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken);
+}
+
+public interface IEventProducer&lt;in TEvent&gt; where TEvent : class, IServiceBusMessage
+{
+    Task ProduceEventAsync(TEvent @event, CancellationToken cancellationToken);
+}
 </code></pre>
-<p>The code above registers a producer for the <strong><code>ExampleCommand1</code></strong> Message created earlier in this documentation (<a href="/docs/creatingMessages.html">ExampleCommand1</a>).</p>
-<ul>
-<li><strong><code>EnsureQueueExists()</code></strong>: Ensures that the specified <strong>Queue</strong> exists in Azure Service Bus. If the <strong>Queue</strong> does not exist, it will be created automatically.</li>
-<li><strong><code>WithCommandProducer()</code></strong>: Specifies that the producer is of type <strong>CommandProducer</strong>. Alternatively, you can configure an <strong>EventProducer</strong> or a <strong>CommandProducer</strong>, depending on the message type.</li>
-<li><strong><code>ToQueue()</code></strong>: Defines the <strong>Queue</strong> where the message will be published.</li>
-</ul>
-<h3 id="sending-messages-to-a-topic">Sending Messages to a Topic</h3>
-<p>If you want the producer to publish messages to a <strong>Topic</strong> instead of a Queue, you can use the methods <strong><code>EnsureTopicExists()</code></strong> and <strong><code>ToTopic()</code></strong> in the same configuration pattern:</p>
-<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
-    .ConfigureAzureServiceBus(azureServiceBusConfig)
-    .AddProducer&lt;ExampleEvent1&gt;(p =&gt; p
-        .EnsureTopicExists(&quot;event-topic-one&quot;)
-        .WithEventProducer()
-        .ToTopic(&quot;event-topic-one&quot;)));
-</code></pre>
-<ul>
-<li><strong><code>EnsureTopicExists()</code></strong>: Ensures that the specified Topic exists in Azure Service Bus. If the Topic does not exist, it will be automatically created.</li>
-<li><strong><code>WithEventProducer()</code></strong>: Specifies that the producer is of type <strong>EventProducer</strong>. Alternatively, you can configure an <strong>CommandProducer</strong> or a <strong>EventProducer</strong>, depending on the message type.</li>
-<li><strong><code>ToTopic()</code></strong>: Defines the Topic where the message will be published.</li>
-</ul>
+<p>These interfaces abstract the underlying logic of sending messages to the Azure Service Bus.</p>
 <br>
-<h2 id="-publishing-messages">📤 Publishing Messages</h2>
-<p>Once the producer is configured, it can be used to publish messages to the bus. Here’s an example of how to do it.</p>
-<blockquote>
-<p>To publish a message as a <strong>Command</strong>, inject an instance of <strong><code>ICommandProducer</code></strong> and call <strong><code>ProduceCommandAsync()</code></strong>, passing the message as a parameter.</p>
-<p>To publish a message as an <strong>Event</strong>, do the same using <strong><code>IEventProducer</code></strong> and call <strong><code>ProduceEventAsync()</code></strong>.</p>
-</blockquote>
+<h2 id="-internal-implementation">⚙️ Internal Implementation</h2>
+<p>Both producers rely on a shared low-level component: the IServiceBusProducer<tmessage> interface.</tmessage></p>
+<pre><code class="lang-csharp">public interface IServiceBusProducer&lt;in TMessage&gt; where TMessage : class, IServiceBusMessage
+{
+    Task ProduceAsync(TMessage message, CancellationToken cancellationToken);
+}
+</code></pre>
+<p>The default implementation, <strong><code>ServiceBusProducer&lt;TMessage&gt;</code></strong>, uses the Azure SDK to serialize and send the message:</p>
+<pre><code class="lang-csharp">public class ServiceBusProducer&lt;TMessage&gt; : IServiceBusProducer&lt;TMessage&gt; where TMessage : class, IServiceBusMessage
+{
+    public async Task ProduceAsync(TMessage message, CancellationToken cancellationToken)
+    {
+        var json = JsonConvert.SerializeObject(message);
+        var serviceBusMessage = new ServiceBusMessage(json)
+        {
+            Subject = message.RoutingKey,
+            ApplicationProperties =
+            {
+                { &quot;MessageType&quot;, message.GetType().FullName },
+                { &quot;CreatedAt&quot;, message.CreatedDate.ToString(&quot;O&quot;) }
+            }
+        };
+
+        await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
+        _logger.LogInformation(&quot;Message {MessageType} published successfully!&quot;, message.GetType().Name);
+    }
+}
+</code></pre>
+<br>
+<h2 id="-example-of-usage-in-a-controller">🧱 Example of Usage in a Controller</h2>
+<p>You don’t need to create a custom producer class — AsbFlow already provides the implementations.
+Simply inject the appropriate interface (<strong><code>ICommandProducer</code></strong> or <strong><code>IEventProducer</code></strong>) and call the <code>Produce...Async</code> method:</p>
 <pre><code class="lang-csharp">[Route(&quot;api/commands&quot;)]
 [ApiController]
 public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer) : ControllerBase
@@ -145,33 +154,22 @@ public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer
         };
 
         await _producer.ProduceCommandAsync(command, cancellationToken);
-        return Ok();
+        return Ok(&quot;Command published successfully!&quot;);
     }
 }
 </code></pre>
-<p>The flowchart below shows the flow of sending the message created in the previous example.</p>
-<pre><code class="lang-mermaid">flowchart LR
-
-A[__producer_] --&gt;|ExampleCommand1| B
-B --&gt;|ExampleCommand1| C[Consumer...]
-
-subgraph AzureServiceBus
-        B([command-queue-one])
-    end
-</code></pre>
 <br>
-<h2 id="-summary">🧭 Summary</h2>
+<h2 id="-key-points">🧠 Key Points</h2>
 <ul>
-<li><strong>💬 Message</strong> created</li>
-<li><strong>📤 Producer</strong> configured</li>
-<li><strong>📬 Queue</strong> or <strong>Topic</strong> created and registred</li>
+<li>Both <strong>CommandProducer</strong> and <strong>EventProducer</strong> share the same implementation logic.</li>
+<li>The difference lies only in <strong>architectural intent</strong> — commands indicate actions to be performed, events indicate actions that already happened.</li>
+<li>You can use dependency injection to directly obtain any producer type.</li>
 </ul>
-<p>Next step: <strong><a href="/docs/creatingConsumers.html">Create MessageHandler</a></strong> to consume and process the message.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/registeringProducers.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/producersComponent.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

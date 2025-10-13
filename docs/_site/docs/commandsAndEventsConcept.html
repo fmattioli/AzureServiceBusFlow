@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface IMessageHandler&lt;T&gt; | AzureServiceBusFlow </title>
+      <title>Commands and Events | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IMessageHandler&lt;T&gt; | AzureServiceBusFlow ">
+      <meta name="title" content="Commands and Events | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/new/main/apiSpec/new?filename=AzureServiceBusFlow_Abstractions_IMessageHandler_1.md&amp;value=---%0Auid%3A%20AzureServiceBusFlow.Abstractions.IMessageHandler%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/commandsAndEventsConcept.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,94 +84,95 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1">
+        <article data-uid="">
+<h1 id="commands-and-events">Commands and Events</h1>
 
+<p>In <strong>AzureServiceBusFlow</strong>, messages are generally divided into two conceptual categories: <strong>Commands</strong> and <strong>Events</strong>.</p>
+<p>Although they are represented in code using the same message structures, their <strong>purpose and meaning</strong> differ from an architectural perspective.</p>
+<br>
+<h2 id="-commands">✒️ Commands</h2>
+<p>A <strong>command</strong> expresses the <strong>intention to perform an action</strong>.</p>
+<p>It usually represents a request from one part of the system asking another to execute a specific operation.<br>
+Commands are <strong>imperative</strong> — they tell the system <em>what should be done</em>.</p>
+<p>Examples:</p>
+<ul>
+<li><code>CreateOrderCommand</code></li>
+<li><code>UpdateUserProfileCommand</code></li>
+<li><code>ProcessPaymentCommand</code></li>
+</ul>
+<p>A command typically has a <strong>single intended consumer</strong>, as it represents a direct request that must be handled once.</p>
+<pre><code class="lang-mermaid">flowchart LR
 
+A[CommandProducer] --&gt; |CreateOrderCommand| B(AzureServiceBus) --&gt; C[CreateOrder]
+</code></pre>
+<br>
+<h2 id="-events">🔔 Events</h2>
+<p>An <strong>event</strong> indicates that <strong>something has already happened</strong>.</p>
+<p>It is a <strong>notification</strong> sent to inform other parts of the system that a specific state change occurred.<br>
+Events are <strong>descriptive</strong> — they tell the system <em>what has happened</em>.</p>
+<p>Examples:</p>
+<ul>
+<li><code>OrderCreatedEvent</code></li>
+<li><code>UserProfileUpdatedEvent</code></li>
+<li><code>PaymentProcessedEvent</code></li>
+</ul>
+<p>Unlike commands, events are often <strong>broadcast</strong> to multiple subscribers, allowing different services to react independently.</p>
+<pre><code class="lang-mermaid">flowchart LR
 
-  <h1 id="AzureServiceBusFlow_Abstractions_IMessageHandler_1" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1" class="text-break">
-Interface IMessageHandler&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L5"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AzureServiceBusFlow.html">AzureServiceBusFlow</a>.<a class="xref" href="AzureServiceBusFlow.Abstractions.html">Abstractions</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>AzureServiceBusFlow.Configurations.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"></div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IMessageHandler&lt;in T&gt;</code></pre>
-  </div>
-
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync_" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync*"></a>
-
-  <h3 id="AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync__0_Azure_Messaging_ServiceBus_ServiceBusReceivedMessage_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)">
-  HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task HandleAsync(T message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>message</code> <span class="xref">T</span></dt>
-    <dd></dd>
-    <dt><code>rawMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage">ServiceBusReceivedMessage</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+A[EventProducer] --&gt; |OrderCreatedEvent| B(AzureServiceBus) --&gt; C[NotifyCustomer]
+B --&gt; D[ProcessPayment]
+B --&gt; E[ProcessOrder]
+</code></pre>
+<br>
+<h2 id="-architectural-difference">🧩 Architectural Difference</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><strong>Command</strong></th>
+<th style="text-align: left;"><strong>Event</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Meaning</td>
+<td style="text-align: left;">Intention to perform an action</td>
+<td style="text-align: left;">Notification that something occurred</td>
+</tr>
+<tr>
+<td style="text-align: left;">Temporal Aspect</td>
+<td style="text-align: left;">Future-oriented</td>
+<td style="text-align: left;">Past-oriented</td>
+</tr>
+<tr>
+<td style="text-align: left;">Consumer Count</td>
+<td style="text-align: left;">Usually one</td>
+<td style="text-align: left;">One or many</td>
+</tr>
+<tr>
+<td style="text-align: left;">Communication Type</td>
+<td style="text-align: left;">Point-to-point</td>
+<td style="text-align: left;">Publish-subscribe</td>
+</tr>
+<tr>
+<td style="text-align: left;">Example</td>
+<td style="text-align: left;"><code>CreateOrderCommand</code></td>
+<td style="text-align: left;"><code>OrderCreatedEvent</code></td>
+</tr>
+</tbody>
+</table>
+<br>
+<blockquote>
+<p>💡 Although they share the same implementation in code, their <strong>semantic purpose</strong> defines whether a message should be treated as a command or an event.</p>
+</blockquote>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L5" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/commandsAndEventsConcept.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface IMessageHandler&lt;T&gt; | AzureServiceBusFlow </title>
+      <title>⚙️ Message Handlers | AzureServiceBusFlow </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IMessageHandler&lt;T&gt; | AzureServiceBusFlow ">
+      <meta name="title" content="⚙️ Message Handlers | AzureServiceBusFlow ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/new/main/apiSpec/new?filename=AzureServiceBusFlow_Abstractions_IMessageHandler_1.md&amp;value=---%0Auid%3A%20AzureServiceBusFlow.Abstractions.IMessageHandler%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/messageHandlerComponent.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,94 +84,57 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1">
+        <article data-uid="">
+<h1 id="-message-handlers">⚙️ <strong>Message Handlers</strong></h1>
 
+<p>A <strong>Message Handler</strong> defines how a message should be processed once it is received from Azure Service Bus.<br>
+In <strong>AzureServiceBusFlow</strong>, every handler must implement the <code>IMessageHandler&lt;TMessage&gt;</code> interface, where <code>TMessage</code> is the type of message being handled.</p>
+<p>This ensures a clean and consistent processing model across all services.</p>
+<br>
+<h2 id="-imessagehandler-interface">🧩 IMessageHandler Interface</h2>
+<pre><code class="lang-csharp">public interface IMessageHandler&lt;in TMessage&gt;
+{
+    Task HandleAsync(
+        TMessage message,
+        ServiceBusReceivedMessage rawMessage,
+        CancellationToken cancellationToken);
+}
+</code></pre>
+<br>
+<h2 id="-example-of-a-command-handler">🧱 Example of a Command Handler</h2>
+<pre><code class="lang-csharp">public class CommandExample1Handler : IMessageHandler&lt;ExampleCommand1&gt;
+{
+    public Task HandleAsync(ExampleCommand1 message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)
+    {
+        // Business logic to handle the command
+        Console.WriteLine($&quot;Processing command for client: {message.ExampleMessage.Cliente}&quot;);
 
-
-  <h1 id="AzureServiceBusFlow_Abstractions_IMessageHandler_1" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1" class="text-break">
-Interface IMessageHandler&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L5"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AzureServiceBusFlow.html">AzureServiceBusFlow</a>.<a class="xref" href="AzureServiceBusFlow.Abstractions.html">Abstractions</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>AzureServiceBusFlow.Configurations.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"></div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IMessageHandler&lt;in T&gt;</code></pre>
-  </div>
-
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync_" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync*"></a>
-
-  <h3 id="AzureServiceBusFlow_Abstractions_IMessageHandler_1_HandleAsync__0_Azure_Messaging_ServiceBus_ServiceBusReceivedMessage_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Abstractions.IMessageHandler`1.HandleAsync(`0,Azure.Messaging.ServiceBus.ServiceBusReceivedMessage,System.Threading.CancellationToken)">
-  HandleAsync(T, ServiceBusReceivedMessage, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task HandleAsync(T message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>message</code> <span class="xref">T</span></dt>
-    <dd></dd>
-    <dt><code>rawMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage">ServiceBusReceivedMessage</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+        return Task.CompletedTask;
+    }
+}
+</code></pre>
+<p>In this example:</p>
+<ul>
+<li>The handler consumes an <strong><code>ExampleCommand1</code></strong> message.</li>
+<li>It receives both the <strong>deserialized message</strong> and the raw <strong>Azure Service Bus message</strong>.</li>
+<li>The method <strong><code>HandleAsync</code></strong> is executed automatically when a message is consumed.</li>
+</ul>
+<br>
+<h2 id="-key-benefits">🧠 Key Benefits</h2>
+<ul>
+<li><strong>Strong typing</strong> ensures compile-time safety.</li>
+<li><strong>Clear separation</strong> between different message types and business logic.</li>
+<li><strong>Automatic binding</strong> via dependency injection and the AsbFlow configuration.</li>
+</ul>
+<p>Handlers allow your application to stay modular, scalable, and easy to test.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Abstractions/IMessageHandler.cs/#L5" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/messageHandlerComponent.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

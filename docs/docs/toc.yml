@@ -1,20 +1,30 @@
-- name: Setting Up
-  href: settingUp.md
-
-- name: Messages
-  href: creatingMessages.md
+- name: Fundamental Concepts
   items:
+    - name: Message
+      href: messageConcept.md
+    - name: Commands and Events
+      href: commandsAndEventsConcept.md
+    - name: Queues and Topics
+      href: queuesAndTopicsConcept.md
+    - name: Producers and Consumers
+      href: producersAndConsumersConcept.md
+
+- name: Components
+  items:
+    - name: Message
+      href: messageComponent.md
+    - name: MessageHandler
+      href: messageHandlerComponent.md
+    - name: Producers
+      href: producersComponent.md
+
+- name: Configuring in your API
+  items:
+    - name: Configuration
+      href: settingUp.md
     - name: Creating Messages
       href: creatingMessages.md
-
-- name: Producers
-  href: registeringProducers.md
-  items:
     - name: Registering Producers
       href: registeringProducers.md
-
-- name: Consumers
-  href: creatingConsumers.md
-  items:
     - name: Creating Consumers
       href: creatingConsumers.md

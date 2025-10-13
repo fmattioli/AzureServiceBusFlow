@@ -5,6 +5,7 @@ items:
   id: IServiceBusProducer`1
   parent: AzureServiceBusFlow.Abstractions
   children:
+  - AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
   - AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,System.Threading.CancellationToken)
   langs:
   - csharp
@@ -16,11 +17,11 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IServiceBusProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: IServiceBusProducer
     path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusProducer.cs
-    startLine: 2
+    startLine: 4
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Abstractions
@@ -46,11 +47,11 @@ items:
   source:
     remote:
       path: src/AzureServiceBusFlow/Abstractions/IServiceBusProducer.cs
-      branch: documentation
+      branch: main
       repo: git@github.com:migueltotti/AzureServiceBusFlow.git
     id: ProduceAsync
     path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusProducer.cs
-    startLine: 4
+    startLine: 6
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Abstractions
@@ -67,6 +68,43 @@ items:
   overload: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync*
   nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, CancellationToken)
   fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, System.Threading.CancellationToken)
+- uid: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  commentId: M:AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  id: ProduceAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)
+  parent: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1
+  langs:
+  - csharp
+  - vb
+  name: ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  nameWithType: IServiceBusProducer<TMessage>.ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  fullName: AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>.ProduceAsync(TMessage, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Abstractions/IServiceBusProducer.cs
+      branch: main
+      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+    id: ProduceAsync
+    path: ../src/AzureServiceBusFlow/Abstractions/IServiceBusProducer.cs
+    startLine: 8
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Abstractions
+  syntax:
+    content: Task ProduceAsync(TMessage message, MessageOptions producerOptions, CancellationToken cancellationToken)
+    parameters:
+    - id: message
+      type: '{TMessage}'
+    - id: producerOptions
+      type: AzureServiceBusFlow.Models.MessageOptions
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function ProduceAsync(message As TMessage, producerOptions As MessageOptions, cancellationToken As CancellationToken) As Task
+  overload: AzureServiceBusFlow.Abstractions.IServiceBusProducer`1.ProduceAsync*
+  nameWithType.vb: IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, MessageOptions, CancellationToken)
+  fullName.vb: AzureServiceBusFlow.Abstractions.IServiceBusProducer(Of TMessage).ProduceAsync(TMessage, AzureServiceBusFlow.Models.MessageOptions, System.Threading.CancellationToken)
 references:
 - uid: AzureServiceBusFlow.Abstractions
   commentId: N:AzureServiceBusFlow.Abstractions
@@ -188,3 +226,32 @@ references:
     name: Tasks
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: AzureServiceBusFlow.Models.MessageOptions
+  commentId: T:AzureServiceBusFlow.Models.MessageOptions
+  parent: AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.Models.MessageOptions.html
+  name: MessageOptions
+  nameWithType: MessageOptions
+  fullName: AzureServiceBusFlow.Models.MessageOptions
+- uid: AzureServiceBusFlow.Models
+  commentId: N:AzureServiceBusFlow.Models
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Models
+  nameWithType: AzureServiceBusFlow.Models
+  fullName: AzureServiceBusFlow.Models
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Models
+    name: Models
+    href: AzureServiceBusFlow.Models.html
