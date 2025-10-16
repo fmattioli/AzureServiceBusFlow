@@ -47,7 +47,7 @@ namespace AzureServiceBusFlow.Abstractions
         /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
         Task ProduceAsync(
             TMessage message,
-            IDictionary<string, string> applicationProperties,
+            IDictionary<string, object> applicationProperties,
             CancellationToken cancellationToken);
     }
 }

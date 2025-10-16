@@ -15,15 +15,29 @@ namespace AzureServiceBusFlow.Producers
         {
             var client = new ServiceBusClient(azureServiceBusConfiguration.ConnectionString);
             _sender = client.CreateSender(queueOrTopicName);
+
             _logger = logger;
         }
 
         public async Task ProduceAsync(TMessage message, CancellationToken cancellationToken)
         {
-            await ProduceAsync(message, producerOptions: null, cancellationToken);
+            var json = JsonConvert.SerializeObject(message);
+            var serviceBusMessage = new ServiceBusMessage(json)
+            {
+                Subject = message.RoutingKey,
+                ApplicationProperties =
+                {
+                    { "MessageType", message.GetType().FullName },
+                    { "CreatedAt", message.CreatedDate.ToString("O") }
+                }
+            };
+
+            await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
+
+            _logger.LogInformation("Message {MessageType} published with successfully!", message.GetType().Name);
         }
 
-        public async Task ProduceAsync(TMessage message, MessageOptions? producerOptions, CancellationToken cancellationToken)
+        public Task ProduceAsync(TMessage message, MessageOptions producerOptions, CancellationToken cancellationToken)
         {
             var json = JsonConvert.SerializeObject(message);
             var serviceBusMessage = new ServiceBusMessage(json)
@@ -38,11 +52,10 @@ namespace AzureServiceBusFlow.Producers
 
             if (producerOptions?.ApplicationProperties is not null)
             {
-                foreach (var kvp in producerOptions.ApplicationProperties)
-                {
-                    if (!serviceBusMessage.ApplicationProperties.ContainsKey(kvp.Key))
-                        serviceBusMessage.ApplicationProperties.Add(kvp.Key, kvp.Value);
-                }
+                producerOptions?.ApplicationProperties?
+                    .Where(kvp => !serviceBusMessage.ApplicationProperties.ContainsKey(kvp.Key))
+                    .ToList()
+                    .ForEach(kvp => serviceBusMessage.ApplicationProperties.Add(kvp.Key, kvp.Value));
             }
 
             if (producerOptions?.Delay is not null)
@@ -50,9 +63,7 @@ namespace AzureServiceBusFlow.Producers
                 serviceBusMessage.ScheduledEnqueueTime = DateTimeOffset.UtcNow.Add(producerOptions.Delay.Value);
             }
 
-            await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
-
-            _logger.LogInformation("Message {MessageType} published successfully!", message.GetType().Name);
+            return _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
         }
 
         public Task ProduceAsync(TMessage message, TimeSpan delay, CancellationToken cancellationToken)
@@ -60,7 +71,7 @@ namespace AzureServiceBusFlow.Producers
             return ProduceAsync(message, new MessageOptions(delay, null), cancellationToken);
         }
 
-        public Task ProduceAsync(TMessage message, IDictionary<string, string> applicationProperties, CancellationToken cancellationToken)
+        public Task ProduceAsync(TMessage message, IDictionary<string, object> applicationProperties, CancellationToken cancellationToken)
         {
             return ProduceAsync(message, new MessageOptions(null, applicationProperties), cancellationToken);
         }

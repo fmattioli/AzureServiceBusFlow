@@ -35,7 +35,7 @@ namespace AzureServiceBusFlow.Producers
         /// <summary>
         /// Produces a command with application properties.
         /// </summary>
-        public Task ProduceCommandAsync(TCommand command, IDictionary<string, string> applicationProperties, CancellationToken cancellationToken)
+        public Task ProduceCommandAsync(TCommand command, IDictionary<string, object> applicationProperties, CancellationToken cancellationToken)
         {
             return _producer.ProduceAsync(command, applicationProperties, cancellationToken);
         }
