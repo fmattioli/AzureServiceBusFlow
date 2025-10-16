@@ -8,7 +8,7 @@
     <Title>AzureServiceBusFlow</Title>
     <Description>Inspired by KafkaFlow, this library provides a fluent API to simplify Azure Service Bus integration. Easily configure producers, consumers, and handlers with automatic setup of queues, topics, and subscriptions. Designed for clean, extensible, and maintainable messaging workflows on Azure.</Description>
     <PackageIcon>package-img.png</PackageIcon>
-    <Version>1.25.0</Version>
+    <Version>1.26.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>AzureServiceBusFlow</PackageId>
   </PropertyGroup>
