@@ -8,7 +8,6 @@ namespace AzureServiceBusFlow.Sample.Commands
     {
         public Task HandleAsync(ExampleCommand1 message, ServiceBusReceivedMessage rawMessage, CancellationToken cancellationToken)
         {
-            throw new Exception("Erro");
             return Task.CompletedTask;
         }
     }

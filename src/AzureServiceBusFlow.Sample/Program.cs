@@ -2,7 +2,7 @@ using AzureServiceBusFlow.Extensions;
 using AzureServiceBusFlow.Models;
 using AzureServiceBusFlow.Sample.Commands;
 using AzureServiceBusFlow.Sample.Events;
-
+using AzureServiceBusFlow.Sample.Middlewares;
 using Mattioli.Configurations.Transformers;
 
 using Scalar.AspNetCore;
@@ -27,6 +27,7 @@ builder.Services.AddAzureServiceBus(cfg => cfg
     .AddProducer<ExampleCommand1>(p => p
         .EnsureQueueExists("command-queue-one")
         .WithCommandProducer()
+        .UseMiddleware<AsbSampleMiddleware>()
         .ToQueue("command-queue-one"))
     .AddProducer<ExampleCommand2>(p => p
         .EnsureQueueExists("command-queue-two")

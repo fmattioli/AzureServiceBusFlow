@@ -1,4 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Middlewar;
 using AzureServiceBusFlow.Models;
 using AzureServiceBusFlow.Producers;
 using Microsoft.Azure.ServiceBus.Management;
@@ -8,13 +9,21 @@ using Microsoft.Extensions.Logging;
 namespace AzureServiceBusFlow.Builders
 {
     public class ServiceBusProducerConfigurationBuilder<TMessage>(AzureServiceBusConfiguration azureServiceBusConfiguration, IServiceCollection services)
-        where TMessage : class, IServiceBusMessage
+    where TMessage : class, IServiceBusMessage
     {
         private readonly AzureServiceBusConfiguration _azureServiceBusConfiguration = azureServiceBusConfiguration;
         private readonly IServiceCollection _services = services;
 
         private string? _topicName;
         private string? _queueName;
+        private readonly List<Type> _middlewares = [];
+
+        public ServiceBusProducerConfigurationBuilder<TMessage> UseMiddleware<TMiddleware>()
+            where TMiddleware : IProducerMiddleware
+        {
+            _middlewares.Add(typeof(TMiddleware));
+            return this;
+        }
 
         public ServiceBusProducerConfigurationBuilder<TMessage> WithTopic(string topic)
         {
@@ -80,29 +89,26 @@ namespace AzureServiceBusFlow.Builders
 
         internal void Build()
         {
-            if (!string.IsNullOrEmpty(_queueName))
-            {
-                _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
-                    return new ServiceBusProducer<TMessage>(_azureServiceBusConfiguration, _queueName, logger);
-                });
+            if (string.IsNullOrEmpty(_queueName) && string.IsNullOrEmpty(_topicName))
+                throw new InvalidOperationException("Either topic or queue name must be specified.");
 
-                return;
+            foreach (var middlewareType in _middlewares)
+            {
+                _services.AddSingleton(typeof(IProducerMiddleware), middlewareType);
             }
 
-            if (!string.IsNullOrEmpty(_topicName))
+            _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
             {
-                _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
-                    return new ServiceBusProducer<TMessage>(_azureServiceBusConfiguration, _topicName, logger);
-                });
-
-                return;
-            }
-
-            throw new InvalidOperationException("Either topic or queue name must be specified.");
+                var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
+                var middlewares = sp.GetServices<IProducerMiddleware>();
+                var name = _queueName ?? _topicName!;
+                return new ServiceBusProducer<TMessage>(
+                    _azureServiceBusConfiguration,
+                    name,
+                    logger,
+                    middlewares);
+            });
         }
     }
+
 }
