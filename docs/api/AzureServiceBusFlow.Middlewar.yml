@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Middlewar
+  commentId: N:AzureServiceBusFlow.Middlewar
+  id: AzureServiceBusFlow.Middlewar
+  children:
+  - AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  langs:
+  - csharp
+  - vb
+  name: AzureServiceBusFlow.Middlewar
+  nameWithType: AzureServiceBusFlow.Middlewar
+  fullName: AzureServiceBusFlow.Middlewar
+  type: Namespace
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+references:
+- uid: AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  commentId: T:AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  href: AzureServiceBusFlow.Middlewar.IProducerMiddleware.html
+  name: IProducerMiddleware
+  nameWithType: IProducerMiddleware
+  fullName: AzureServiceBusFlow.Middlewar.IProducerMiddleware

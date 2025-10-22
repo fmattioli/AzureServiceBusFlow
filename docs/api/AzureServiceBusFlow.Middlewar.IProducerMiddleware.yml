@@ -1,0 +1,254 @@
+### YamlMime:ManagedReference
+items:
+- uid: AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  commentId: T:AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  id: IProducerMiddleware
+  parent: AzureServiceBusFlow.Middlewar
+  children:
+  - AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync(Azure.Messaging.ServiceBus.ServiceBusMessage,System.Func{System.Threading.Tasks.Task})
+  langs:
+  - csharp
+  - vb
+  name: IProducerMiddleware
+  nameWithType: IProducerMiddleware
+  fullName: AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  type: Interface
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Middlewar/IProducerMiddleware.cs
+      branch: main
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
+    id: IProducerMiddleware
+    path: ../src/AzureServiceBusFlow/Middlewar/IProducerMiddleware.cs
+    startLine: 4
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Middlewar
+  syntax:
+    content: public interface IProducerMiddleware
+    content.vb: Public Interface IProducerMiddleware
+- uid: AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync(Azure.Messaging.ServiceBus.ServiceBusMessage,System.Func{System.Threading.Tasks.Task})
+  commentId: M:AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync(Azure.Messaging.ServiceBus.ServiceBusMessage,System.Func{System.Threading.Tasks.Task})
+  id: InvokeAsync(Azure.Messaging.ServiceBus.ServiceBusMessage,System.Func{System.Threading.Tasks.Task})
+  parent: AzureServiceBusFlow.Middlewar.IProducerMiddleware
+  langs:
+  - csharp
+  - vb
+  name: InvokeAsync(ServiceBusMessage, Func<Task>)
+  nameWithType: IProducerMiddleware.InvokeAsync(ServiceBusMessage, Func<Task>)
+  fullName: AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync(Azure.Messaging.ServiceBus.ServiceBusMessage, System.Func<System.Threading.Tasks.Task>)
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Middlewar/IProducerMiddleware.cs
+      branch: main
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
+    id: InvokeAsync
+    path: ../src/AzureServiceBusFlow/Middlewar/IProducerMiddleware.cs
+    startLine: 6
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Middlewar
+  syntax:
+    content: Task InvokeAsync(ServiceBusMessage message, Func<Task> next)
+    parameters:
+    - id: message
+      type: Azure.Messaging.ServiceBus.ServiceBusMessage
+    - id: next
+      type: System.Func{System.Threading.Tasks.Task}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function InvokeAsync(message As ServiceBusMessage, [next] As Func(Of Task)) As Task
+  overload: AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync*
+  nameWithType.vb: IProducerMiddleware.InvokeAsync(ServiceBusMessage, Func(Of Task))
+  fullName.vb: AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync(Azure.Messaging.ServiceBus.ServiceBusMessage, System.Func(Of System.Threading.Tasks.Task))
+  name.vb: InvokeAsync(ServiceBusMessage, Func(Of Task))
+references:
+- uid: AzureServiceBusFlow.Middlewar
+  commentId: N:AzureServiceBusFlow.Middlewar
+  href: AzureServiceBusFlow.html
+  name: AzureServiceBusFlow.Middlewar
+  nameWithType: AzureServiceBusFlow.Middlewar
+  fullName: AzureServiceBusFlow.Middlewar
+  spec.csharp:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Middlewar
+    name: Middlewar
+    href: AzureServiceBusFlow.Middlewar.html
+  spec.vb:
+  - uid: AzureServiceBusFlow
+    name: AzureServiceBusFlow
+    href: AzureServiceBusFlow.html
+  - name: .
+  - uid: AzureServiceBusFlow.Middlewar
+    name: Middlewar
+    href: AzureServiceBusFlow.Middlewar.html
+- uid: AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync*
+  commentId: Overload:AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync
+  href: AzureServiceBusFlow.Middlewar.IProducerMiddleware.html#AzureServiceBusFlow_Middlewar_IProducerMiddleware_InvokeAsync_Azure_Messaging_ServiceBus_ServiceBusMessage_System_Func_System_Threading_Tasks_Task__
+  name: InvokeAsync
+  nameWithType: IProducerMiddleware.InvokeAsync
+  fullName: AzureServiceBusFlow.Middlewar.IProducerMiddleware.InvokeAsync
+- uid: Azure.Messaging.ServiceBus.ServiceBusMessage
+  commentId: T:Azure.Messaging.ServiceBus.ServiceBusMessage
+  parent: Azure.Messaging.ServiceBus
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusmessage
+  name: ServiceBusMessage
+  nameWithType: ServiceBusMessage
+  fullName: Azure.Messaging.ServiceBus.ServiceBusMessage
+- uid: System.Func{System.Threading.Tasks.Task}
+  commentId: T:System.Func{System.Threading.Tasks.Task}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<Task>
+  nameWithType: Func<Task>
+  fullName: System.Func<System.Threading.Tasks.Task>
+  nameWithType.vb: Func(Of Task)
+  fullName.vb: System.Func(Of System.Threading.Tasks.Task)
+  name.vb: Func(Of Task)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Azure.Messaging.ServiceBus
+  commentId: N:Azure.Messaging.ServiceBus
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/azure
+  name: Azure.Messaging.ServiceBus
+  nameWithType: Azure.Messaging.ServiceBus
+  fullName: Azure.Messaging.ServiceBus
+  spec.csharp:
+  - uid: Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure
+  - name: .
+  - uid: Azure.Messaging
+    name: Messaging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging
+  - name: .
+  - uid: Azure.Messaging.ServiceBus
+    name: ServiceBus
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus
+  spec.vb:
+  - uid: Azure
+    name: Azure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure
+  - name: .
+  - uid: Azure.Messaging
+    name: Messaging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging
+  - name: .
+  - uid: Azure.Messaging.ServiceBus
+    name: ServiceBus
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/azure.messaging.servicebus
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

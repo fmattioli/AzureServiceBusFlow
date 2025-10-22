@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Middlewares | AzureServiceBusFlow </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Middlewares | AzureServiceBusFlow ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/middlewaresComponent.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AzureServiceBusFlow">
+            AzureServiceBusFlow
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="middlewares"><strong>Middlewares</strong></h1>
+
+<p>In the context of <code>AzureServiceBusFlow</code>, <strong>Middlewares</strong> are components that run before a message is sent to Azure Service Bus.</p>
+<p>They allow you to intercept, inspect, or modify the ServiceBusMessage — for example, adding custom properties, performing logging, or applying transformations — without changing the core sending logic.</p>
+<p>Each middleware <strong>executes in sequence</strong> through a pipeline, and after all have finished, the message is finally delivered to Azure Service Bus.</p>
+<br>
+<h2 id="-middleware-interface">🧩 Middleware Interface</h2>
+<p>AsbFlow defines a interface for creating custom middlewares.</p>
+<pre><code class="lang-csharp">public interface IProducerMiddleware
+{
+    Task InvokeAsync(ServiceBusMessage message, Func&lt;Task&gt; next);
+}
+</code></pre>
+<p>This interface defines a single method, InvokeAsync, which receives:</p>
+<ul>
+<li>The <code>ServiceBusMessage</code> being processed.</li>
+<li>A delegate <code>next</code>, which represents the next middleware in the pipeline or the final send operation.</li>
+</ul>
+<br>
+<h3 id="-example-of-middleware">🧱 Example of Middleware</h3>
+<pre><code class="lang-csharp">public class AsbSampleMiddleware : IProducerMiddleware
+{
+    public async Task InvokeAsync(ServiceBusMessage message, Func&lt;Task&gt; next)
+    {
+        // Add a custom property if it doesn't exist
+        if (!message.ApplicationProperties.ContainsKey(&quot;SampleMiddleware&quot;))
+        {
+            message.ApplicationProperties[&quot;SampleMiddleware&quot;] = &quot;Executed&quot;;
+        }
+
+        // Add a UTC timestamp for debugging or tracking
+        message.ApplicationProperties[&quot;ProcessedAtUtc&quot;] = DateTime.UtcNow.ToString(&quot;O&quot;);
+
+        // Continue the pipeline (invoke the next middleware or the actual send)
+        await next();
+    }
+}
+</code></pre>
+<p>This sample middleware demonstrates how to enrich a message before it is published.
+It adds two custom properties:</p>
+<ul>
+<li><code>&quot;SampleMiddleware&quot;</code> – a flag indicating that the middleware has executed.</li>
+<li><code>&quot;ProcessedAtUtc&quot;</code> – a timestamp showing when the message was processed.</li>
+</ul>
+<p>By calling <code>await next()</code>, it ensures the next middleware (or the send operation) is executed, maintaining the correct order of the pipeline.</p>
+<br>
+<h2 id="-registering-the-middleware-in-the-pipeline">⚙️ Registering the Middleware in the Pipeline</h2>
+<p>Once your middleware is implemented, you can easily register it in the producer pipeline through the UseMiddleware<tmiddleware>() extension method in your Program.cs:</tmiddleware></p>
+<pre><code class="lang-csharp">builder.Services.AddAzureServiceBus(cfg =&gt; cfg
+    .ConfigureAzureServiceBus(azureServiceBusConfig)
+    .AddProducer&lt;ExampleCommand1&gt;(p =&gt; p
+        .EnsureQueueExists(&quot;command-queue-one&quot;)
+        .WithCommandProducer()
+        .UseMiddleware&lt;AsbSampleMiddleware&gt;()
+        .ToQueue(&quot;command-queue-one&quot;)));
+</code></pre>
+<p>In this example:</p>
+<p>The <code>AsbSampleMiddleware</code> will be executed every time a message is produced for the queue command-queue-one.</p>
+<p>Multiple middlewares can be chained by calling UseMiddleware multiple times — they are executed in the same order they are added.</p>
+<pre><code class="lang-mermaid">flowchart LR
+
+A --&gt; B --&gt; C --&gt; D --&gt; |ExampleCommand1| E
+E --&gt;|ExampleCommand1| F[Consumer...]
+
+subgraph Producer
+        A[middleware-1]
+        B[middleware-2]
+        C[middleware-2]
+        D[_sender]
+    end
+
+subgraph AzureServiceBus
+        E([command-queue-one])
+    end
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/docs/docs/middlewaresComponent.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -39,6 +39,9 @@ items:
   - uid: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
     name: AzureServiceBusExtensions
     type: Class
+  - uid: AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions
+    name: ServiceBusMessageExtensions
+    type: Class
 - uid: AzureServiceBusFlow.Hosts
   name: AzureServiceBusFlow.Hosts
   type: Namespace
@@ -46,6 +49,13 @@ items:
   - uid: AzureServiceBusFlow.Hosts.ServiceBusConsumerHostedService
     name: ServiceBusConsumerHostedService
     type: Class
+- uid: AzureServiceBusFlow.Middlewar
+  name: AzureServiceBusFlow.Middlewar
+  type: Namespace
+  items:
+  - uid: AzureServiceBusFlow.Middlewar.IProducerMiddleware
+    name: IProducerMiddleware
+    type: Interface
 - uid: AzureServiceBusFlow.Models
   name: AzureServiceBusFlow.Models
   type: Namespace

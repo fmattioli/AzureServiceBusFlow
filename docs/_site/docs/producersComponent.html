@@ -94,9 +94,25 @@ The <strong>AzureServiceBusFlow</strong> package provides built-in producer inte
 <p>The library defines two main producer interfaces:</p>
 <pre><code class="lang-csharp">public interface ICommandProducer&lt;in TCommand&gt; where TCommand : class, IServiceBusMessage
 {
+    /// &lt;summary&gt;
+    /// Produces the command without additional options.
+    /// &lt;/summary&gt;
     Task ProduceCommandAsync(TCommand command, CancellationToken cancellationToken);
 
+    /// &lt;summary&gt;
+    /// Produces the command using explicit message options such as delay or application properties.
+    /// &lt;/summary&gt;
     Task ProduceCommandAsync(TCommand command, MessageOptions messageOptions, CancellationToken cancellationToken);
+
+    /// &lt;summary&gt;
+    /// Produces the command with a set of application properties that will be attached to the message.
+    /// &lt;/summary&gt;
+    Task ProduceCommandAsync(TCommand command, IDictionary&lt;string, object&gt; applicationProperties, CancellationToken cancellationToken);
+
+    /// &lt;summary&gt;
+    /// Produces the command with a delivery delay before it becomes available for processing.
+    /// &lt;/summary&gt;
+    Task ProduceCommandAsync(TCommand command, TimeSpan delay, CancellationToken cancellationToken);
 }
 
 public interface IEventProducer&lt;in TEvent&gt; where TEvent : class, IServiceBusMessage
@@ -113,6 +129,7 @@ public interface IEventProducer&lt;in TEvent&gt; where TEvent : class, IServiceB
 <li>Set a <strong>delay</strong> for the message to be consumed — for example, you can configure it to be available <strong>3 minutes after being published</strong>.</li>
 <li>Attach custom headers through the <code>ApplicationProperties</code> dictionary that travels with the message. These headers can carry metadata useful for all messages, such as tenant information, user identity, or special processing flags (e.g., skipping a message in some scenarios).</li>
 </ul>
+<p>The others 2 overloads of <code>ProduceCommandAsync</code> allows you to send a message passing only the <code>delay</code> or the <code>applicationProperties</code>, removing the usage of <strong><code>MessageOptions</code></strong> if only one of those properties will be used.</p>
 <p>This feature enables flexible message customization without modifying the message payload itself, following best practices for message-driven architectures.</p>
 <br>
 <h2 id="-internal-implementation">⚙️ Internal Implementation</h2>
@@ -169,6 +186,51 @@ public class CommandController(ICommandProducer&lt;ExampleCommand1&gt; _producer
     }
 }
 </code></pre>
+<h3 id="example-with-application-properties">Example with Application Properties</h3>
+<p>In this example we`re passing some values in application properties that can be used in MessageHandler.</p>
+<pre><code class="lang-csharp">public async Task&lt;IActionResult&gt; Example2WithApplicationProperties(CancellationToken cancellationToken)
+{
+    ExampleCommand2 command = new()
+    {
+        ExampleMessage = new ExampleMessage
+        {
+            Cliente = &quot;jose&quot;,
+            Id = Guid.NewGuid(),
+            Valor = 1111
+        }
+    };
+
+    var applicationProperties = new Dictionary&lt;string, object&gt;
+    {
+        { &quot;CorrelationId&quot;, Guid.NewGuid().ToString() },
+        { &quot;Priority&quot;, &quot;High&quot; }
+    };
+
+    await _producerTwo.ProduceCommandAsync(command, applicationProperties, cancellationToken);
+    return Ok();
+}
+</code></pre>
+<h3 id="example-with-delay">Example with Delay</h3>
+<p>In this example we`re passing a delay of 5 minutes, meaning that this message should be processed 5 minutes after sending it.</p>
+<pre><code class="lang-csharp">public async Task&lt;IActionResult&gt; Example2WithDelay(CancellationToken cancellationToken)
+{
+    ExampleCommand2 command = new()
+    {
+        ExampleMessage = new ExampleMessage
+        {
+            Cliente = &quot;jose&quot;,
+            Id = Guid.NewGuid(),
+            Valor = 1111
+        }
+    };
+
+    var delay = TimeSpan.FromMinutes(5);
+
+    await _producerTwo.ProduceCommandAsync(command, delay, cancellationToken);
+    return Ok();
+}
+</code></pre>
+<p>You can combine the <code>aplicationProperties</code> and <code>delay</code> in <strong><code>MessageOptions</code></strong> if you want the message to be sent with this two parameters together.</p>
 <br>
 <h2 id="-key-points">🧠 Key Points</h2>
 <ul>

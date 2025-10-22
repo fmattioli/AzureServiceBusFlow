@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CommandProducer&lt;TCommand&gt; | AzureServiceBusFlow ">
       
-      
+      <meta name="description" content="A producer responsible for dispatching command messages through the underlying Service Bus producer.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AzureServiceBusFlow_Producers_CommandProducer_1" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1" class="text-break">
-Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" t
   <dl><dt>Assembly</dt><dd>AzureServiceBusFlow.Configurations.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A producer responsible for dispatching command messages through the underlying Service Bus producer.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -109,7 +110,8 @@ Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" t
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>TCommand</code></dt>
-    <dd></dd>
+    <dd><p>The type of command being produced.</p>
+</dd>
   </dl>
 
   <dl class="typelist inheritance">
@@ -167,10 +169,11 @@ Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" t
 
   <h3 id="AzureServiceBusFlow_Producers_CommandProducer_1__ctor_AzureServiceBusFlow_Abstractions_IServiceBusProducer__0__" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.#ctor(AzureServiceBusFlow.Abstractions.IServiceBusProducer{`0})">
   CommandProducer(IServiceBusProducer&lt;TCommand&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>A producer responsible for dispatching command messages through the underlying Service Bus producer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -202,10 +205,11 @@ Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" t
 
   <h3 id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_AzureServiceBusFlow_Models_MessageOptions_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,AzureServiceBusFlow.Models.MessageOptions,System.Threading.CancellationToken)">
   ProduceCommandAsync(TCommand, MessageOptions, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Produces the command using explicit message options such as delay or application properties.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -240,12 +244,54 @@ Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" t
 
   <a id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync*"></a>
 
-  <h3 id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)">
-  ProduceCommandAsync(TCommand, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_System_Collections_Generic_IDictionary_System_String_System_Object__System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.CancellationToken)">
+  ProduceCommandAsync(TCommand, IDictionary&lt;string, object&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Produces a command with application properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ProduceCommandAsync(TCommand command, IDictionary&lt;string, object&gt; applicationProperties, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <span class="xref">TCommand</span></dt>
+    <dd></dd>
+    <dt><code>applicationProperties</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync*"></a>
+
+  <h3 id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.Threading.CancellationToken)">
+  ProduceCommandAsync(TCommand, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Produces the command without additional options.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -276,11 +322,52 @@ Class CommandProducer&lt;TCommand&gt;  <a class="header-action link-secondary" t
 
 
 
+  <a id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync*"></a>
+
+  <h3 id="AzureServiceBusFlow_Producers_CommandProducer_1_ProduceCommandAsync__0_System_TimeSpan_System_Threading_CancellationToken_" data-uid="AzureServiceBusFlow.Producers.CommandProducer`1.ProduceCommandAsync(`0,System.TimeSpan,System.Threading.CancellationToken)">
+  ProduceCommandAsync(TCommand, TimeSpan, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Produces a command with a delivery delay.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ProduceCommandAsync(TCommand command, TimeSpan delay, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <span class="xref">TCommand</span></dt>
+    <dd></dd>
+    <dt><code>delay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/migueltotti/AzureServiceBusFlow/blob/main/src/AzureServiceBusFlow/Producers/CommandProducer.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

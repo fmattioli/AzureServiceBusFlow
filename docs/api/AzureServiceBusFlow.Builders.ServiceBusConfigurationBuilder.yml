@@ -22,7 +22,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ServiceBusConfigurationBuilder
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 10
@@ -59,7 +59,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 10
@@ -93,7 +93,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: AzureServiceBusConfiguration
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 17
@@ -124,7 +124,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ConfigureAzureServiceBus
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 24
@@ -158,7 +158,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: AddProducer
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 36
@@ -199,7 +199,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: AddConsumer
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 49
@@ -237,7 +237,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: Build
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusConfigurationBuilder.cs
     startLine: 61

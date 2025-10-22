@@ -21,7 +21,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: AzureServiceBusConfiguration
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
     startLine: 4
@@ -56,7 +56,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ConnectionString
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
     startLine: 6
@@ -85,7 +85,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ServiceBusReceiveMode
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
     startLine: 7
@@ -114,7 +114,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: MaxConcurrentCalls
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
     startLine: 8
@@ -143,7 +143,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: MaxAutoLockRenewalDurationInSeconds
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
     startLine: 9
@@ -172,7 +172,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: MaxRetryAttempts
     path: ../src/AzureServiceBusFlow/Models/AzureServiceBusConfiguration.cs
     startLine: 10

@@ -78,7 +78,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AzureServiceBusFlow.Abstractions.IServiceBusProducer<TMessage>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/AzureServiceBusFlow.Abstractions.IServiceBusProducer-1.yml\" sourcestartlinenumber=\"1\">Defines a producer responsible for sending messages to Azure Service Bus.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -166,6 +166,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AzureServiceBusFlow.Extensions.yml",
       "output": {
         ".html": {
@@ -204,6 +218,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AzureServiceBusFlow.Hosts",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Middlewar.IProducerMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Middlewar.IProducerMiddleware.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Middlewar.IProducerMiddleware",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AzureServiceBusFlow.Middlewar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AzureServiceBusFlow.Middlewar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AzureServiceBusFlow.Middlewar",
       "Summary": null
     },
     {
@@ -260,7 +302,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AzureServiceBusFlow.Producers.CommandProducer<TCommand>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/AzureServiceBusFlow.Producers.CommandProducer-1.yml\" sourcestartlinenumber=\"1\">A producer responsible for dispatching command messages through the underlying Service Bus producer.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -373,6 +415,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/messageHandlerComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/middlewaresComponent.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/middlewaresComponent.html"
         }
       },
       "version": ""

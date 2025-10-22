@@ -120,7 +120,7 @@ You need to define the basic configuration for Azure Service Bus to work.</p>
 <li><strong>MaxRetryAttempts</strong>: Defines the maximum number of retry attempts the message handler will perform to reprocess a message if an exception occurs.</li>
 </ul>
 <blockquote>
-<p>💡 The <code>MaxRetryAttempts</code> property only makes sense when using <strong>ReceiveAndDelete</strong> mode. In <strong>PeekLock</strong> mode, Azure Service Bus already retries message processing internally 10 times by default, so explicit retry configuration is unnecessary.</p>
+<p>💡 The <code>MaxRetryAttempts</code> property only makes sense when using <strong>ReceiveAndDelete</strong> mode. In <strong>PeekLock</strong> mode, Azure Service Bus retries message processing 10 times by default, so explicit retry configuration is unnecessary.</p>
 </blockquote>
 <br>
 <h2 id="-step-3-register-azureservicebus-in-programcs">🧩 Step 3: Register AzureServiceBus in <code>Program.cs</code></h2>
