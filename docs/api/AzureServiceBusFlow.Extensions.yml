@@ -5,6 +5,7 @@ items:
   id: AzureServiceBusFlow.Extensions
   children:
   - AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+  - AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions
   langs:
   - csharp
   - vb
@@ -21,3 +22,9 @@ references:
   name: AzureServiceBusExtensions
   nameWithType: AzureServiceBusExtensions
   fullName: AzureServiceBusFlow.Extensions.AzureServiceBusExtensions
+- uid: AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions
+  commentId: T:AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions
+  href: AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions.html
+  name: ServiceBusMessageExtensions
+  nameWithType: ServiceBusMessageExtensions
+  fullName: AzureServiceBusFlow.Extensions.ServiceBusMessageExtensions

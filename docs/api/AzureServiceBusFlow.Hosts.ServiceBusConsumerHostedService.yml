@@ -20,7 +20,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ServiceBusConsumerHostedService
     path: ../src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
     startLine: 9
@@ -58,7 +58,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
     startLine: 9
@@ -100,7 +100,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: StartAsync
     path: ../src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
     startLine: 29
@@ -137,7 +137,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: StopAsync
     path: ../src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
     startLine: 90
@@ -174,7 +174,7 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: DisposeAsync
     path: ../src/AzureServiceBusFlow/Hosts/ServiceBusConsumerHostedService.cs
     startLine: 101

@@ -10,6 +10,7 @@ items:
   - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureTopicExists(System.String)
   - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToQueue(System.String)
   - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.ToTopic(System.String)
+  - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.UseMiddleware``1
   - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithCommandProducer
   - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithEventProducer
   - AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithQueue(System.String)
@@ -25,10 +26,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ServiceBusProducerConfigurationBuilder
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -65,10 +66,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: .ctor
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -84,6 +85,39 @@ items:
   nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).New(AzureServiceBusConfiguration, IServiceCollection)
   fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).New(AzureServiceBusFlow.Models.AzureServiceBusConfiguration, Microsoft.Extensions.DependencyInjection.IServiceCollection)
   name.vb: New(AzureServiceBusConfiguration, IServiceCollection)
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.UseMiddleware``1
+  commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.UseMiddleware``1
+  id: UseMiddleware``1
+  parent: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: UseMiddleware<TMiddleware>()
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.UseMiddleware<TMiddleware>()
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.UseMiddleware<TMiddleware>()
+  type: Method
+  source:
+    remote:
+      path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
+      branch: main
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
+    id: UseMiddleware
+    path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
+    startLine: 20
+  assemblies:
+  - AzureServiceBusFlow.Configurations
+  namespace: AzureServiceBusFlow.Builders
+  syntax:
+    content: 'public ServiceBusProducerConfigurationBuilder<TMessage> UseMiddleware<TMiddleware>() where TMiddleware : IProducerMiddleware'
+    typeParameters:
+    - id: TMiddleware
+    return:
+      type: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
+    content.vb: Public Function UseMiddleware(Of TMiddleware As IProducerMiddleware)() As ServiceBusProducerConfigurationBuilder(Of TMessage)
+  overload: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.UseMiddleware*
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).UseMiddleware(Of TMiddleware)()
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).UseMiddleware(Of TMiddleware)()
+  name.vb: UseMiddleware(Of TMiddleware)()
 - uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic(System.String)
   commentId: M:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic(System.String)
   id: WithTopic(System.String)
@@ -99,10 +133,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: WithTopic
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 18
+    startLine: 27
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -133,10 +167,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: EnsureQueueExists
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 24
+    startLine: 33
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -167,10 +201,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: EnsureTopicExists
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 38
+    startLine: 47
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -201,10 +235,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: WithCommandProducer
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 50
+    startLine: 59
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -231,10 +265,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: WithEventProducer
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 56
+    startLine: 65
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -261,10 +295,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ToTopic
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 62
+    startLine: 71
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -295,10 +329,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: ToQueue
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 68
+    startLine: 77
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -329,10 +363,10 @@ items:
     remote:
       path: src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
       branch: main
-      repo: git@github.com:migueltotti/AzureServiceBusFlow.git
+      repo: https://github.com/migueltotti/AzureServiceBusFlow.git
     id: WithQueue
     path: ../src/AzureServiceBusFlow/Builders/ServiceBusProducerConfigurationBuilder.cs
-    startLine: 74
+    startLine: 83
   assemblies:
   - AzureServiceBusFlow.Configurations
   namespace: AzureServiceBusFlow.Builders
@@ -691,25 +725,14 @@ references:
     name: DependencyInjection
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
-- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic*
-  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic
-  href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithTopic_System_String_
-  name: WithTopic
-  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic
-  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic
-  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic
-  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.UseMiddleware*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.UseMiddleware
+  href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_UseMiddleware__1
+  name: UseMiddleware
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.UseMiddleware
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.UseMiddleware
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).UseMiddleware
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).UseMiddleware
 - uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
   commentId: T:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1
   parent: AzureServiceBusFlow.Builders
@@ -736,6 +759,25 @@ references:
   - name: " "
   - name: TMessage
   - name: )
+- uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic*
+  commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.WithTopic
+  href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_WithTopic_System_String_
+  name: WithTopic
+  nameWithType: ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic
+  fullName: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder<TMessage>.WithTopic
+  nameWithType.vb: ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic
+  fullName.vb: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder(Of TMessage).WithTopic
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureQueueExists*
   commentId: Overload:AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder`1.EnsureQueueExists
   href: AzureServiceBusFlow.Builders.ServiceBusProducerConfigurationBuilder-1.html#AzureServiceBusFlow_Builders_ServiceBusProducerConfigurationBuilder_1_EnsureQueueExists_System_String_

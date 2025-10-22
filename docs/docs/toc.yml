@@ -17,6 +17,8 @@
       href: messageHandlerComponent.md
     - name: Producers
       href: producersComponent.md
+    - name: Middlewares
+      href: middlewaresComponent.md
 
 - name: Configuring in your API
   items:
