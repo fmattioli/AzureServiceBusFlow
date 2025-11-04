@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Scalar.AspNetCore" Version="2.9.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.10.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
-    <PackageReference Include="Mattioli.Configurations" Version="1.61.0" />
+    <PackageReference Include="Mattioli.Configurations" Version="1.62.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -59,13 +59,13 @@ namespace AzureServiceBusFlow.Builders
 
         public ServiceBusProducerConfigurationBuilder<TMessage> WithCommandProducer()
         {
-            _services.AddScoped(typeof(ICommandProducer<>), typeof(CommandProducer<>));
+            _services.AddSingleton(typeof(ICommandProducer<>), typeof(CommandProducer<>));
             return this;
         }
 
         public ServiceBusProducerConfigurationBuilder<TMessage> WithEventProducer()
         {
-            _services.AddScoped(typeof(IEventProducer<>), typeof(EventProducer<>));
+            _services.AddSingleton(typeof(IEventProducer<>), typeof(EventProducer<>));
             return this;
         }
 
@@ -94,10 +94,10 @@ namespace AzureServiceBusFlow.Builders
 
             foreach (var middlewareType in _middlewares)
             {
-                _services.AddScoped(typeof(IProducerMiddleware), middlewareType);
+                _services.AddSingleton(typeof(IProducerMiddleware), middlewareType);
             }
 
-            _services.AddScoped<IServiceBusProducer<TMessage>>(sp =>
+            _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
                 var middlewares = sp.GetServices<IProducerMiddleware>();
