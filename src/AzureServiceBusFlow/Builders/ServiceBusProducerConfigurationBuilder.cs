@@ -1,5 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Middlewar;
+using AzureServiceBusFlow.Middlewares;
 using AzureServiceBusFlow.Models;
 using AzureServiceBusFlow.Producers;
 using Microsoft.Azure.ServiceBus.Management;
@@ -21,7 +21,11 @@ namespace AzureServiceBusFlow.Builders
         public ServiceBusProducerConfigurationBuilder<TMessage> UseMiddleware<TMiddleware>()
             where TMiddleware : IProducerMiddleware
         {
-            _middlewares.Add(typeof(TMiddleware));
+            if (!_middlewares.Contains(typeof(TMiddleware)))
+            {
+                _middlewares.Add(typeof(TMiddleware));
+            }
+
             return this;
         }
 

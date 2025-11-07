@@ -1,6 +1,6 @@
 ﻿using Azure.Messaging.ServiceBus;
 
-namespace AzureServiceBusFlow.Middlewar
+namespace AzureServiceBusFlow.Middlewares
 {
     public interface IProducerMiddleware
     {

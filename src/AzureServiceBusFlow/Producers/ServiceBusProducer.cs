@@ -1,6 +1,6 @@
 ﻿using Azure.Messaging.ServiceBus;
 using AzureServiceBusFlow.Abstractions;
-using AzureServiceBusFlow.Middlewar;
+using AzureServiceBusFlow.Middlewares;
 using AzureServiceBusFlow.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
