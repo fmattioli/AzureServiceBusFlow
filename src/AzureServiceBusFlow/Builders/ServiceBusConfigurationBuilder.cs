@@ -1,4 +1,5 @@
 ﻿using AzureServiceBusFlow.Abstractions;
+using AzureServiceBusFlow.Middlewares;
 using AzureServiceBusFlow.Models;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,20 @@ namespace AzureServiceBusFlow.Builders
         public ServiceBusConfigurationBuilder ConfigureAzureServiceBus(AzureServiceBusConfiguration azureServiceBusConfiguration)
         {
             AzureServiceBusConfiguration = azureServiceBusConfiguration;
+            return this;
+        }
+
+        public ServiceBusConfigurationBuilder UseGlobalProducerMiddleware<TMiddleware>() 
+            where TMiddleware : class, IProducerMiddleware
+        {
+            // Só registra no DI — já torna global
+            if (!_services.Any(s =>
+                s.ServiceType == typeof(IProducerMiddleware) &&
+                s.ImplementationType == typeof(TMiddleware)))
+            {
+                _services.AddSingleton<IProducerMiddleware, TMiddleware>();
+            }
+
             return this;
         }
 

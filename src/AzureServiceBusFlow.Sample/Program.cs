@@ -24,10 +24,10 @@ var azureServiceBusConfig = new AzureServiceBusConfiguration
 
 builder.Services.AddAzureServiceBus(cfg => cfg
     .ConfigureAzureServiceBus(azureServiceBusConfig)
+    .UseGlobalProducerMiddleware<AsbSampleMiddleware>()
     .AddProducer<ExampleCommand1>(p => p
         .EnsureQueueExists("command-queue-one")
         .WithCommandProducer()
-        .UseMiddleware<AsbSampleMiddleware>()
         .ToQueue("command-queue-one"))
     .AddProducer<ExampleCommand2>(p => p
         .EnsureQueueExists("command-queue-two")

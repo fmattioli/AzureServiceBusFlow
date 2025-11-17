@@ -67,17 +67,23 @@ public class ServiceBusConsumerHostedService(
                 await messageHandler(message, serviceProvider, args.CancellationToken);
                 await args.CompleteMessageAsync(message, args.CancellationToken);
             }
-
-            logger.LogInformation("Message {MessageId} produced and consumed with successful.", message.MessageId);
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Error while trying process MessageId {MessageId} - MessageBody {Body}", message.MessageId, message.Body);
+            logger.LogError(ex, "Error while trying process MessageType {MessageType} with RoutingKey {RoutingKey} with id {MessageId} - MessageBody {Body}",
+                message.GetType().Name,
+                message.Subject, 
+                message.MessageId, 
+                message.Body);
 
             if (_processor.ReceiveMode == ServiceBusReceiveMode.PeekLock)
             {
                 await args.AbandonMessageAsync(message, cancellationToken: args.CancellationToken);
-                logger.LogInformation("Message {MessageId} abandoned. Will retry again.", message.MessageId);
+
+                logger.LogWarning("Message {MessageType} with RoutingKey {RoutingKey} with id {MessageId} abandoned. Will retry again.",
+                    message.GetType().Name,
+                    message.Subject,
+                    message.MessageId);
             }
         }
     }

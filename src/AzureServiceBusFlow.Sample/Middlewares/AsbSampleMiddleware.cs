@@ -1,5 +1,4 @@
 ﻿using Azure.Messaging.ServiceBus;
-using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Middlewares;
 
 namespace AzureServiceBusFlow.Sample.Middlewares

@@ -126,6 +126,7 @@ namespace AzureServiceBusFlow.Builders
                     "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
                     messageTypeName, DateTime.UtcNow
                 );
+
                 return;
             }
 
@@ -168,14 +169,14 @@ namespace AzureServiceBusFlow.Builders
                 var elapsed = DateTime.UtcNow - startTime;
 
                 logger.LogInformation(
-                    "Message {MessageType} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
+                    "Message {MessageType} with RoutingKey {RoutingKey} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
                     messageTypeName,
+                    rawMessage.Subject,
                     handlerType.Name,
                     startTime.ToString("o"),
                     elapsed.TotalMilliseconds
                 );
             }
-
         }
     }
 }

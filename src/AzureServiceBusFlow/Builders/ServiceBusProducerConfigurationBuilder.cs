@@ -98,16 +98,14 @@ namespace AzureServiceBusFlow.Builders
                 throw new InvalidOperationException("Either topic or queue name must be specified.");
             }
 
-            foreach (var middlewareType in _middlewares)
+            foreach (var middlewareType in from middlewareType in _middlewares
+                                           where !_services.Any(s =>
+                                           s.ServiceType == typeof(IProducerMiddleware) &&
+                                           s.ImplementationType == middlewareType)
+                                           select middlewareType)
             {
-                if (!_services.Any(s =>
-                    s.ServiceType == typeof(IProducerMiddleware) &&
-                    s.ImplementationType == middlewareType))
-                {
-                    _services.AddSingleton(typeof(IProducerMiddleware), middlewareType);
-                }
+                _services.AddSingleton(typeof(IProducerMiddleware), middlewareType);
             }
-
 
             _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
             {

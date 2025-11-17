@@ -34,15 +34,19 @@ namespace AzureServiceBusFlow.Producers
                 Subject = message.RoutingKey,
                 ApplicationProperties =
                 {
-                    { "MessageType", message.GetType().FullName },
-                    { "CreatedAt", message.CreatedDate.ToString("O") }
+                    { "MessageType", message.GetType().Name },
+                    { "CreatedAt", message.CreatedDate.ToString("O") },
+                    { "RoutingKey", (message as IServiceBusMessage)?.RoutingKey },
                 }
             };
 
             async Task finalStep()
             {
                 await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
-                _logger.LogInformation("Message {MessageType} published successfully!", message.GetType().Name);
+
+                _logger.LogInformation("Message {MessageType} with RoutingKey {MessageId} published successfully!", 
+                    message.GetType().Name,
+                    message.RoutingKey);
             }
 
             // Run middlewares, if it exist
@@ -71,8 +75,9 @@ namespace AzureServiceBusFlow.Producers
                 Subject = (message as IServiceBusMessage)?.RoutingKey ?? message.GetType().Name,
                 ApplicationProperties =
                 {
-                    { "MessageType", message.GetType().FullName },
-                    { "CreatedAt", (message as IServiceBusMessage)?.CreatedDate.ToString("O") ?? DateTime.UtcNow.ToString("O") }
+                    { "MessageType", message.GetType().Name },
+                    { "CreatedAt", (message as IServiceBusMessage)?.CreatedDate.ToString("O") ?? DateTime.UtcNow.ToString("O") },
+                    { "RoutingKey", (message as IServiceBusMessage)?.RoutingKey }
                 }
             };
 
@@ -91,12 +96,14 @@ namespace AzureServiceBusFlow.Producers
                 serviceBusMessage.ScheduledEnqueueTime = DateTimeOffset.UtcNow.Add(producerOptions.Delay.Value);
             }
 
-            // Mesmo pipeline de middlewares para as versões com opções
-            Func<Task> finalStep = async () =>
+            async Task finalStep()
             {
                 await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
-                _logger.LogInformation("Message {MessageType} published successfully!", message.GetType().Name);
-            };
+
+                _logger.LogInformation("Message {MessageType} with RoutingKey {MessageId} published successfully!",
+                    message.GetType().Name,
+                    message.RoutingKey);
+            }
 
             if (_middlewares != null && _middlewares.Any())
             {
