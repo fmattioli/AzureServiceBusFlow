@@ -2,7 +2,6 @@
 using AzureServiceBusFlow.Sample.Commands;
 using AzureServiceBusFlow.Sample.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.Amqp.Framing;
 
 namespace AzureServiceBusFlow.Sample.Controllers
 {

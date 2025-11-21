@@ -31,6 +31,7 @@ namespace AzureServiceBusFlow.Producers
             var json = JsonConvert.SerializeObject(message);
             var serviceBusMessage = new ServiceBusMessage(json)
             {
+                Subject = message.GetType().Name,
                 ApplicationProperties =
                 {
                     { "MessageType", message.GetType().Name },

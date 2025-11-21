@@ -32,7 +32,7 @@ namespace AzureServiceBusFlow.Builders
         public ServiceBusConfigurationBuilder UseGlobalProducerMiddleware<TMiddleware>() 
             where TMiddleware : class, IProducerMiddleware
         {
-            // Só registra no DI — já torna global
+            // Register in DI to make it globally
             if (!_services.Any(s =>
                 s.ServiceType == typeof(IProducerMiddleware) &&
                 s.ImplementationType == typeof(TMiddleware)))
@@ -46,7 +46,7 @@ namespace AzureServiceBusFlow.Builders
         public ServiceBusConfigurationBuilder UseGlobalConsumerMiddleware<TMiddleware>()
             where TMiddleware : class, IConsumerMiddleware
         {
-            // Só registra no DI — já torna global
+            // Register in DI to make use it globally
             if (!_services.Any(s =>
                 s.ServiceType == typeof(IConsumerMiddleware) &&
                 s.ImplementationType == typeof(TMiddleware)))
