@@ -7,7 +7,7 @@ namespace AzureServiceBusFlow.Sample.Middlewares
     /// Sample middleware that adds a custom property
     /// to every message published to Azure Service Bus.
     /// </summary>
-    public class AsbSampleMiddleware : IProducerMiddleware
+    public class AsbSampleProducerMiddleware : IProducerMiddleware
     {
         public async Task InvokeAsync(ServiceBusMessage message, Func<Task> next)
         {

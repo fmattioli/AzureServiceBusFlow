@@ -43,6 +43,20 @@ namespace AzureServiceBusFlow.Builders
             return this;
         }
 
+        public ServiceBusConfigurationBuilder UseGlobalConsumerMiddleware<TMiddleware>()
+            where TMiddleware : class, IConsumerMiddleware
+        {
+            // Só registra no DI — já torna global
+            if (!_services.Any(s =>
+                s.ServiceType == typeof(IConsumerMiddleware) &&
+                s.ImplementationType == typeof(TMiddleware)))
+            {
+                _services.AddSingleton<IConsumerMiddleware, TMiddleware>();
+            }
+
+            return this;
+        }
+
         /// <summary>
         /// Adds a producer for messages of type <typeparamref name="TMessage"/> configured via a callback.
         /// </summary>
