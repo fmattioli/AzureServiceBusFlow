@@ -102,8 +102,8 @@ namespace AzureServiceBusFlow.Builders
             _services.AddSingleton<IHostedService>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
-                var localConsumerMiddlewares = sp.GetKeyedServices<IConsumerMiddleware>(_consumerMiddlewareKey);
-                var globalConsumerMiddlewares = sp.GetServices<IConsumerMiddleware>();
+                var localConsumerMiddlewares = sp.GetKeyedServices<IConsumerMiddleware>(_consumerMiddlewareKey) ?? [];
+                var globalConsumerMiddlewares = sp.GetServices<IConsumerMiddleware>() ?? [];
 
                 var consumerMiddlewares = globalConsumerMiddlewares.Union(localConsumerMiddlewares);
 
