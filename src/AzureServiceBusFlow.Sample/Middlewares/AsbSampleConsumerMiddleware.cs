@@ -11,9 +11,9 @@ namespace AzureServiceBusFlow.Sample.Middlewares
     {
         public Task InvokeAsync(ServiceBusReceivedMessage message, Func<Task> next, CancellationToken cancellationToken)
         {
-            var timeInUtc = message.ApplicationProperties["ProcessedAtUtc"];
+            var sampleMiddlewareStatus = message.ApplicationProperties["SampleMiddleware"];
 
-            logger.LogInformation("Message reached ConsumerMiddleware === ProcessedAt: {TimeInUtc}", timeInUtc);
+            logger.LogInformation("Message reached ConsumerMiddleware === Status: {Status}", sampleMiddlewareStatus);
 
             return next();
         }
