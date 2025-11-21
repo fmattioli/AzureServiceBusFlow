@@ -223,9 +223,9 @@ namespace AzureServiceBusFlow.Builders
                 var elapsed = DateTime.UtcNow - startTime;
 
                 logger.LogInformation(
-                    "Message {MessageType} with RoutingKey {RoutingKey} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
+                    "Message {MessageType} with CorrelationId {CorrelationId} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
                     messageTypeName,
-                    rawMessage.Subject,
+                    rawMessage.CorrelationId,
                     handlerType.Name,
                     startTime.ToString("o"),
                     elapsed.TotalMilliseconds
