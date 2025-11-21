@@ -1,6 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
 using AzureServiceBusFlow.Abstractions;
 using AzureServiceBusFlow.Hosts;
+using AzureServiceBusFlow.Middlewares;
 using AzureServiceBusFlow.Models;
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,19 @@ namespace AzureServiceBusFlow.Builders
         private string? _queueName;
         private string? _topicName;
         private string? _subscriptionName;
+        private readonly List<Type> _middlewares = [];
+        private readonly string _consumerMiddlewareKey = Guid.NewGuid().ToString();
+
+        public ServiceBusConsumerConfigurationBuilder UseMiddleware<TMiddleware>()
+            where TMiddleware : IConsumerMiddleware
+        {
+            if (!_middlewares.Contains(typeof(TMiddleware)))
+            {
+                _middlewares.Add(typeof(TMiddleware));
+            }
+
+            return this;
+        }
 
         public ServiceBusConsumerConfigurationBuilder FromQueue(string queueName)
         {
@@ -76,15 +90,28 @@ namespace AzureServiceBusFlow.Builders
                 throw new InvalidOperationException("Missing queue or topic configuration!");
             }
 
+            foreach (var middlewareType in from middlewareType in _middlewares
+                                           where !_services.Any(s =>
+                                           s.ServiceType == typeof(IConsumerMiddleware) &&
+                                           s.ImplementationType == middlewareType)
+                                           select middlewareType)
+            {
+                _services.AddKeyedSingleton(typeof(IConsumerMiddleware), _consumerMiddlewareKey,  middlewareType);
+            }
+
             _services.AddSingleton<IHostedService>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
+                var localConsumerMiddlewares = sp.GetKeyedServices<IConsumerMiddleware>(_consumerMiddlewareKey) ?? [];
+                var globalConsumerMiddlewares = sp.GetServices<IConsumerMiddleware>() ?? [];
+
+                var consumerMiddlewares = globalConsumerMiddlewares.Union(localConsumerMiddlewares);
 
                 if (!string.IsNullOrWhiteSpace(_queueName))
                 {
                     return new ServiceBusConsumerHostedService(
                         (rawMessage, rootProvider, cancellationToken) =>
-                            MessageConsumingHandler(rawMessage, rootProvider, logger, cancellationToken),
+                            MessageConsumingHandler(rawMessage, rootProvider, consumerMiddlewares, logger, cancellationToken),
                         sp,
                         logger,
                         _azureServiceBusConfiguration,
@@ -93,7 +120,7 @@ namespace AzureServiceBusFlow.Builders
 
                 return new ServiceBusConsumerHostedService(
                     (rawMessage, rootProvider, cancellationToken) =>
-                        MessageConsumingHandler(rawMessage, rootProvider, logger, cancellationToken),
+                        MessageConsumingHandler(rawMessage, rootProvider, consumerMiddlewares, logger, cancellationToken),
                     sp,
                     logger,
                     _azureServiceBusConfiguration,
@@ -102,7 +129,34 @@ namespace AzureServiceBusFlow.Builders
             });
         }
 
-        private async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
+        private async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, IEnumerable<IConsumerMiddleware> middlewares, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
+        {
+            Func<Task> finalStep = async () =>
+            {
+                await ProcessHandlersAsync(rawMessage, rootProvider, logger, cancellationToken);
+            };
+
+            if (middlewares != null && middlewares.Any())
+            {
+                Func<Task> next = finalStep;
+
+                foreach (var middleware in middlewares.Reverse())
+                {
+                    var current = middleware;
+                    var prevNext = next;
+
+                    next = () => current.InvokeAsync(rawMessage, prevNext, cancellationToken);
+                }
+
+                await next();
+            }
+            else
+            {
+                await finalStep();
+            }
+        }
+
+        private async Task ProcessHandlersAsync(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
         {
             if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
             {
@@ -169,9 +223,9 @@ namespace AzureServiceBusFlow.Builders
                 var elapsed = DateTime.UtcNow - startTime;
 
                 logger.LogInformation(
-                    "Message {MessageType} with RoutingKey {RoutingKey} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
+                    "Message {MessageType} with CorrelationId {CorrelationId} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
                     messageTypeName,
-                    rawMessage.Subject,
+                    rawMessage.CorrelationId,
                     handlerType.Name,
                     startTime.ToString("o"),
                     elapsed.TotalMilliseconds

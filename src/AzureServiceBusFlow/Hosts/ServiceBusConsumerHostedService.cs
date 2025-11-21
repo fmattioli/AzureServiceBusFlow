@@ -70,9 +70,9 @@ public class ServiceBusConsumerHostedService(
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Error while trying process MessageType {MessageType} with RoutingKey {RoutingKey} with id {MessageId} - MessageBody {Body}",
+            logger.LogError(ex, "Error while trying process MessageType {MessageType} with CorrelationId {CorrelationId} with id {MessageId} - MessageBody {Body}",
                 message.GetType().Name,
-                message.Subject, 
+                message.CorrelationId, 
                 message.MessageId, 
                 message.Body);
 
@@ -80,9 +80,9 @@ public class ServiceBusConsumerHostedService(
             {
                 await args.AbandonMessageAsync(message, cancellationToken: args.CancellationToken);
 
-                logger.LogWarning("Message {MessageType} with RoutingKey {RoutingKey} with id {MessageId} abandoned. Will retry again.",
+                logger.LogWarning("Message {MessageType} with CorrelationId {CorrelationId} with id {MessageId} abandoned. Will retry again.",
                     message.GetType().Name,
-                    message.Subject,
+                    message.CorrelationId,
                     message.MessageId);
             }
         }

@@ -17,6 +17,7 @@ namespace AzureServiceBusFlow.Builders
         private string? _topicName;
         private string? _queueName;
         private readonly List<Type> _middlewares = [];
+        private readonly string _producerMiddlewareKey = Guid.NewGuid().ToString();
 
         public ServiceBusProducerConfigurationBuilder<TMessage> UseMiddleware<TMiddleware>()
             where TMiddleware : IProducerMiddleware
@@ -104,13 +105,18 @@ namespace AzureServiceBusFlow.Builders
                                            s.ImplementationType == middlewareType)
                                            select middlewareType)
             {
-                _services.AddSingleton(typeof(IProducerMiddleware), middlewareType);
+                _services.AddKeyedSingleton(typeof(IProducerMiddleware), _producerMiddlewareKey, middlewareType);
             }
 
             _services.AddSingleton<IServiceBusProducer<TMessage>>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusProducer<TMessage>>>();
-                var middlewares = sp.GetServices<IProducerMiddleware>();
+
+                var localProducerMiddlewares = sp.GetKeyedServices<IProducerMiddleware>(_producerMiddlewareKey) ?? [];
+                var globalProducerMiddlewares = sp.GetServices<IProducerMiddleware>() ?? [];
+
+                var middlewares = globalProducerMiddlewares.Union(localProducerMiddlewares);
+
                 var name = _queueName ?? _topicName!;
                 return new ServiceBusProducer<TMessage>(
                     _azureServiceBusConfiguration,

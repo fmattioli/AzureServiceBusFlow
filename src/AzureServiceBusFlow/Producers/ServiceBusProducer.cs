@@ -31,12 +31,11 @@ namespace AzureServiceBusFlow.Producers
             var json = JsonConvert.SerializeObject(message);
             var serviceBusMessage = new ServiceBusMessage(json)
             {
-                Subject = message.RoutingKey,
+                Subject = message.GetType().Name,
                 ApplicationProperties =
                 {
                     { "MessageType", message.GetType().Name },
                     { "CreatedAt", message.CreatedDate.ToString("O") },
-                    { "RoutingKey", (message as IServiceBusMessage)?.RoutingKey },
                 }
             };
 
@@ -44,9 +43,9 @@ namespace AzureServiceBusFlow.Producers
             {
                 await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
 
-                _logger.LogInformation("Message {MessageType} with RoutingKey {MessageId} published successfully!", 
+                _logger.LogInformation("Message {MessageType} with CorrelationId {CorrelationId} published successfully!", 
                     message.GetType().Name,
-                    message.RoutingKey);
+                    serviceBusMessage.CorrelationId);
             }
 
             // Run middlewares, if it exist
@@ -72,12 +71,11 @@ namespace AzureServiceBusFlow.Producers
             var json = JsonConvert.SerializeObject(message);
             var serviceBusMessage = new ServiceBusMessage(json)
             {
-                Subject = (message as IServiceBusMessage)?.RoutingKey ?? message.GetType().Name,
+                Subject = message.GetType().Name,
                 ApplicationProperties =
                 {
                     { "MessageType", message.GetType().Name },
                     { "CreatedAt", (message as IServiceBusMessage)?.CreatedDate.ToString("O") ?? DateTime.UtcNow.ToString("O") },
-                    { "RoutingKey", (message as IServiceBusMessage)?.RoutingKey }
                 }
             };
 
@@ -100,9 +98,9 @@ namespace AzureServiceBusFlow.Producers
             {
                 await _sender.SendMessageAsync(serviceBusMessage, cancellationToken);
 
-                _logger.LogInformation("Message {MessageType} with RoutingKey {MessageId} published successfully!",
+                _logger.LogInformation("Message {MessageType} with CorrelationId {CorrelationId} published successfully!",
                     message.GetType().Name,
-                    message.RoutingKey);
+                    serviceBusMessage.CorrelationId);
             }
 
             if (_middlewares != null && _middlewares.Any())
