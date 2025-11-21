@@ -45,8 +45,7 @@ builder.Services.AddAzureServiceBus(cfg => cfg
     .AddConsumer(c => c
         .FromQueue("command-queue-one")
         .AddHandler<ExampleCommand1, CommandExemple1Handler>()
-        .AddHandler<ExampleCommand1, CommandExampleTwoHandlersPerOneMessageHandler>()
-        .UseMiddleware<AsbSampleConsumerMiddleware>())
+        .AddHandler<ExampleCommand1, CommandExampleTwoHandlersPerOneMessageHandler>())
     .AddConsumer(c => c
         .FromQueue("command-queue-two")
         .AddHandler<ExampleCommand2, CommandExample2Handler>())
