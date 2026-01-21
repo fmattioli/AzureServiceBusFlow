@@ -167,7 +167,11 @@ namespace AzureServiceBusFlow.Builders
             }
         }
 
-        private async Task ProcessHandlersAsync(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
+        private async Task ProcessHandlersAsync(
+            ServiceBusReceivedMessage rawMessage,
+            IServiceProvider sp,
+            ILogger<ServiceBusConsumerHostedService> logger,
+            CancellationToken cancellationToken)
         {
             if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
             {
@@ -183,15 +187,14 @@ namespace AzureServiceBusFlow.Builders
             }
 
             var messageType = _handlers.Keys.FirstOrDefault(t =>
-                string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) || string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
+                string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) ||
+                string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
 
             if (messageType == null)
             {
                 logger.LogWarning(
                     "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
-                    messageTypeName, DateTime.UtcNow
-                );
-
+                    messageTypeName, DateTime.UtcNow);
                 return;
             }
 
@@ -207,13 +210,10 @@ namespace AzureServiceBusFlow.Builders
 
             foreach (var handlerType in handlerTypes)
             {
-                using var scope = rootProvider.CreateScope();
-
-                var handler = scope.ServiceProvider.GetRequiredService(handlerType);
+                var handler = sp.GetRequiredService(handlerType);
 
                 var handlerInterface = handlerType.GetInterfaces()
-                    .ToList()
-                    .Find(i =>
+                    .FirstOrDefault(i =>
                         i.IsGenericType &&
                         i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
                         i.GenericTypeArguments[0] == messageType);
@@ -222,8 +222,7 @@ namespace AzureServiceBusFlow.Builders
                 {
                     logger.LogWarning(
                         "Handler {HandlerName} does not implement IMessageHandler<> as expected. Time: {Time}",
-                        handlerType.Name, DateTime.UtcNow
-                    );
+                        handlerType.Name, DateTime.UtcNow);
                     continue;
                 }
 
@@ -239,9 +238,9 @@ namespace AzureServiceBusFlow.Builders
                     rawMessage.CorrelationId,
                     handlerType.Name,
                     startTime.ToString("o"),
-                    elapsed.TotalMilliseconds
-                );
+                    elapsed.TotalMilliseconds);
             }
         }
+
     }
 }
