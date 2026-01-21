@@ -51,7 +51,7 @@ namespace AzureServiceBusFlow.Builders
                 s.ServiceType == typeof(IConsumerMiddleware) &&
                 s.ImplementationType == typeof(TMiddleware)))
             {
-                _services.AddSingleton<IConsumerMiddleware, TMiddleware>();
+                _services.AddTransient<IConsumerMiddleware, TMiddleware>();
             }
 
             return this;
