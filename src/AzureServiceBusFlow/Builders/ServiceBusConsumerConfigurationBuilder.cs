@@ -96,22 +96,18 @@ namespace AzureServiceBusFlow.Builders
                                            s.ImplementationType == middlewareType)
                                            select middlewareType)
             {
-                _services.AddKeyedSingleton(typeof(IConsumerMiddleware), _consumerMiddlewareKey,  middlewareType);
+                _services.AddKeyedScoped(typeof(IConsumerMiddleware), _consumerMiddlewareKey,  middlewareType);
             }
 
             _services.AddSingleton<IHostedService>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
-                var localConsumerMiddlewares = sp.GetKeyedServices<IConsumerMiddleware>(_consumerMiddlewareKey) ?? [];
-                var globalConsumerMiddlewares = sp.GetServices<IConsumerMiddleware>() ?? [];
-
-                var consumerMiddlewares = globalConsumerMiddlewares.Union(localConsumerMiddlewares);
 
                 if (!string.IsNullOrWhiteSpace(_queueName))
                 {
                     return new ServiceBusConsumerHostedService(
                         (rawMessage, rootProvider, cancellationToken) =>
-                            MessageConsumingHandler(rawMessage, rootProvider, consumerMiddlewares, logger, cancellationToken),
+                            MessageConsumingHandler(rawMessage, rootProvider, _consumerMiddlewareKey, logger, cancellationToken),
                         sp,
                         logger,
                         _azureServiceBusConfiguration,
@@ -120,7 +116,7 @@ namespace AzureServiceBusFlow.Builders
 
                 return new ServiceBusConsumerHostedService(
                     (rawMessage, rootProvider, cancellationToken) =>
-                        MessageConsumingHandler(rawMessage, rootProvider, consumerMiddlewares, logger, cancellationToken),
+                        MessageConsumingHandler(rawMessage, rootProvider, _consumerMiddlewareKey, logger, cancellationToken),
                     sp,
                     logger,
                     _azureServiceBusConfiguration,
@@ -129,23 +125,38 @@ namespace AzureServiceBusFlow.Builders
             });
         }
 
-        private async Task MessageConsumingHandler(ServiceBusReceivedMessage rawMessage, IServiceProvider rootProvider, IEnumerable<IConsumerMiddleware> middlewares, ILogger<ServiceBusConsumerHostedService> logger, CancellationToken cancellationToken)
+        private async Task MessageConsumingHandler(
+            ServiceBusReceivedMessage rawMessage,
+            IServiceProvider rootProvider,
+            object consumerMiddlewareKey,
+            ILogger<ServiceBusConsumerHostedService> logger,
+            CancellationToken cancellationToken)
         {
+            using var scope = rootProvider.CreateScope();
+            var sp = scope.ServiceProvider;
+
+            var global = sp.GetServices<IConsumerMiddleware>() ?? [];
+            var local = sp.GetKeyedServices<IConsumerMiddleware>(consumerMiddlewareKey) ?? [];
+
+            var middlewares = global
+                .Concat(local)
+                .GroupBy(m => m.GetType())
+                .Select(g => g.First())
+                .ToList();
+
             Func<Task> finalStep = async () =>
             {
-                await ProcessHandlersAsync(rawMessage, rootProvider, logger, cancellationToken);
+                await ProcessHandlersAsync(rawMessage, sp, logger, cancellationToken);
             };
 
-            if (middlewares != null && middlewares.Any())
+            if (middlewares.Count > 0)
             {
                 Func<Task> next = finalStep;
 
-                foreach (var middleware in middlewares.Reverse())
+                foreach (var middleware in middlewares.AsEnumerable().Reverse())
                 {
-                    var current = middleware;
                     var prevNext = next;
-
-                    next = () => current.InvokeAsync(rawMessage, prevNext, cancellationToken);
+                    next = () => middleware.InvokeAsync(rawMessage, prevNext, cancellationToken);
                 }
 
                 await next();
