@@ -9,238 +9,237 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace AzureServiceBusFlow.Builders
+namespace AzureServiceBusFlow.Builders;
+
+public class ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration _azureServiceBusConfiguration, IServiceCollection services)
 {
-    public class ServiceBusConsumerConfigurationBuilder(AzureServiceBusConfiguration _azureServiceBusConfiguration, IServiceCollection services)
+    private readonly string _connectionString = _azureServiceBusConfiguration.ConnectionString;
+    private readonly IServiceCollection _services = services;
+    private readonly Dictionary<Type, List<Type>> _handlers = [];
+
+    private string? _queueName;
+    private string? _topicName;
+    private string? _subscriptionName;
+    private readonly List<Type> _middlewares = [];
+    private readonly string _consumerMiddlewareKey = Guid.NewGuid().ToString();
+
+    public ServiceBusConsumerConfigurationBuilder UseMiddleware<TMiddleware>()
+        where TMiddleware : IConsumerMiddleware
     {
-        private readonly string _connectionString = _azureServiceBusConfiguration.ConnectionString;
-        private readonly IServiceCollection _services = services;
-        private readonly Dictionary<Type, List<Type>> _handlers = [];
-
-        private string? _queueName;
-        private string? _topicName;
-        private string? _subscriptionName;
-        private readonly List<Type> _middlewares = [];
-        private readonly string _consumerMiddlewareKey = Guid.NewGuid().ToString();
-
-        public ServiceBusConsumerConfigurationBuilder UseMiddleware<TMiddleware>()
-            where TMiddleware : IConsumerMiddleware
+        if (!_middlewares.Contains(typeof(TMiddleware)))
         {
-            if (!_middlewares.Contains(typeof(TMiddleware)))
-            {
-                _middlewares.Add(typeof(TMiddleware));
-            }
-
-            return this;
+            _middlewares.Add(typeof(TMiddleware));
         }
 
-        public ServiceBusConsumerConfigurationBuilder FromQueue(string queueName)
+        return this;
+    }
+
+    public ServiceBusConsumerConfigurationBuilder FromQueue(string queueName)
+    {
+        _queueName = queueName;
+        return this;
+    }
+
+    public ServiceBusConsumerConfigurationBuilder FromTopic(string topicName, string subscriptionName)
+    {
+        _topicName = topicName;
+        _subscriptionName = subscriptionName;
+        return this;
+    }
+
+    public ServiceBusConsumerConfigurationBuilder EnsureSubscriptionExists(string topicName, string subscriptionName)
+    {
+        var managementClient = new ManagementClient(_connectionString);
+        if (!managementClient.SubscriptionExistsAsync(topicName, subscriptionName).GetAwaiter().GetResult())
         {
-            _queueName = queueName;
-            return this;
+            managementClient.CreateSubscriptionAsync(topicName, subscriptionName).GetAwaiter().GetResult();
         }
 
-        public ServiceBusConsumerConfigurationBuilder FromTopic(string topicName, string subscriptionName)
+        managementClient.CloseAsync().GetAwaiter().GetResult();
+        return this;
+    }
+
+    public ServiceBusConsumerConfigurationBuilder AddHandler<TMessage, THandler>()
+        where TMessage : class, IServiceBusMessage
+        where THandler : class, IMessageHandler<TMessage>
+    {
+        var messageType = typeof(TMessage);
+        var handlerType = typeof(THandler);
+
+        if (!_handlers.TryGetValue(messageType, out var handlerList))
         {
-            _topicName = topicName;
-            _subscriptionName = subscriptionName;
-            return this;
+            handlerList = [];
+            _handlers[messageType] = handlerList;
         }
 
-        public ServiceBusConsumerConfigurationBuilder EnsureSubscriptionExists(string topicName, string subscriptionName)
+        if (!handlerList.Contains(handlerType))
         {
-            var managementClient = new ManagementClient(_connectionString);
-            if (!managementClient.SubscriptionExistsAsync(topicName, subscriptionName).GetAwaiter().GetResult())
-            {
-                managementClient.CreateSubscriptionAsync(topicName, subscriptionName).GetAwaiter().GetResult();
-            }
-
-            managementClient.CloseAsync().GetAwaiter().GetResult();
-            return this;
+            handlerList.Add(handlerType);
         }
 
-        public ServiceBusConsumerConfigurationBuilder AddHandler<TMessage, THandler>()
-            where TMessage : class, IServiceBusMessage
-            where THandler : class, IMessageHandler<TMessage>
+        _services.AddScoped<IMessageHandler<TMessage>, THandler>();
+        _services.AddScoped<THandler>();
+
+        return this;
+    }
+
+    public void Build()
+    {
+        if (string.IsNullOrWhiteSpace(_queueName) && string.IsNullOrWhiteSpace(_topicName))
         {
-            var messageType = typeof(TMessage);
-            var handlerType = typeof(THandler);
-
-            if (!_handlers.TryGetValue(messageType, out var handlerList))
-            {
-                handlerList = [];
-                _handlers[messageType] = handlerList;
-            }
-
-            if (!handlerList.Contains(handlerType))
-            {
-                handlerList.Add(handlerType);
-            }
-
-            _services.AddScoped<IMessageHandler<TMessage>, THandler>();
-            _services.AddScoped<THandler>();
-
-            return this;
+            throw new InvalidOperationException("Missing queue or topic configuration!");
         }
 
-        public void Build()
+        foreach (var middlewareType in from middlewareType in _middlewares
+                                       where !_services.Any(s =>
+                                       s.ServiceType == typeof(IConsumerMiddleware) &&
+                                       s.ImplementationType == middlewareType)
+                                       select middlewareType)
         {
-            if (string.IsNullOrWhiteSpace(_queueName) && string.IsNullOrWhiteSpace(_topicName))
+            _services.AddKeyedScoped(typeof(IConsumerMiddleware), _consumerMiddlewareKey, middlewareType);
+        }
+
+        _services.AddSingleton<IHostedService>(sp =>
+        {
+            var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
+
+            if (!string.IsNullOrWhiteSpace(_queueName))
             {
-                throw new InvalidOperationException("Missing queue or topic configuration!");
-            }
-
-            foreach (var middlewareType in from middlewareType in _middlewares
-                                           where !_services.Any(s =>
-                                           s.ServiceType == typeof(IConsumerMiddleware) &&
-                                           s.ImplementationType == middlewareType)
-                                           select middlewareType)
-            {
-                _services.AddKeyedScoped(typeof(IConsumerMiddleware), _consumerMiddlewareKey,  middlewareType);
-            }
-
-            _services.AddSingleton<IHostedService>(sp =>
-            {
-                var logger = sp.GetRequiredService<ILogger<ServiceBusConsumerHostedService>>();
-
-                if (!string.IsNullOrWhiteSpace(_queueName))
-                {
-                    return new ServiceBusConsumerHostedService(
-                        (rawMessage, rootProvider, cancellationToken) =>
-                            MessageConsumingHandler(rawMessage, rootProvider, _consumerMiddlewareKey, logger, cancellationToken),
-                        sp,
-                        logger,
-                        _azureServiceBusConfiguration,
-                        _queueName!);
-                }
-
                 return new ServiceBusConsumerHostedService(
                     (rawMessage, rootProvider, cancellationToken) =>
                         MessageConsumingHandler(rawMessage, rootProvider, _consumerMiddlewareKey, logger, cancellationToken),
                     sp,
                     logger,
                     _azureServiceBusConfiguration,
-                    _topicName!,
-                    _subscriptionName!);
-            });
+                    _queueName!);
+            }
+
+            return new ServiceBusConsumerHostedService(
+                (rawMessage, rootProvider, cancellationToken) =>
+                    MessageConsumingHandler(rawMessage, rootProvider, _consumerMiddlewareKey, logger, cancellationToken),
+                sp,
+                logger,
+                _azureServiceBusConfiguration,
+                _topicName!,
+                _subscriptionName!);
+        });
+    }
+
+    private async Task MessageConsumingHandler(
+        ServiceBusReceivedMessage rawMessage,
+        IServiceProvider rootProvider,
+        object consumerMiddlewareKey,
+        ILogger<ServiceBusConsumerHostedService> logger,
+        CancellationToken cancellationToken)
+    {
+        using var scope = rootProvider.CreateScope();
+        var sp = scope.ServiceProvider;
+
+        var global = sp.GetServices<IConsumerMiddleware>() ?? [];
+        var local = sp.GetKeyedServices<IConsumerMiddleware>(consumerMiddlewareKey) ?? [];
+
+        var middlewares = global
+            .Concat(local)
+            .GroupBy(m => m.GetType())
+            .Select(g => g.First())
+            .ToList();
+
+        Func<Task> finalStep = async () =>
+        {
+            await ProcessHandlersAsync(rawMessage, sp, logger, cancellationToken);
+        };
+
+        if (middlewares.Count > 0)
+        {
+            Func<Task> next = finalStep;
+
+            foreach (var middleware in middlewares.AsEnumerable().Reverse())
+            {
+                var prevNext = next;
+                next = () => middleware.InvokeAsync(rawMessage, prevNext, cancellationToken);
+            }
+
+            await next();
+        }
+        else
+        {
+            await finalStep();
+        }
+    }
+
+    private async Task ProcessHandlersAsync(
+        ServiceBusReceivedMessage rawMessage,
+        IServiceProvider sp,
+        ILogger<ServiceBusConsumerHostedService> logger,
+        CancellationToken cancellationToken)
+    {
+        if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
+        {
+            logger.LogWarning("MessageType property not found on message at {Time}", DateTime.UtcNow);
+            return;
         }
 
-        private async Task MessageConsumingHandler(
-            ServiceBusReceivedMessage rawMessage,
-            IServiceProvider rootProvider,
-            object consumerMiddlewareKey,
-            ILogger<ServiceBusConsumerHostedService> logger,
-            CancellationToken cancellationToken)
+        var messageTypeName = messageTypeNameObj as string;
+        if (string.IsNullOrWhiteSpace(messageTypeName))
         {
-            using var scope = rootProvider.CreateScope();
-            var sp = scope.ServiceProvider;
-
-            var global = sp.GetServices<IConsumerMiddleware>() ?? [];
-            var local = sp.GetKeyedServices<IConsumerMiddleware>(consumerMiddlewareKey) ?? [];
-
-            var middlewares = global
-                .Concat(local)
-                .GroupBy(m => m.GetType())
-                .Select(g => g.First())
-                .ToList();
-
-            Func<Task> finalStep = async () =>
-            {
-                await ProcessHandlersAsync(rawMessage, sp, logger, cancellationToken);
-            };
-
-            if (middlewares.Count > 0)
-            {
-                Func<Task> next = finalStep;
-
-                foreach (var middleware in middlewares.AsEnumerable().Reverse())
-                {
-                    var prevNext = next;
-                    next = () => middleware.InvokeAsync(rawMessage, prevNext, cancellationToken);
-                }
-
-                await next();
-            }
-            else
-            {
-                await finalStep();
-            }
+            logger.LogWarning("MessageType property is null or empty at {Time}", DateTime.UtcNow);
+            return;
         }
 
-        private async Task ProcessHandlersAsync(
-            ServiceBusReceivedMessage rawMessage,
-            IServiceProvider sp,
-            ILogger<ServiceBusConsumerHostedService> logger,
-            CancellationToken cancellationToken)
+        var messageType = _handlers.Keys.FirstOrDefault(t =>
+            string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) ||
+            string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
+
+        if (messageType == null)
         {
-            if (!rawMessage.ApplicationProperties.TryGetValue("MessageType", out var messageTypeNameObj))
-            {
-                logger.LogWarning("MessageType property not found on message at {Time}", DateTime.UtcNow);
-                return;
-            }
+            logger.LogWarning(
+                "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
+                messageTypeName, DateTime.UtcNow);
+            return;
+        }
 
-            var messageTypeName = messageTypeNameObj as string;
-            if (string.IsNullOrWhiteSpace(messageTypeName))
-            {
-                logger.LogWarning("MessageType property is null or empty at {Time}", DateTime.UtcNow);
-                return;
-            }
+        var json = rawMessage.Body.ToString();
+        var obj = JsonConvert.DeserializeObject(json, messageType);
+        if (obj == null)
+        {
+            logger.LogWarning("Failed to deserialize message of type {MessageType} at {Time}", messageTypeName, DateTime.UtcNow);
+            return;
+        }
 
-            var messageType = _handlers.Keys.FirstOrDefault(t =>
-                string.Equals(t.FullName, messageTypeName, StringComparison.Ordinal) ||
-                string.Equals(t.Name, messageTypeName, StringComparison.Ordinal));
+        var handlerTypes = _handlers[messageType];
 
-            if (messageType == null)
+        foreach (var handlerType in handlerTypes)
+        {
+            var handler = sp.GetRequiredService(handlerType);
+
+            var handlerInterface = handlerType.GetInterfaces()
+                .FirstOrDefault(i =>
+                    i.IsGenericType &&
+                    i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
+                    i.GenericTypeArguments[0] == messageType);
+
+            if (handlerInterface == null)
             {
                 logger.LogWarning(
-                    "Received message of type {MessageType}, but no handler is registered to process this message. Time: {Time}",
-                    messageTypeName, DateTime.UtcNow);
-                return;
+                    "Handler {HandlerName} does not implement IMessageHandler<> as expected. Time: {Time}",
+                    handlerType.Name, DateTime.UtcNow);
+                continue;
             }
 
-            var json = rawMessage.Body.ToString();
-            var obj = JsonConvert.DeserializeObject(json, messageType);
-            if (obj == null)
-            {
-                logger.LogWarning("Failed to deserialize message of type {MessageType} at {Time}", messageTypeName, DateTime.UtcNow);
-                return;
-            }
+            var startTime = DateTime.UtcNow;
+            var method = handlerInterface.GetMethod("HandleAsync");
+            await (Task)method!.Invoke(handler, [obj!, rawMessage, cancellationToken])!;
 
-            var handlerTypes = _handlers[messageType];
+            var elapsed = DateTime.UtcNow - startTime;
 
-            foreach (var handlerType in handlerTypes)
-            {
-                var handler = sp.GetRequiredService(handlerType);
-
-                var handlerInterface = handlerType.GetInterfaces()
-                    .FirstOrDefault(i =>
-                        i.IsGenericType &&
-                        i.GetGenericTypeDefinition() == typeof(IMessageHandler<>) &&
-                        i.GenericTypeArguments[0] == messageType);
-
-                if (handlerInterface == null)
-                {
-                    logger.LogWarning(
-                        "Handler {HandlerName} does not implement IMessageHandler<> as expected. Time: {Time}",
-                        handlerType.Name, DateTime.UtcNow);
-                    continue;
-                }
-
-                var startTime = DateTime.UtcNow;
-                var method = handlerInterface.GetMethod("HandleAsync");
-                await (Task)method!.Invoke(handler, [obj!, rawMessage, cancellationToken])!;
-
-                var elapsed = DateTime.UtcNow - startTime;
-
-                logger.LogInformation(
-                    "Message {MessageType} with CorrelationId {CorrelationId} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
-                    messageTypeName,
-                    rawMessage.CorrelationId,
-                    handlerType.Name,
-                    startTime.ToString("o"),
-                    elapsed.TotalMilliseconds);
-            }
+            logger.LogInformation(
+                "Message {MessageType} with CorrelationId {CorrelationId} consumed and handled by {HandlerName} at {StartTime} in {ElapsedMilliseconds} ms",
+                messageTypeName,
+                rawMessage.CorrelationId,
+                handlerType.Name,
+                startTime.ToString("o"),
+                elapsed.TotalMilliseconds);
         }
-
     }
+
 }
