@@ -36,7 +36,7 @@ namespace AzureServiceBusFlow.Producers
                 {
                     { "MessageType", message.GetType().Name },
                     { "CreatedAt", message.CreatedDate.ToString("O") },
-                    { "RoutingKey", (message as IServiceBusMessage)?.RoutingKey ?? Guid.NewGuid().ToString() }
+                    { "RoutingKey", message.RoutingKey }
                 }
             };
 
