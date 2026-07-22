@@ -1,19 +1,19 @@
 ﻿using AzureServiceBusFlow.Builders;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AzureServiceBusFlow.Extensions
+namespace AzureServiceBusFlow.Extensions;
+
+public static class AzureServiceBusExtensions
 {
-    public static class AzureServiceBusExtensions
+    public static IServiceCollection AddAzureServiceBus(this IServiceCollection services, Action<ServiceBusConfigurationBuilder> configure)
     {
-        public static IServiceCollection AddAzureServiceBus(this IServiceCollection services, Action<ServiceBusConfigurationBuilder> configure)
-        {
-            var builder = new ServiceBusConfigurationBuilder(services);
+        var builder = new ServiceBusConfigurationBuilder(services);
 
-            configure(builder);
+        configure(builder);
 
-            builder.Build();
+        builder.Build();
 
-            return services;
-        }
+        return services;
     }
 }
+
